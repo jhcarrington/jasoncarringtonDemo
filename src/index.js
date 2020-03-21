@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./global";
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { Route, Link, Switch, Redirect, BrowserRouter as Router } from 'react-router-dom';
-import About from './components/about/about.jsx'
-// import NotFound from './components/notfound.jsx';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

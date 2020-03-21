@@ -28,9 +28,7 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    border-top:solid;
-    border-top-width:10px;
-    border-top-color:#E6E6E6;
+    border-top-width:0px;
 }
 .App-Title-Label {
     color: black;

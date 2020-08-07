@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from '../../components/Slider/slider.jsx';
 import { drawGraph } from "../../components/graph.jsx";
+import MoreOptionsLabel from "../../components/moreOptionsLabel";
 import { getGPAstats, getLanguageStats } from "../../routes/index";
 
 const timeData = [{
@@ -23,45 +24,57 @@ export default class About extends Component {
             /**@typedef {{name:String, color:String, time:Number, dataLabel:String, knowledge:Number}} languageStat */
             /**@type {{maxData:Number, data: [languageStat]}} */
             languageStats: null,
-            canvasWith: 0
+            canvasWith: 0,
+            canvas: null
         }
     }
+    componentDidMount() {
+        let canvas = this.refs.canvas;
 
-    componentDidUpdate() {
-        const canvas = this.refs.canvas;
+        this.setState({ canvas: this.refs.canvas })
+
+        this.draw = this.draw.bind(this);
+        requestAnimationFrame(this.draw)
+    }
+    draw() {
+        const canvas = this.state.canvas;
         /**@type HTMLCanvasElement */
         let ctx = canvas.getContext('2d');
-        let dpi = window.devicePixelRatio;
-        function fix_dpi() {
-            //create a style object that returns width and height
-            let style = {
-                height() {
-                    return +getComputedStyle(canvas).getPropertyValue('height').slice(0, -2);
-                },
-                width() {
-                    return +getComputedStyle(canvas).getPropertyValue('width').slice(0, -2);
-                }
-            }
-            //set the correct attributes for a crystal clear image!
-            canvas.setAttribute('width', style.width() * dpi);
-            canvas.setAttribute('height', style.height() * dpi);
-        }
-        let canvasHeight = 900
-        fix_dpi();
+
+        this.fix_dpi(canvas);
         if (this.state.languageStats) {
             drawGraph(canvas, this.state.languageStats, { height: canvas.height, width: canvas.width });
         }
+        requestAnimationFrame(this.draw)
+    }
+    fix_dpi(canvas) {
+        let dpi = window.devicePixelRatio;
+        //create a style object that returns width and height
+        let style = {
+            height() {
+                return +getComputedStyle(canvas).getPropertyValue('height').slice(0, -2);
+            },
+            width() {
+                return +getComputedStyle(canvas).getPropertyValue('width').slice(0, -2);
+            }
+        }
+        //set the correct attributes for a crystal clear image!
+        canvas.setAttribute('width', style.width() * dpi);
+        canvas.setAttribute('height', style.height() * dpi);
     }
     getStats = async () => {
         try {
             let gpaStats = await getGPAstats();
             let languageStats = await getLanguageStats();
             let maxStat = 0;
-            languageStats.forEach((stat) => {
-                if (stat.time > maxStat) {
-                    maxStat = stat.time;
+            
+            languageStats.forEach((stat, index) => {
+                if (stat.time[stat.time.length - 1].time > maxStat) {
+                    maxStat = stat.time[stat.time.length - 1].time;
                 }
+                
             })
+            console.log(maxStat)
             this.setState({
                 gpaStats: gpaStats,
                 languageStats: { maxData: maxStat, data: languageStats }
@@ -80,6 +93,10 @@ export default class About extends Component {
                     </img>
 
                 </div>
+                {/* <div>
+
+                    <MoreOptionsLabel />
+                </div> */}
                 <h1 style={{ textAlign: 'center', fontSize: 20 }}>
                     About Jason
                     </h1>
@@ -131,7 +148,7 @@ export default class About extends Component {
                         The casts he was involved with advanced both years which means both casts worked on perfecting their show for a final performance.
                     </p>
                     <p>
-                        Homorology raised about $234,000 in his first year, 2017-2018, and over $400,000 in his second year, 2018-2019
+                        Humorology raised about $234,000 in his first year, 2017-2018, and over $400,000 in his second year, 2018-2019
                     </p>
                     <div style={{
                         display: "flex",

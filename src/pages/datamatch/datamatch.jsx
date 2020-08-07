@@ -17,13 +17,13 @@ export default class Smilemail extends Component {
 
                     </p>
                     <i>
-                        The Datamatch app is an IOS application developed by myself and Frank Kulaszewicz.
+                        The Datamatch app is an IOS application developed by Jason Carrington and Frank Kulaszewicz.
                         </i>
                     <p>
-                        leading up to February 7th, we work hard to create humorous survey questions.
+                        leading up to February 7th, the creative team worked hard to create humorous survey questions.
                         Then on February 7th everything goes live, allowing students across 10 different schools to fill out a profile and answer the survey questions.
                         On February 14th these students are paired with a person depending on if they are looking for a friendship, partnership, or both.
-                        Datamatch's algorithm runs and picks pairs of people who answered the survey questions similarly.
+                        Datamatch's algorithm, built at Harvard, runs and picks pairs of people who answered the survey questions similarly.
                         </p>
 
                     <p>
@@ -45,7 +45,34 @@ export default class Smilemail extends Component {
                         Xcode
                         </text>
 
-                    <div style={{textAlign: 'center'}}>
+                    <div style={{
+                        display: "flex",
+                        justifyContent: 'center',
+                        marginBottom: 10
+                    }}>
+                        <div style={{
+                            border: '1px solid grey', padding: 10
+                        }}>
+                            <b>Skills gained</b>
+                            <p>
+                                <li>Managing an xcode project <dd>
+                                    <li>Using Storyboard for design</li>
+                                    <li>Connecting storyboard to swift code</li>
+                                    <li>Requesting necessary permissions</li>
+                                </dd> </li>
+
+                                <li>Connecting with a back-end</li>
+                                <li>Secure login with back-end</li>
+                                <li>Sending base64 images to back-end</li>
+                                <li>Retrieving information from back-end</li>
+                                <li>Releasing an IOS app to testflight</li>
+                            </p>
+                        </div>
+                    </div>
+                    <b>
+                        DEMO
+                  </b>
+                    <div style={{ textAlign: 'center' }}>
                         <video style={{ backgroundColor: '#dddddd', height: 'auto', width: '20vw' }} controls>
                             <source src={require('../../assets/DatamatchDemo.mp4')} type="video/mp4" />
                         </video>

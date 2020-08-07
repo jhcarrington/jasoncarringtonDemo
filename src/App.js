@@ -5,7 +5,8 @@ import './App.css';
 import { Route, Link, Switch, Redirect, BrowserRouter as Router } from 'react-router-dom';
 
 import About from './pages/about/about.jsx';
-import InfoView from './pages/main/InfoView.jsx';
+import Mosaic from "./pages/mosaic";
+import Main from './pages/main/index.jsx';
 import Uline from './pages/uline/uline.jsx';
 import Smilemail from './pages/smilemail/smilemail.jsx';
 import Datamatch from './pages/datamatch/datamatch.jsx';
@@ -199,7 +200,8 @@ export default class App extends React.Component {
                 <div className="App">
                     <body className="App-Body">
                         <Switch>
-                            <Route exact path='/' component={InfoView} />
+                            <Route exact path='/' component={Main} />
+                            <Route exact path="/mosaic" component={Mosaic} />
                             <Route exact path="/uline" component={Uline} />
                             <Route exact path="/smilemail" component={Smilemail} />
                             <Route exact path="/datamatch" component={Datamatch} />

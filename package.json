@@ -19,6 +19,7 @@
     "react-scripts": "^3.4.0",
     "style-loader": "^1.0.0",
     "svg-url-loader": "^3.0.2",
+    "typescript": "^3.9.3",
     "webpack-cli": "^3.3.9"
   },
   "scripts": {

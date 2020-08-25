@@ -1,8 +1,8 @@
+
 .App {
     text-align: center;
     background-color: #E6E6E6;
 }
-
 .App-header {
     background-color: #00808050;
     width: '100%';
@@ -60,21 +60,6 @@
     z-index: 9;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-/* @font-face {
-    font-family: 'TNR';
-    src: local('TNR'), url(./fonts/times-new-roman.ttf) format('regular');
-} */
-
 .card:hover {
     background-color: #00808050;
 }
@@ -92,60 +77,6 @@
     background-color: white;
     border-radius: 0.25rem;
     box-shadow: 0 4px 8px 0 #dddddd;
-}
-
-.hrProjects {
-    border: none;
-    border-top: 3px double teal;
-    color: #000000;
-    overflow: visible;
-    text-align: center;
-    height: 5px;
-}
-
-.hrProjects:after {
-    background: #fff;
-    content: 'PROJECTS';
-    font-weight: bold;
-    padding: 0 4px;
-    position: relative;
-    top: -13px;
-}
-
-.hrMyself {
-    border: none;
-    border-top: 3px double teal;
-    color: #000000;
-    overflow: visible;
-    text-align: center;
-    height: 5px;
-}
-
-.hrMyself:after {
-    background: #fff;
-    content: 'MYSELF';
-    font-weight: bold;
-    padding: 0 4px;
-    position: relative;
-    top: -13px;
-}
-
-.hrServer {
-    border: none;
-    border-top: 3px double teal;
-    color: #000000;
-    overflow: visible;
-    text-align: center;
-    height: 5px;
-}
-
-.hrServer:after {
-    background: #fff;
-    content: 'Server Install Script';
-    font-weight: bold;
-    padding: 0 4px;
-    position: relative;
-    top: -13px;
 }
 
 #card>hr {

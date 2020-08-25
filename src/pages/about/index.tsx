@@ -1,83 +1,47 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from '../../components/Slider/slider.jsx';
-import { drawGraph } from "../../components/graph.jsx";
+import * as Types from '../../Types';
 import MoreOptionsLabel from "../../components/moreOptionsLabel";
+import LanguageGraph from '../../components/LanguageGraph';
 import { getGPAstats, getLanguageStats } from "../../routes/index";
 
+interface Value {
+    name: string,
+    color: string,
+    startingMY: string,
+    months: number,
+    knowledge: number
+}
 const timeData = [{
     language: 'JavaScript',
     months: 6
 }]
-/**
- * 
- * @typedef {{name: string, color: React.color, startingMY: string/string, months: number, knowledge: number}} Value
- */
-export default class About extends Component {
-    constructor(props) {
+
+export default class About extends Component<{}, {
+    gpaStats: Types.GpaStat[],
+    canvasWith: number,
+    canvas: any
+
+}> {
+    constructor(props: any) {
         super(props);
+
         this.getStats();
         this.state = {
-            /**@typedef {{outof:Number, title:String, score:Number}} gpaStat */
-            /**@type {[gpaStat]} */
             gpaStats: [],
-            /**@typedef {{name:String, color:String, time:Number, dataLabel:String, knowledge:Number}} languageStat */
-            /**@type {{maxData:Number, data: [languageStat]}} */
-            languageStats: null,
             canvasWith: 0,
             canvas: null
         }
     }
     componentDidMount() {
-        let canvas = this.refs.canvas;
-
-        this.setState({ canvas: this.refs.canvas })
-
-        this.draw = this.draw.bind(this);
-        requestAnimationFrame(this.draw)
-    }
-    draw() {
-        const canvas = this.state.canvas;
-        /**@type HTMLCanvasElement */
-        let ctx = canvas.getContext('2d');
-
-        this.fix_dpi(canvas);
-        if (this.state.languageStats) {
-            drawGraph(canvas, this.state.languageStats, { height: canvas.height, width: canvas.width });
-        }
-        requestAnimationFrame(this.draw)
-    }
-    fix_dpi(canvas) {
-        let dpi = window.devicePixelRatio;
-        //create a style object that returns width and height
-        let style = {
-            height() {
-                return +getComputedStyle(canvas).getPropertyValue('height').slice(0, -2);
-            },
-            width() {
-                return +getComputedStyle(canvas).getPropertyValue('width').slice(0, -2);
-            }
-        }
-        //set the correct attributes for a crystal clear image!
-        canvas.setAttribute('width', style.width() * dpi);
-        canvas.setAttribute('height', style.height() * dpi);
     }
     getStats = async () => {
         try {
             let gpaStats = await getGPAstats();
-            let languageStats = await getLanguageStats();
-            let maxStat = 0;
-            
-            languageStats.forEach((stat, index) => {
-                if (stat.time[stat.time.length - 1].time > maxStat) {
-                    maxStat = stat.time[stat.time.length - 1].time;
-                }
-                
-            })
-            console.log(maxStat)
+
             this.setState({
                 gpaStats: gpaStats,
-                languageStats: { maxData: maxStat, data: languageStats }
             })
         } catch (error) {
             console.log(error);
@@ -150,26 +114,7 @@ export default class About extends Component {
                     <p>
                         Humorology raised about $234,000 in his first year, 2017-2018, and over $400,000 in his second year, 2018-2019
                     </p>
-                    <div style={{
-                        display: "flex",
-                        justifyContent: 'center',
-                        height: 'auto'
-                    }}>
-                        <div style={{
-                            border: '3px solid grey',
-                            height: '40vw',
-                            width: '80%',
-                            textAlign: 'center'
-                        }} ref={"canvasWrapper"}>
-                            <canvas ref="canvas" style={{
-                                height: '100%',
-                                width: '100%',
-                            }} />
-
-
-                        </div>
-
-                    </div>
+                    <LanguageGraph />
                     <p style={{ textAlign: 'center' }}>
                         <text style={{ fontSize: 15 }}>
 

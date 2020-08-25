@@ -1,17 +1,37 @@
-button {
-    background-color: Transparent;
-    background-repeat:no-repeat;
+.hrMyself {
     border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-    text-decoration: none;
-}
-.line {
-    display: inline-block;
+    margin-top: 25px;
+    border-top: 3px double teal;
+    color: #000000;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
 }
 
+.hrMyself:after {
+    background: #fff;
+    content: 'MYSELF';
+    font-weight: bold;
+    padding: 0 4px;
+    position: relative;
+    top: -13px;
+}
 
-#card:hover{
-    background-color: #00000000;
+.hrProjects {
+    border: none;
+    margin-top: 25px;
+    border-top: 3px double teal;
+    color: #000000;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+}
+
+.hrProjects:after {
+    background: #fff;
+    content: 'PROJECTS';
+    font-weight: bold;
+    padding: 0 4px;
+    position: relative;
+    top: -13px;
 }

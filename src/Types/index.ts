@@ -1,13 +1,19 @@
 export type LanguageStat = {
-    name:String, 
-    color:String, 
+    name:string, 
+    color:string, 
     time:[TimeObject],
-    dataLabel:String, 
-    knowledge:Number, 
+    dataLabel:string, 
+    knowledge:number, 
     Created_date: Date
 }
 export type TimeObject = {
-    time: Number,
+    time: number,
     Created_date: Date,
-    _id: String
+    _id: string
+}
+
+export type GpaStat = {
+    outof: number, 
+    title: string, 
+    score: number
 }

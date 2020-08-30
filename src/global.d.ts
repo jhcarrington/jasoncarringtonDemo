@@ -3,3 +3,8 @@ declare namespace JSX {
         lo: HTMLProps<HTMLOListElement>;
     }
 }
+declare module NodeJS {
+    interface Global {
+        domain: string
+    }
+}

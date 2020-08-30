@@ -7,7 +7,9 @@ export enum screens {
     SMILEMAIL = '/smilemail',
     MOSAIC = '/mosaic',
     BIRDWELL = '/birdwell',
-    ABOUT = '/about'
+    ABOUT = '/about',
+    TASC = '/tasc',
+    GRAPHICS = '/graphicstown'
 
 }
 export default class CardItem extends Component<{

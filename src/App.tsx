@@ -6,13 +6,15 @@ import { Route, Link, Switch,  BrowserRouter as Router } from 'react-router-dom'
 import About from './pages/about';
 import Mosaic from "./pages/mosaic";
 import Main from './pages/main';
-import Uline from './pages/uline/uline.jsx';
-import Smilemail from './pages/smilemail/smilemail.jsx';
+import Uline from './pages/uline';
+import Smilemail from './pages/smilemail';
 import Datamatch from './pages/datamatch';
 import Birdwell from './pages/birdwell';
-import NotFound from "./pages/NotFound/notfound.jsx";
+import Tasc from './pages/tasc';
+import NotFound from "./pages/NotFound";
 import PageFooterSquiggle from './components/PageFooterSquiggle';
 import JasonPicture from './components/JasonPicture';
+import GraphicsTown from './pages/GraphicsTown';
 
 export default class App extends React.Component {
     render() {
@@ -40,6 +42,8 @@ export default class App extends React.Component {
                             <Route exact path="/datamatch" component={Datamatch} />
                             <Route exact path="/about" component={About} />
                             <Route exact path='/birdwell' component={Birdwell} />
+                            <Route exact path='/tasc' component={Tasc} />
+                            <Route exact path='/graphicstown' component={GraphicsTown} />
                             <Route path='*' component={NotFound} />
 
                         </Switch >
@@ -67,7 +71,7 @@ export default class App extends React.Component {
                                     </a></a></a>
 
                             <text style={{ color: '#888888', fontSize: 15 }}>
-                                {'\u00a9 Jason Carrington'}
+                                {`Jason Carrington \u00a9 ${(new Date()).getFullYear()}`}
                             </text>
                         </footer>
                     </body>

@@ -6,14 +6,9 @@ export interface LanguageData {
     data: Types.LanguageStat[]
 }
 
-export class GraphDimensions {
+export interface GraphDimensions {
     height: number;
     width: number;
-
-    constructor(height: number, width: number) {
-        this.height = height;
-        this.width = width;
-    }
 }
 
 interface BarProps {
@@ -38,9 +33,11 @@ export default class Graph {
     data: LanguageData;
     graphDimensions: GraphDimensions;
     barMaxHeight: number;
+    // Number 0 - 1
+    barWidthPercent: number = 0.5;
 
     axisOffset = {
-        left: 60,
+        left: 80,
         top: 80,
         bottom: 60,
         right: 0
@@ -48,7 +45,11 @@ export default class Graph {
     graphColors = {
         popupBackground: '#88f8f8',
         graphLightLine: "#dddddd",
-        graphDarkLine: "#000000"
+        graphDarkLine: "#000000",
+    }
+    infoBoxColors = {
+        text: '#000000',
+        background: '#f4d6ae'
     }
 
     yAxisNumberSplitBy: number = 4;
@@ -65,6 +66,12 @@ export default class Graph {
         }
     }
 
+    /**
+     * @param percent A number between 0 and 1
+     */
+    public setBarWidthPercent(percent: number) {
+        this.barWidthPercent = percent;
+    }
     public setGraphDimensions(graphDimensions: GraphDimensions) {
         this.graphDimensions = graphDimensions;
     }
@@ -85,7 +92,7 @@ export default class Graph {
         // Draw graph title
         this.context.font = this.graphDimensions.height / 20 + "px Times New Roman";
         this.context.textAlign = "center"
-        this.context.fillText("Programming Language Usage", this.canvas.width / 2, 80);
+        this.context.fillText("Programming Language Usage", this.canvas.width / 2, this.axisOffset.top - (this.axisOffset.top / 4));
 
         // Move the context position to the bottom left corner where the graph origin will be
         this.context.translate(this.axisOffset.left, this.graphDimensions.height - this.axisOffset.bottom);
@@ -134,7 +141,7 @@ export default class Graph {
             context.fillText(this.data.data[i].name, interval / 2, 50);
             const barProps: BarProps = {
                 width: interval,
-                percentW: 0.6,
+                percentW: this.barWidthPercent,
                 borderWidth: 2,
                 // Get the current distance from the top of the canvas and take out the unusable top
                 height: this.barMaxHeight
@@ -150,7 +157,7 @@ export default class Graph {
         context.stroke();
         context.restore();
     }
-    drawYAxis() {
+    private drawYAxis() {
         if (!this.context) return;
         const context = this.context;
         const data = this.data;
@@ -182,7 +189,7 @@ export default class Graph {
         for (var i = 0; i < data.maxData + 1; i++) {
             // Draw the number and emphasize the line
             if (i % (Math.floor(data.maxData / this.yAxisNumberSplitBy)) == 0) {
-                context.fillText("" + i, -(this.axisOffset.left / 3), 0);
+                context.fillText("" + i, -(this.axisOffset.left / 2), 0);
                 context.strokeStyle = this.graphColors.graphDarkLine;
                 context.beginPath();
                 context.moveTo(0, 0);
@@ -304,19 +311,35 @@ export default class Graph {
         let outputString = "Last Changed: " + (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
 
         context.textAlign = "left"
-        context.fillStyle = this.graphColors.popupBackground;
 
         // Get the size of the text and add padding
         let textWidth = context.measureText(outputString).width + 10;
         let heightOffset = 10;
+        let borderWidth = 1;
         if (context.getTransform().e + textWidth > context.canvas.width) {
+            context.fillStyle = this.infoBoxColors.text;
+            context.fillRect(
+                -textWidth - borderWidth, 
+                -context.font.split("px")[0] + heightOffset - borderWidth ,
+                textWidth + (2 * borderWidth), 
+                Number(context.font.split("px")[0]) + (2 * borderWidth)
+            )
+            context.fillStyle = this.infoBoxColors.background;
             context.fillRect(-textWidth, -context.font.split("px")[0] + heightOffset, textWidth, Number(context.font.split("px")[0]));
-            context.fillStyle = this.graphColors.graphLightLine
+            context.fillStyle = this.infoBoxColors.text
             context.fillText(outputString, -textWidth, 0);
         }
         else {
+            context.fillStyle = this.infoBoxColors.text;
+            context.fillRect(
+                -borderWidth, 
+                -context.font.split("px")[0] + heightOffset - borderWidth ,
+                textWidth + (2 * borderWidth), 
+                Number(context.font.split("px")[0]) + (2 * borderWidth)
+            )
+            context.fillStyle = this.infoBoxColors.background;
             context.fillRect(0, -context.font.split("px")[0] + heightOffset, textWidth, Number(context.font.split("px")[0]));
-            context.fillStyle = this.graphColors.graphLightLine
+            context.fillStyle = this.infoBoxColors.text
             context.fillText(outputString, 0, 0);
         }
         context.restore();

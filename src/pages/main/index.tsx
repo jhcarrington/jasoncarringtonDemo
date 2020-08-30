@@ -13,17 +13,27 @@ export default class Main extends Component<{}, {}> {
             <div>
                 <hr className='hrProjects' />
                 <div className="card-columns cols-2">
-                    <CardItem screen={screens.DATAMATCH} title={'Datamatch'} body={
-                        <div>Lead app developer for DataMatch student org 2019.
-                        Led a team in designing, programming, and troubleshooting an IOS app.
-                        Successfully communicated user information between front and back end.
-                        Produced an easy to use user interface.</div>
-                    } />
+                    <CardItem
+                        title={'TASC'}
+                        screen={screens.TASC}
+                        body={<div>Full stack, Software Engineering internship
+                             <lo style={{ textAlign: 'left' }}>
+                                <li>
+                                    Front End: Angular
+                                </li>
+                                <li>
+                                    Back End: AWS Serverless
+                                </li>
+                            </lo>
+                        </div>} />
                     <CardItem
                         title={'Uline'}
                         screen={screens.ULINE}
                         body={<div>Windows Systems Engineer Internship</div>} />
-
+                    <CardItem
+                        title={'Graphics Town'}
+                        screen={screens.GRAPHICS}
+                        body={<div>Developed an interactive animated world</div>} />
                     <CardItem
                         title={'Smilemail'}
                         screen={screens.SMILEMAIL}
@@ -31,6 +41,12 @@ export default class Main extends Component<{}, {}> {
                             <div>
                                 Worked with web developers to create a react native android/IOS ecommerce app called Smilemail.
                         </div>} />
+                    <CardItem screen={screens.DATAMATCH} title={'Datamatch'} body={
+                        <div>Lead app developer for DataMatch student org 2019.
+                        Led a team in designing, programming, and troubleshooting an IOS app.
+                        Successfully communicated user information between front and back end.
+                        Produced an easy to use user interface.</div>
+                    } />
                     <CardItem
                         title={'Mosaic'}
                         screen={screens.MOSAIC}
@@ -62,6 +78,23 @@ export default class Main extends Component<{}, {}> {
                         </div>
 
                     </div>
+                    <div className="card" id="card">
+                        <div className="card-header">jasoncarrington.me
+                            <div className="card-header-actions">
+                                <a className="card-header-action">
+
+                                </a>
+                            </div>
+                        </div>
+                        <div className="card-body">
+                            <lo style={{ textAlign: 'left' }}>
+                                <li>
+                                    <a target={'_blank'} href={'https://github.com/jhcarrington/jasoncarringtonDemo'}>Source Code</a>
+                                </li>
+                            </lo>
+                        </div>
+
+                    </div>
                 </div>
                 <hr className="hrMyself" />
                 <div className="card-columns cols-2" >
@@ -75,6 +108,12 @@ export default class Main extends Component<{}, {}> {
                                     </li>
                                 <li>
                                     Full-Stack Developer
+                                    </li>
+                                <li>
+                                    Programming experience
+                                    </li>
+                                <li>
+                                    Resume
                                     </li>
                             </div>
                         } />

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { getLanguageStats } from '../../routes/index'
-import {  LanguageData, GraphDimensions } from './graph'
+import { getLanguageStats } from '../../routes'
+import { LanguageData, GraphDimensions } from './graph';
 import Graph from './graph';
 import * as Types from '../../Types';
+import { Slider } from '@material-ui/core';
 export default class LanguageGraph extends Component<{}, {
     languageStats: LanguageData
 }> {
@@ -24,7 +25,10 @@ export default class LanguageGraph extends Component<{}, {
             return;
         }
 
-        const graphDim = new GraphDimensions(this.canvas.height, this.canvas.width);
+        const graphDim: GraphDimensions = {
+            height: this.canvas.height,
+            width: this.canvas.width
+        };
         this.normalizeCanvas(this.canvas);
         this.graph = new Graph(this.canvas, this.state.languageStats, graphDim);
         this.draw = this.draw.bind(this);
@@ -34,7 +38,10 @@ export default class LanguageGraph extends Component<{}, {
         const canvas = this.canvas;
         if (!canvas) return;
         // this.normalizeCanvas(canvas);
-        const graphDim = new GraphDimensions(canvas.height, canvas.width);
+        const graphDim: GraphDimensions = {
+            height: canvas.height,
+            width: canvas.width
+        };
         this.graph?.setGraphDimensions(graphDim);
         if (this.state.languageStats) {
             this.graph?.drawGraph();
@@ -77,7 +84,8 @@ export default class LanguageGraph extends Component<{}, {
             <div style={{
                 display: "flex",
                 justifyContent: 'center',
-                height: 'auto'
+                height: 'auto',
+                flexDirection: 'column'
             }}>
                 <div style={{
                     border: '3px solid grey',
@@ -89,8 +97,17 @@ export default class LanguageGraph extends Component<{}, {
                         height: '100%',
                         width: '100%',
                     }} />
-
-
+                </div>
+                <div style={{display: 'flex', flexDirection: 'column', width: '50vw', textAlign: 'center'}}>
+                    Bar Width
+                <Slider
+                defaultValue={0.5}
+                        value={this.graph?.barMaxHeight}
+                        onChange={(error, value) => this.graph?.setBarWidthPercent(Number(value))}
+                        step={0.001}
+                        min={0}
+                        max={1}
+                        valueLabelDisplay="auto" />
                 </div>
 
             </div>

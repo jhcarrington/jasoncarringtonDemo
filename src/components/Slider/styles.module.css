@@ -1,41 +1,56 @@
 :root {
-    
-    --element-width: 0; 
-    --element2-width: 0;
-  }
-@-webkit-keyframes animateSlider1 {
-  from {width: 0}
-  to {width: var(--element-width)}
-  }
-  
-  /* Standard syntax */
-  @keyframes animateSlider1 {
-    from {width: 0}
-    to {width: var(--element-width)}
-  }
-  .animateSlider1 {
-    width: var(--element-width);
-    -webkit-animation-name: animateSlider1; /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
-    animation-name: animateSlider1;
+    --element-cumulative-width: 0;
+    --element-major-width: 0;
+}
+
+@-webkit-keyframes animateSliderCumulative {
+    from {
+        width: 0
+    }
+    to {
+        width: var(--element-cumulative-width)
+    }
+}
+
+@keyframes animateSliderCumulative {
+    from {
+        width: 0
+    }
+    to {
+        width: var(--element-cumulative-width)
+    }
+}
+
+.animateSliderCumulative {
+    width: var(--element-cumulative-width);
+    -webkit-animation-name: animateSliderCumulative;
+    -webkit-animation-duration: 4s;
+    animation-name: animateSliderCumulative;
     animation-duration: 4s;
-    /* animation-iteration-count: 1; */
-  }
-  @-webkit-keyframes animateSlider2 {
-    from {width: 0}
-    to {width: var(--element2-width)}
+}
+
+@-webkit-keyframes animateSliderMajor {
+    from {
+        width: 0
     }
-    
-    /* Standard syntax */
-    @keyframes animateSlider2 {
-      from {width: 0}
-      to {width: var(--element2-width)}
+    to {
+        width: var(--element-major-width)
     }
-    .animateSlider2 {
-      width: var(--element2-width);
-      -webkit-animation-name: animateSlider2; /* Safari 4.0 - 8.0 */
-      -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
-      animation-name: animateSlider2;
-      animation-duration: 4s;
-      /* animation-iteration-count: 1; */
+}
+
+@keyframes animateSliderMajor {
+    from {
+        width: 0
     }
+    to {
+        width: var(--element-major-width)
+    }
+}
+
+.animateSliderMajor {
+    width: var(--element-major-width);
+    -webkit-animation-name: animateSliderMajor;
+    -webkit-animation-duration: 4s;
+    animation-name: animateSliderMajor;
+    animation-duration: 4s;
+}

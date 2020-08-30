@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Slider from '../../components/Slider/slider.jsx';
+import GPASlider, { SliderAnimations } from '../../components/Slider';
 import * as Types from '../../Types';
-import MoreOptionsLabel from "../../components/moreOptionsLabel";
 import LanguageGraph from '../../components/LanguageGraph';
-import { getGPAstats, getLanguageStats } from "../../routes/index";
+import { getGPAstats, getLanguageStats } from "../../routes";
+import Banner from '../../components/Banner';
+import './styles.css';
 
 interface Value {
     name: string,
@@ -65,28 +66,29 @@ export default class About extends Component<{}, {
                     About Jason
                     </h1>
                 <hr></hr>
-                <div style={{ textAlign: 'center' }}>
-                    <img src={require('../../assets/wisconsinLogo.jpg')} style={{ objectFit: 'contain', width: '200px' }}></img>
-                    <img src={require('../../assets/Node.js_logo.svg')} style={{ objectFit: 'contain', width: 200, padding: 10 }} />
+                <div className={'info-columns cols-2'} style={{ textAlign: 'center', alignSelf: 'center' }}>
+                    <Banner className={'info'} asset={require('../../assets/wisconsinLogo.jpg')} />
+                    <Banner className={'info'} asset={require('../../assets/Node.js_logo.svg')} />
 
                 </div>
                 <div>
                     {this.state.gpaStats.length > 0 ?
                         <div>
-                            <Slider
-                                animatedStyle={1}
+                            <style>{`:root {
+                                    --element-cumulative-width: ${(this.state.gpaStats[0].score / this.state.gpaStats[0].outof) * 100 + '%'};
+                                    --element-major-width: ${(this.state.gpaStats[1].score / this.state.gpaStats[1].outof) * 100 + '%'};
+                                }`}
+                            </style>
+                            <GPASlider
+                                animatedStyle={SliderAnimations.CUMULATIVE}
                                 text={this.state.gpaStats[0].title + ": " + this.state.gpaStats[0].score}
-                                percent={(this.state.gpaStats[0].score / this.state.gpaStats[0].outof) * 100 + '%'}
-                                percent2={(this.state.gpaStats[1].score / this.state.gpaStats[1].outof) * 100 + '%'}
                                 height={30}>
-                            </Slider>
+                            </GPASlider>
                             <div style={{ height: 10 }}></div>
-                            <Slider animatedStyle={2}
+                            <GPASlider animatedStyle={SliderAnimations.MAJOR}
                                 text={this.state.gpaStats[1].title + ": " + this.state.gpaStats[1].score}
-                                percent={(this.state.gpaStats[0].score / this.state.gpaStats[0].outof) * 100 + '%'}
-                                percent2={(this.state.gpaStats[1].score / this.state.gpaStats[1].outof) * 100 + '%'}
                                 height={30}>
-                            </Slider>
+                            </GPASlider>
                         </div> : null}
                     <p>
                         Jason is a Full-Stack Developer focused on front-end development. He is fluent in Javascript programming utilizing Node.js's

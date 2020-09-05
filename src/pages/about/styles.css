@@ -1,0 +1,21 @@
+.info-columns .info {
+    margin-bottom: 0.75rem;
+}
+
+@media (min-width: 40vw) {
+    .info-columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+        -webkit-column-gap: 1.25rem;
+        -moz-column-gap: 1.25rem;
+        column-gap: 1.25rem;
+        orphans: 1;
+        widows: 1;
+        padding: 10;
+    }
+    .info-columns .info {
+        display: inline-block;
+        width: 100%;
+    }
+}

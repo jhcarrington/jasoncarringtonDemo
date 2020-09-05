@@ -38,10 +38,10 @@ export default class Tasc extends Component<TascProps, {}> {
                         Angular and AWS serverless
                         </text>
             <p>
-                At TASC Jason worked on a wide variety of things. The code base is on the new side, so there was a lot for him to do.<br/>
-                Jason spend the majority of his time working on their backend, which controls their Universal Benefits Account.
-                There were a few strange bugs that Jason had to use tools like MYSQLWorkbench and AWS cloud watch to debug. The backend
-                also needed new functionality, in which Jason would pair program with a team member to complete. <br/>
+                At TASC Jason worked on a wide variety of things. The code base is on the newer side, started 2 years ago, so there was a lot for him to do.<br/>
+                Jason spent the majority of his time working on their backend, which controls their Universal Benefits Account.
+                There were a few strange bugs that he had to use tools like MYSQLWorkbench and AWS cloud watch to debug. The backend
+                also needed new functionality, in which he would pair program with a team member to complete. <br/>
 
                 Jason also made occasional changes to the admistrator console which communicates with the backend. 
                 On both front and back end he cleaned up code as well as created numerous tests.

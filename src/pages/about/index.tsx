@@ -58,10 +58,6 @@ export default class About extends Component<{}, {
                     </img>
 
                 </div>
-                {/* <div>
-
-                    <MoreOptionsLabel />
-                </div> */}
                 <h1 style={{ textAlign: 'center', fontSize: 20 }}>
                     About Jason
                     </h1>
@@ -91,11 +87,12 @@ export default class About extends Component<{}, {
                             </GPASlider>
                         </div> : null}
                     <p>
-                        Jason is a Full-Stack Developer focused on front-end development. He is fluent in Javascript programming utilizing Node.js's
-                        framework. This website you are looking at was built by Jason using React on node.js. This website has a
-                        proof of concept back-end which is sending the website gpa and programming language statistics dynamically.
-                        This data is being stored in the most popular data management system MongoDB. The Mongo atlas is connected
-                        to a node.js backend running express. The backend is hosted on Google Cloud platform using an app engine.<br />
+                        Jason is a Full-Stack Developer focused on front-end development. He is fluent with Javascript programming, utilizing NodeJS. 
+                        This website you are looking at was built by Jason using React. This website has a
+                        proof of concept back-end which is sending the website gpa and programming language statistics dynamically; This
+                        helps me so I can update the language and gpa data using endpoint calls.
+                        This data is being stored in the very popular data management system MongoDB. The Mongo atlas is connected
+                        to a node.js express backend. The backend is hosted on Google Cloud platform using an app engine.<br />
                         <i>Easter egg, try dragging Jason's picture in the top right corner (touchscreen available)</i>
                     </p>
                     <p>
@@ -122,7 +119,7 @@ export default class About extends Component<{}, {
 
                             <i>*Graph built by Jason using canvas, dynamically*</i><br />
                             <text style={{ fontSize: 13 }}>
-                                Data fed from MongoDB with no labels or data stored within the code</text>
+                                Data is fed by Google Cloud Platform from MongoDB with no labels or data stored within the code</text>
                         </text>
                     </p>
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DemoVideo from '../../components/DemoVideo';
 import './styles.css';
 export default class Smilemail extends Component<{}, {}> {
     render() {
@@ -114,10 +115,10 @@ export default class Smilemail extends Component<{}, {}> {
                 <b>
                     DEMO
                   </b>
-                <div style={{ textAlign: 'center' }}>
-                    <video style={{ backgroundColor: '#dddddd', height: 'auto', width: '20vw' }} controls>
-                        <source src={require('../../assets/SmilemailDemo.mp4')} type="video/mp4" />
-                    </video>
+                <div>
+                    <DemoVideo demos={[
+                        {src: require('../../assets/SmilemailDemo.mp4')}
+                    ]} />
                 </div>
             </div>
 

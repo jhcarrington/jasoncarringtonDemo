@@ -31,7 +31,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx|.json)$/,
+                test: /\.(js|jsx|json|txt)$/,
                 include: APP_DIR,
                 use: {
                     loader: "babel-loader"

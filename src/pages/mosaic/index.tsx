@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DemoVideo from '../../components/DemoVideo';
 // import styles from './styles.css';
 export default class Mirch extends Component<{}, {}> {
     render() {
@@ -46,6 +47,33 @@ export default class Mirch extends Component<{}, {}> {
                         </text>
 
                     </p>
+                    <b>
+                        DEMOS
+                  </b>
+                    <div style={{ textAlign: 'center' }}>
+                        <DemoVideo demos={[
+                            {
+                                title: 'Modify Theme',
+                                src: require('../../assets/ChangeTheme.mp4')
+                            },
+                            {
+                                title: "View Collections",
+                                src: require('../../assets/Collections.mp4')
+                            },
+                            {
+                                title: 'Login',
+                                src: require('../../assets/Login.mp4')
+                            },
+                            {
+                                title: 'Post interaction',
+                                src: require('../../assets/PostActions.mp4')
+                            },
+                            {
+                                title: 'Search',
+                                src: require('../../assets/Search.mp4')
+                            }
+                        ]} />
+                    </div>
                     <div style={{
                         display: "flex",
                         // justifyContent: 'center',
@@ -109,14 +137,6 @@ export default class Mirch extends Component<{}, {}> {
 
                             </p>
                         </div>
-                    </div>
-                    <b>
-                        DEMO
-                  </b>
-                    <div style={{ textAlign: 'center' }}>
-                        <video style={{ backgroundColor: '#dddddd', height: 'auto', width: '20vw' }} controls>
-                            {/* <source src={require('../../assets/DatamatchDemo.mp4')} type="video/mp4" /> */}
-                        </video>
                     </div>
 
                 </div>

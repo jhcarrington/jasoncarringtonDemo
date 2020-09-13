@@ -1,0 +1,37 @@
+
+/* pass interpolated variables to from the vertex */
+varying vec2 v_uv;
+varying vec3 v_normal;
+//world coordinates for lighting
+const vec3 lightDirWorld = vec3(1,1,1);
+const vec3 baseColor = vec3(1,.8,.4);
+
+void main()
+{
+    
+    // we need to renormalize the normal since it was interpolated
+    vec3 nhat = normalize(v_normal);
+
+    // get the lighting vector in the view coordinates
+    // warning: this is REALLY wasteful!
+    vec3 lightDir = normalize(viewMatrix * vec4(lightDirWorld, 0)).xyz;
+
+    // deal with two sided lighting
+    float light = abs(dot(nhat, lightDir));
+
+    float x = v_uv.x * 5.0;
+    float y = v_uv.y * 10.0 -0.15;
+
+    if(mod(y, 2.0) < 1.0) {
+        x -= 0.5;
+    }
+    float xc = floor(x);
+    float yc = floor(y);
+
+    float dx = x-xc-0.5;
+    float dy = y-yc-0.3;
+    float d = max(abs(dx), abs(dy));
+    float dc = step(d,0.4);
+    
+    gl_FragColor = vec4(light * mix(vec3(0.5,0.5,0.5),vec3(0.796,0.255,0.329),dc), 1.);
+}

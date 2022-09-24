@@ -17,3 +17,15 @@ export type GpaStat = {
     title: string, 
     score: number
 }
+
+export enum Routes {
+    HOME = '/',
+    DATAMATCH = '/datamatch',
+    ULINE = '/uline',
+    SMILEMAIL = '/smilemail',
+    MOSAIC = '/mosaic',
+    BIRDWELL = '/birdwell',
+    ABOUT = '/about',
+    TASC_MPX_DEV = '/tasc-mpx-dev',
+    GRAPHICS = '/graphics-town'
+}

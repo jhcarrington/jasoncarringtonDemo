@@ -1,0 +1,46 @@
+{
+    "head": {
+        "title": "Birdwell Solutions",
+        "link": "https://birdwellsolutions.com/",
+        "imageRef": "../../assets/birdwellIcon.png"
+    },
+    "content": [
+        {
+            "type": "p",
+            "lines": [
+                "Birdwell Solutions LLC provides a way for development teams to be created based on Birdwell's standards.",
+                "This allows contracts or any other type of technological investment to have a fluid",
+                "development process that a client or investor does not have to get in involved with."
+            ]
+        },
+        {
+            "type": "p",
+            "lines": ["At birdwell, Jason has a few roles:"],
+            "listItems": [
+                {
+                    "text": "Provides trained developers to birdwell"
+                },
+                {
+                    "text": "Leads a team of 10 developers in creating various applications",
+                    "items": [
+                        {
+                            "text": "Manages tasks using Jira and an agile mindset"
+                        },
+                        {
+                            "text": "Reviews code using both bitbucket and standard github"
+                        },
+                        {
+                            "text": "Works on both frontend and backend with the roll of setting up the baseline system"
+                        }
+                    ]
+                },
+                {
+                    "text": "Participates in business decisions"
+                },
+                {
+                    "text": "Helped raise $60k in sales over 1 year"
+                }
+            ]
+        }
+    ]
+}

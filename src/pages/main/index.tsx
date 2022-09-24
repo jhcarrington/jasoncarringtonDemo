@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CardItem, { screens } from '../../components/CardItem';
+import CardItem from '../../components/CardItem';
+import { Routes } from '../../Types';
 import './styles.css';
 
 export default class Main extends Component<{}, {}> {
@@ -15,7 +16,7 @@ export default class Main extends Component<{}, {}> {
                 <div className="card-columns cols-2">
                     <CardItem
                         title={'TASC'}
-                        screen={screens.TASC}
+                        screen={Routes.TASC_MPX_DEV}
                         body={<div>Full stack, Software Engineering internship
                              <lo style={{ textAlign: 'left' }}>
                                 <li>
@@ -28,20 +29,20 @@ export default class Main extends Component<{}, {}> {
                         </div>} />
                     <CardItem
                         title={'Uline'}
-                        screen={screens.ULINE}
+                        screen={Routes.ULINE}
                         body={<div>Windows Systems Engineer Internship</div>} />
                     <CardItem
                         title={'Graphics Town'}
-                        screen={screens.GRAPHICS}
+                        screen={Routes.GRAPHICS}
                         body={<div>Developed an interactive animated world</div>} />
                     <CardItem
                         title={'Smilemail'}
-                        screen={screens.SMILEMAIL}
+                        screen={Routes.SMILEMAIL}
                         body={
                             <div>
                                 Worked with web developers to create a react native android/IOS ecommerce app called Smilemail.
                         </div>} />
-                    <CardItem screen={screens.DATAMATCH} title={'Datamatch'} body={
+                    <CardItem screen={Routes.DATAMATCH} title={'Datamatch'} body={
                         <div>Lead app developer for DataMatch student org 2019.
                         Led a team in designing, programming, and troubleshooting an IOS app.
                         Successfully communicated user information between front and back end.
@@ -49,7 +50,7 @@ export default class Main extends Component<{}, {}> {
                     } />
                     <CardItem
                         title={'Mosaic'}
-                        screen={screens.MOSAIC}
+                        screen={Routes.MOSAIC}
                         body={
                             <div>
                                 Worked with a web team to develop a social media app for local artists.
@@ -100,7 +101,7 @@ export default class Main extends Component<{}, {}> {
                 <div className="card-columns cols-2" >
                     <CardItem
                         title={'About'}
-                        screen={screens.ABOUT}
+                        screen={Routes.ABOUT}
                         body={
                             <div style={{ textAlign: 'left' }}>
                                 <li>
@@ -119,7 +120,7 @@ export default class Main extends Component<{}, {}> {
                         } />
                     <CardItem
                         title={'Birdwell Solutions'}
-                        screen={screens.BIRDWELL}
+                        screen={Routes.BIRDWELL}
                         body={
                             <div style={{ textAlign: 'center' }}>
                                 <i style={{ textAlign: 'center' }}>

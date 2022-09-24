@@ -1,0 +1,7 @@
+.side-bar {
+    background-color: teal;
+    flex: 1;
+}
+.side-bar:hover {
+    flex: 2;
+}

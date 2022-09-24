@@ -1,0 +1,14 @@
+
+/* pass interpolated variables to the fragment */
+varying vec2 v_uv;
+varying vec3 v_normal;
+
+void main() {
+    // pass the texture coordinate to the fragment
+    v_uv = uv;
+
+    // the main output of the shader (the vertex position)
+    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    // compute the normal and pass it to fragment
+    v_normal = normalMatrix * normal;
+}

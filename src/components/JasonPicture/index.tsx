@@ -1,151 +1,144 @@
-import React, { Component } from 'react';
-type ViewPort = {
+import { useEffect, useRef } from "react";
+import { Images } from "../../utils";
+
+interface Viewport {
     bottom: number,
     top: number,
     right: number,
     left: number
 }
-const initialPosition = {
+const initialPosition: Position = {
     x: 0,
     y: 0
 }
-export default class JasonPicture extends Component<{}, {}>{
-    rect: DOMRect | null = null;
-    viewport: ViewPort = {
+
+interface Position {
+    x: number,
+    y: number,
+}
+export default function JasonPicture() {
+    const imageWidth = 50;
+
+    const position = initialPosition;
+    const nextPosition = initialPosition;
+    const viewport: Viewport = {
         bottom: 0,
         left: 0,
         right: 0,
-        top: 0
+        top: 0,
     };
-    initialPos = initialPosition;
-    nextPos = initialPosition;
-    componentDidMount() {
-        //Handles mouse touches
-        var moveableElement = document.getElementById("jasonImage");
 
-        if (moveableElement) {
-            this.dragElement(moveableElement, this.viewport, this.rect || undefined);
-            moveableElement.addEventListener('touchstart', (event) => {
-                event.preventDefault();
-                // get the mouse cursor position at startup:
-                this.initialPos = {
-                    x: event.touches[0].screenX,
-                    y: event.touches[0].screenY
-                }
-                this.rect = moveableElement?.getBoundingClientRect() || null;
+    const targetElement = useRef<HTMLImageElement>();
 
-                this.viewport.bottom = window.innerHeight;
-                this.viewport.top = 0;
-                this.viewport.left = 0;
-                this.viewport.right = window.innerWidth - 20;
-            });
-
-            moveableElement.addEventListener('touchmove', (event) => {
-                event = event || window.event
-                event.preventDefault();
-                this.rect = moveableElement?.getBoundingClientRect() || null;
-                if (!this.rect || !moveableElement) {
-                    return;
-                }
-                this.nextPos = {
-                    x: this.initialPos.x - event.touches[0].screenX,
-                    y: this.initialPos.y - event.touches[0].screenY
-                }
-                this.initialPos = {
-                    x: event.touches[0].screenX,
-                    y: event.touches[0].screenY
-                }
-                //calculate new position
-                var newLeft = moveableElement.offsetLeft - this.nextPos.x;
-                var newTop = moveableElement.offsetTop - this.nextPos.y;
-
-                if (!checkBoundaries(newLeft, newTop, this.viewport, this.rect)) {
-                    moveableElement.style.top = `${newTop}px`;
-                    moveableElement.style.left = `${newLeft}px`;
-                }
-            });
-        }
-
+    useEffect(() => {
+        resetViewport();
+        targetElement.current.addEventListener('mousedown', mouseStartListener);
+        window.addEventListener('touchstart', touchStartListener);
         window.addEventListener('scroll', () => {
-            if (moveableElement) {
-                moveableElement.style.top = `${window.scrollY + 10}px`;
+            if (targetElement) {
+                targetElement.current.style.top = `${window.scrollY + 10}px`;
             }
-        })
+        });
+    });
+
+    function resetViewport() {
+        const viewportRect = targetElement.current.parentElement.getBoundingClientRect();
+        viewport.right = viewportRect.width;
+        viewport.left = 0;
+        viewport.bottom = window.innerHeight;
+        viewport.top = 0;
     }
-    dragElement = (elmnt: HTMLElement, viewport: ViewPort, rect?: DOMRect) => {
-        var initialPos = initialPosition;
-        var nextPos = initialPosition;
-        elmnt.onmousedown = dragMouseDown;
 
-        /**
-         * Begin tracking drag
-         */
-        function dragMouseDown(event: MouseEvent) {
-            event = event || window.event;
-            event.preventDefault();
-            // get the mouse cursor position at startup
-            initialPos = {
-                x: event.clientX,
-                y: event.clientY
-            }
-            rect = elmnt.getBoundingClientRect();
-            viewport.bottom = window.innerHeight;
-            viewport.right = window.innerWidth - 20;
-            document.onmouseup = closeDragElement;
-            // call a function whenever the cursor moves
-            document.onmousemove = elementDrag;
-        }
-        /**
-         * Drag the element
-         */
-        function elementDrag(event: MouseEvent) {
-            if (!rect) {
-                return;
-            }
-            event = event || window.event;
-            event.preventDefault();
-            // calculate the new cursor position:
-            nextPos = {
-                x: initialPos.x - event.clientX,
-                y: initialPos.y - event.clientY
-            }
-            initialPos = {
-                x: event.clientX,
-                y: event.clientY
-            }
-            var newLeft = elmnt.offsetLeft - nextPos.x;
-            var newTop = elmnt.offsetTop - nextPos.y;
+    function touchStartListener(event: TouchEvent) {
+        event.preventDefault();
+        position.x = event.touches[0].screenX;
+        position.y = event.touches[0].screenY;
+        dragStart('touch');
 
-            if (!checkBoundaries(newLeft, newTop, viewport, rect)) {
-                elmnt.style.top = `${elmnt.offsetTop - nextPos.y}px`;
-                elmnt.style.left = `${elmnt.offsetLeft - nextPos.x}px`;
-            }
-        }
+    }
+    function mouseStartListener(event: MouseEvent) {
+        event.preventDefault();
+        position.x = event.clientX;
+        position.y = event.clientY;
+        dragStart('mouse');
+    }
 
-        function closeDragElement() {
-            // stop moving when mouse button is released
-            document.onmouseup = null;
-            document.onmousemove = null;
+    function dragStart(strategy: 'touch' | 'mouse') {
+        resetViewport();
+        if (strategy === 'mouse') {
+            document.addEventListener('mousemove', mouseMoveListener, true);
+            document.addEventListener('mouseup', mouseUpListener, true);
+        } else if (strategy === 'touch') {
+            document.addEventListener('touchmove', touchMoveListener, true);
+            document.addEventListener('touchend', touchUpListener, true);
         }
     }
-    render() {
-        return (
-            <img id="jasonImage" src={require('../../assets/jasonPicture.JPG')} style={{
+
+    function touchMoveListener(event: TouchEvent) {
+        event.preventDefault();
+
+        drag({
+            x: event.touches[0].screenX,
+            y: event.touches[0].screenY,
+        });
+    }
+
+    function mouseMoveListener(event: MouseEvent) {
+        event.preventDefault();
+
+        drag({
+            x: event.clientX,
+            y: event.clientY,
+        });
+    }
+
+    function drag(
+        clientPosition: Position
+    ) {
+        // calculate the new cursor position:
+        nextPosition.x = position.x - clientPosition.x;
+        nextPosition.y = position.y - clientPosition.y;
+        position.x = clientPosition.x;
+        position.y = clientPosition.y;
+
+        const imageRadius = imageWidth / 2;
+        if (!((nextPosition.x - imageRadius < viewport.left)
+            || (nextPosition.x + imageRadius > viewport.right)
+        )) {
+            targetElement.current.style.left = `${nextPosition.x - imageRadius}px`;
+        }
+
+        if (!((nextPosition.y - imageRadius < viewport.top)
+            || (nextPosition.y + imageRadius > viewport.bottom)
+        )) {
+            targetElement.current.style.top = `${nextPosition.y - imageRadius}px`;
+        }
+    }
+
+    function mouseUpListener() {
+        document.removeEventListener('mousemove', mouseMoveListener, true);
+        document.removeEventListener('mouseup', mouseUpListener, true);
+    }
+
+    function touchUpListener() {
+        document.removeEventListener('touchmove', touchMoveListener, true);
+        document.removeEventListener('touchend', touchUpListener, true);
+    }
+
+    return (
+        <img
+            ref={ref => targetElement.current = ref}
+            id="jasonImage"
+            src={Images.JASON}
+            style={{
                 right: 10,
                 top: 10,
                 borderRadius: 25,
-                height: 50,
+                height: imageWidth,
                 objectFit: 'cover',
                 backgroundPosition: 'center',
-                width: 50,
+                width: imageWidth,
                 zIndex: 99
             }}></img>
-        );
-    }
-}
-function checkBoundaries(newLeft: number, newTop: number, viewport: ViewPort, rect: DOMRect): boolean {
-    return newLeft < viewport.left
-        || newTop < viewport.top
-        || newLeft + rect.width > viewport.right
-        || newTop + rect.height > viewport.bottom;
+    );
 }

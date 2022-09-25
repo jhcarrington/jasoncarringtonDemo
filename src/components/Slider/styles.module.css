@@ -1,56 +1,56 @@
 :root {
-    --element-cumulative-width: 0;
-    --element-major-width: 0;
+  --element-cumulative-width: 0;
+  --element-major-width: 0;
 }
 
 @-webkit-keyframes animateSliderCumulative {
-    from {
-        width: 0
-    }
-    to {
-        width: var(--element-cumulative-width)
-    }
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--element-cumulative-width);
+  }
 }
 
 @keyframes animateSliderCumulative {
-    from {
-        width: 0
-    }
-    to {
-        width: var(--element-cumulative-width)
-    }
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--element-cumulative-width);
+  }
 }
 
 .animateSliderCumulative {
-    width: var(--element-cumulative-width);
-    -webkit-animation-name: animateSliderCumulative;
-    -webkit-animation-duration: 4s;
-    animation-name: animateSliderCumulative;
-    animation-duration: 4s;
+  width: var(--element-cumulative-width);
+  -webkit-animation-name: animateSliderCumulative;
+  -webkit-animation-duration: 4s;
+  animation-name: animateSliderCumulative;
+  animation-duration: 4s;
 }
 
-@-webkit-keyframes animateSliderMajor {
-    from {
-        width: 0
-    }
-    to {
-        width: var(--element-major-width)
-    }
+@-webkit-keyframes animateSlider {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--element-major-width);
+  }
 }
 
-@keyframes animateSliderMajor {
-    from {
-        width: 0
-    }
-    to {
-        width: var(--element-major-width)
-    }
+@keyframes animateSlider {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--element-major-width);
+  }
 }
 
 .animateSliderMajor {
-    width: var(--element-major-width);
-    -webkit-animation-name: animateSliderMajor;
-    -webkit-animation-duration: 4s;
-    animation-name: animateSliderMajor;
-    animation-duration: 4s;
+  width: var(--element-major-width);
+  -webkit-animation-name: animateSlider;
+  -webkit-animation-duration: 4s;
+  animation-name: animateSlider;
+  animation-duration: 4s;
 }

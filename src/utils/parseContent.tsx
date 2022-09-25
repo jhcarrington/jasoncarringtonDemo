@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface PageContent {
     content: Content[]
 }
@@ -23,7 +21,7 @@ export function parseContent(content: PageContent): JSX.Element[] {
             case 'p':
                 return parseParagraphContent(c);
             default:
-                return <div>{c}</div>
+                return <div></div>
         }
     })
 
@@ -32,7 +30,7 @@ export function parseContent(content: PageContent): JSX.Element[] {
 function parseParagraphContent(content: Content) {
     let pContent: JSX.Element[] = [];
     if (content.lines) {
-        const lines = content.lines.map(l => <div>{l}<br/></div>);
+        const lines = content.lines.map(l => <div>{l}<br /></div>);
         pContent = pContent.concat(lines);
     }
     if (content.listItems) {

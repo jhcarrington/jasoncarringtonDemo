@@ -1,8 +1,8 @@
-/*jshint esversion: 6 */
+/* jshint esversion: 6 */
 
 // @ts-ignore
 
-//import THREE from "three";
+// import THREE from "three";
 
 /**
  * Simplified creation of Shader Material for CS559 Framework
@@ -15,11 +15,11 @@
  *
  * There are potentially issues if the fragment shader
  * ends up getting compiled before the vertex shader.
- * 
+ *
  * @module shaderHelper
  */
 
-import * as T from "three";
+import * as T from 'three'
 
 // this takes an object that describes a shader material and adds the
 // shader code (if provided) to it.
@@ -48,25 +48,25 @@ const errorFragmentShader = `
  * @param {string} url
  * @param {THREE.ShaderMaterial} material
  */
-function loadFragmentShader(url, material) {
-    let loader = new T.FileLoader();
-    loader.load(
-        url,
-        /* onload = */
-        function(data) {
-            material.fragmentShader = data.toString();
-            material.needsUpdate = true;
-        },
-        /* onprogress = */
-        function(xhr) {},
-        /* onerror = */
-        function(err) {
-            console.log(`Failed to Load Shader (file:${url})`);
-            console.log(`Error: ${err}`);
-            material.fragmentShader = errorFragmentShader;
-            material.needsUpdate = true;
-        }
-    );
+function loadFragmentShader (url, material) {
+  const loader = new T.FileLoader()
+  loader.load(
+    url,
+    /* onload = */
+    function (data) {
+      material.fragmentShader = data.toString();
+      material.needsUpdate = true;
+    },
+    /* onprogress = */
+    function (xhr) {},
+    /* onerror = */
+    function (err) {
+      console.log(`Failed to Load Shader (file:${url})`);
+      console.log(`Error: ${err}`);
+      material.fragmentShader = errorFragmentShader;
+      material.needsUpdate = true;
+    }
+  )
 }
 
 /**
@@ -74,25 +74,25 @@ function loadFragmentShader(url, material) {
  * @param {string} url
  * @param {THREE.ShaderMaterial} material
  */
-function loadVertexShader(url, material) {
-    let loader = new T.FileLoader();
-    loader.load(
-        url,
-        /* onload = */
-        function(data) {
-            material.vertexShader = data.toString();
-            material.needsUpdate = true;
-        },
-        /* onprogress = */
-        function(xhr) {},
-        /* onerror = */
-        function(err) {
-            console.log(`Failed to Load Shader (file:${url})`);
-            console.log(`Error: ${err}`);
-            material.fragmentShader = errorFragmentShader;
-            material.needsUpdate = true;
-        }
-    );
+function loadVertexShader (url, material) {
+  const loader = new T.FileLoader()
+  loader.load(
+    url,
+    /* onload = */
+    function (data) {
+      material.vertexShader = data.toString();
+      material.needsUpdate = true;
+    },
+    /* onprogress = */
+    function (xhr) {},
+    /* onerror = */
+    function (err) {
+      console.log(`Failed to Load Shader (file:${url})`);
+      console.log(`Error: ${err}`);
+      material.fragmentShader = errorFragmentShader;
+      material.needsUpdate = true;
+    }
+  )
 }
 
 /**
@@ -105,21 +105,21 @@ function loadVertexShader(url, material) {
  * @param {THREE.ShaderMaterialParameters} [properties]
  * @returns {THREE.ShaderMaterial}
  */
-export function shaderMaterial(
-    vertexShaderURL,
-    fragmentShaderURL,
-    properties = {}
+export function shaderMaterial (
+  vertexShaderURL,
+  fragmentShaderURL,
+  properties = {}
 ) {
-    if (!properties) properties = {};
+  if (!properties) properties = {};
 
-    let sm = new T.ShaderMaterial(properties);
-    // create a default shader until the real ones load
-    sm.vertexShader = defaultVertexShader;
-    sm.fragmentShader = defaultFragmentShader;
-    sm.needsUpdate = true;
-    // these will be loaded asynchronously
-    loadVertexShader(vertexShaderURL, sm);
-    loadFragmentShader(fragmentShaderURL, sm);
-    // the material is ready for use, even if it has the default shader
-    return sm;
+  const sm = new T.ShaderMaterial(properties)
+  // create a default shader until the real ones load
+  sm.vertexShader = defaultVertexShader;
+  sm.fragmentShader = defaultFragmentShader;
+  sm.needsUpdate = true;
+  // these will be loaded asynchronously
+  loadVertexShader(vertexShaderURL, sm);
+  loadFragmentShader(fragmentShaderURL, sm);
+  // the material is ready for use, even if it has the default shader
+  return sm;
 }

@@ -1,7 +1,18 @@
 .side-bar {
-    background-color: teal;
-    flex: 1;
+  background-color: teal;
+  flex: 1;
 }
 .side-bar:hover {
-    flex: 2;
+  flex: 2;
+}
+
+.submenu {
+  color: black;
+}
+.submenu:hover {
+  color: white;
+}
+
+.menu {
+  text-decoration: underline;
 }

@@ -1,24 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import GPASlider, { SliderAnimations } from "../../components/Slider";
-import * as Types from "../../Types";
-import LanguageGraph from "../../components/LanguageGraph";
-import { getGPAstats } from "../../routes";
-import Banner from "../../components/Banner";
-import "./styles.css";
-import { Images, JasonLogger } from "../../utils";
+import { ReactElement, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import GPASlider, { SliderAnimations } from '../../components/Slider';
+import * as Types from '../../models/models';
+import LanguageGraph from '../../components/LanguageGraph';
+import { getGPAstats } from '../../routes';
+import Banner from '../../components/Banner';
+import './styles.css';
+import { Images, JasonLogger } from '../../utils';
 
-const logger = new JasonLogger("pages.about");
+const logger = new JasonLogger('pages.about');
 
-export default function About() {
-  const [gpaStats, changeGpaStats] = React.useState<Types.GpaStat[]>();
+export default function About(): ReactElement {
+  const [gpaStats, changeGpaStats] = useState<Types.GpaStat[]>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!gpaStats) {
       getGPAstats()
         .then(changeGpaStats)
         .catch((error) => {
-          logger.error("get gpa stats failed", error);
+          logger.error('get gpa stats failed', error);
         });
     }
   }, [gpaStats]);
@@ -28,18 +28,16 @@ export default function About() {
       return <div>
         <style>
           {`:root {
-                --element-cumulative-width: ${
-                    (gpaStats[0].score / gpaStats[0].outof) * 100 + "%"
-                };
-                --element-major-width: ${
-                    (gpaStats[1].score / gpaStats[1].outof) * 100 + "%"
-                };
+                --element-cumulative-width: ${(gpaStats[0].score / gpaStats[0].outof) * 100 + '%'
+            };
+                --element-major-width: ${(gpaStats[1].score / gpaStats[1].outof) * 100 + '%'
+            };
             }`}
         </style>
         <GPASlider
           animatedStyle={SliderAnimations.CUMULATIVE}
           text={
-            gpaStats[0].title + ": " + gpaStats[0].score
+            gpaStats[0].title + ': ' + gpaStats[0].score
           }
           height={30}
         ></GPASlider>
@@ -47,7 +45,7 @@ export default function About() {
         <GPASlider
           animatedStyle={SliderAnimations.MAJOR}
           text={
-            gpaStats[1].title + ": " + gpaStats[1].score
+            gpaStats[1].title + ': ' + gpaStats[1].score
           }
           height={30}
         ></GPASlider>
@@ -58,26 +56,26 @@ export default function About() {
   const gpaView = createGpaStatsView();
 
   return (
-    <div style={{ textAlign: "left" }}>
-      <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: 'left' }}>
+      <div style={{ textAlign: 'center' }}>
         <img
           src={Images.JASON}
-          style={{ objectFit: "contain", width: "20vw", borderRadius: 5 }}
+          style={{ objectFit: 'contain', width: '20vw', borderRadius: 5 }}
         ></img>
       </div>
-      <h1 style={{ textAlign: "center", fontSize: 20 }}>About Jason</h1>
+      <h1 style={{ textAlign: 'center', fontSize: 20 }}>About Jason</h1>
       <hr></hr>
       <div
-        className={"info-columns cols-2"}
-        style={{ textAlign: "center", alignSelf: "center" }}
+        className={'info-columns cols-2'}
+        style={{ textAlign: 'center', alignSelf: 'center' }}
       >
         <Banner
-          className={"info"}
-          asset={require("../../assets/wisconsinLogo.jpg")}
+          className={'info'}
+          asset={require('../../assets/wisconsinLogo.jpg')}
         />
         <Banner
-          className={"info"}
-          asset={require("../../assets/Node.js_logo.svg")}
+          className={'info'}
+          asset={require('../../assets/Node.js_logo.svg')}
         />
       </div>
       <div>
@@ -124,7 +122,7 @@ export default function About() {
           over $400,000 in his second year, 2018-2019
         </p>
         <LanguageGraph />
-        <p style={{ textAlign: "center" }}>
+        <p style={{ textAlign: 'center' }}>
           <text style={{ fontSize: 15 }}>
             <i>*Graph built by Jason using canvas, dynamically*</i>
             <br />
@@ -154,7 +152,7 @@ export default function About() {
         </p>
         <p>
           <Link
-            style={{ color: "#008080" }}
+            style={{ color: '#008080' }}
             to="/Resume.pdf"
             target="_blank"
             download

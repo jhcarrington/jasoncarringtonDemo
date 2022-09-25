@@ -1,20 +1,20 @@
-export type LanguageStat = {
-    name:string, 
-    color:string, 
-    time:[TimeObject],
-    dataLabel:string, 
-    knowledge:number, 
+export interface LanguageStat {
+    name: string,
+    color: string,
+    time: [TimeObject],
+    dataLabel: string,
+    knowledge: number,
     Created_date: Date
 }
-export type TimeObject = {
+export interface TimeObject {
     time: number,
     Created_date: Date,
     _id: string
 }
 
-export type GpaStat = {
-    outof: number, 
-    title: string, 
+export interface GpaStat {
+    outof: number,
+    title: string,
     score: number
 }
 

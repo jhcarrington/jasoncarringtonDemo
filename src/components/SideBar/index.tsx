@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Routes } from "../../Types";
-import { Images } from "../../utils";
+import { Routes } from "../../models/models";
 import "./index.css";
 
 export default class SideBar extends React.Component {
@@ -9,10 +8,10 @@ export default class SideBar extends React.Component {
     return (
       <div className="side-bar">
         <div>
-          Projects
+          <div className="menu">Projects</div>
           <div>
             <Link style={{ textDecorationLine: "none" }} to={Routes.HOME}>
-              Dashboard
+              <div className="submenu">Dashboard</div>
             </Link>
           </div>
           <div>
@@ -20,71 +19,45 @@ export default class SideBar extends React.Component {
               style={{ textDecorationLine: "none" }}
               to={Routes.TASC_MPX_DEV}
             >
-              <img
-                src={Images.TASC}
-                style={{ objectFit: "contain", width: "5vw" }}
-              ></img>
-
-              <img
-                src={Images.MPX}
-                style={{ objectFit: "contain", width: "5vw" }}
-              ></img>
+              <div className="submenu">TASC / MPX Dev Group</div>
             </Link>
           </div>
           <div>
             <Link style={{ textDecorationLine: "none" }} to={Routes.ULINE}>
-              <img
-                src={Images.ULINE}
-                style={{ objectFit: "contain", width: "5vw" }}
-              ></img>
+              <div className="submenu">Uline</div>
             </Link>
           </div>
           <div>
             <Link style={{ textDecorationLine: "none" }} to={Routes.MOSAIC}>
-              <img
-                src={Images.MOSAIC}
-                style={{ objectFit: "contain", width: "5vw" }}
-              ></img>
+              <div className="submenu">Mosaic</div>
             </Link>
           </div>
           <div>
             <Link style={{ textDecorationLine: "none" }} to={Routes.GRAPHICS}>
-              Graphics Town
+              <div className="submenu">Graphics Town</div>
             </Link>
           </div>
           <div>
             <Link style={{ textDecorationLine: "none" }} to={Routes.DATAMATCH}>
-              <img
-                src={Images.DATAMATCH}
-                style={{ objectFit: "contain", width: "5vw" }}
-              ></img>
+              <div className="submenu">Datamatch</div>
             </Link>
           </div>
           <div>
             <Link style={{ textDecorationLine: "none" }} to={Routes.SMILEMAIL}>
-              <img
-                src={Images.SMILEMAIL}
-                style={{ objectFit: "contain", width: "5vw" }}
-              ></img>
+              <div className="submenu">Smilemail</div>
             </Link>
           </div>
         </div>
         <div>
-          Myself
+          <div className="menu">Myself</div>
           <div>
             <Link style={{ textDecorationLine: "none" }} to={Routes.ABOUT}>
-              <img
-                src={Images.JASON}
-                style={{ objectFit: "contain", width: "5vw" }}
-              ></img>
+              <div className="submenu">About</div>
             </Link>
           </div>
           <div>
             <Link style={{ textDecorationLine: "none" }} to={Routes.BIRDWELL}>
-              <img
-                src={Images.BIRDWELL}
-                style={{ objectFit: "contain", width: "5vw" }}
-              ></img>
+              <div className="submenu">Birdwell</div>
             </Link>
           </div>
         </div>

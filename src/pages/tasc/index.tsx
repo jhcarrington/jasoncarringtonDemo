@@ -1,30 +1,30 @@
-import React from "react";
-import { Images } from "../../utils";
+import { ReactElement } from 'react';
+import { Images } from '../../utils';
 
-export default function Tasc() {
+export default function Tasc(): ReactElement {
   return (
-    <div style={{ textAlign: "left" }}>
-      <a target={"_blank"} href={"https://www.tasconline.com/"}>
+    <div style={{ textAlign: 'left' }}>
+      <a target={'_blank'} href={'https://www.tasconline.com/'} rel="noreferrer">
         <img
           src={Images.TASC}
-          style={{ objectFit: "contain", width: "5vw" }}
+          style={{ objectFit: 'contain', width: '5vw' }}
         ></img>
         <img
           src={Images.MPX}
-          style={{ objectFit: "contain", width: "10vw" }}
+          style={{ objectFit: 'contain', width: '10vw' }}
         ></img>
       </a>
-      <div style={{ textAlign: "center", fontSize: 20 }}>TASC & MPX Dev</div>
+      <div style={{ textAlign: 'center', fontSize: 20 }}>TASC & MPX Dev</div>
       <hr></hr>
       <p>
         <i>Total Administrative Services Corporation</i>
         <br />* Software Engineering Internship
       </p>
       <div>
-        <b>{"Programming language: "}</b>
+        <b>{'Programming language: '}</b>
         <text>Javascript</text>
         <div></div>
-        <b>{"Programming environment: "}</b>
+        <b>{'Programming environment: '}</b>
         <text>Angular and AWS Serverless</text>
         <p>
           At TASC Jason worked on a wide variety of things. The code base is on
@@ -41,15 +41,15 @@ export default function Tasc() {
         </p>
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: 10,
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: 10
           }}
         >
           <div
             style={{
-              border: "1px solid grey",
-              padding: 10,
+              border: '1px solid grey',
+              padding: 10
             }}
           >
             <b>Skills gained</b>
@@ -60,7 +60,7 @@ export default function Tasc() {
                   <li>Bitbucket</li>
                   <li>Jira</li>
                   <li>Confluence</li>
-                </dd>{" "}
+                </dd>{' '}
               </li>
 
               <li>Writing mysql queries using MSQLWorkbench</li>

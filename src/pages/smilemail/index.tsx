@@ -1,39 +1,39 @@
-import React, { Component } from "react";
-import DemoVideo from "../../components/DemoVideo";
-import { Images } from "../../utils";
-import "./styles.css";
-export default function Smilemail() {
+import { ReactElement } from 'react';
+import DemoVideo from '../../components/DemoVideo';
+import { Images } from '../../utils';
+import './styles.css';
+export default function Smilemail(): ReactElement {
   return (
-    <div style={{ textAlign: "left" }}>
-      <div style={{ textAlign: "left" }}>
-        <a target={"_blank"} href={"https://smilemail.com"}>
+    <div style={{ textAlign: 'left' }}>
+      <div style={{ textAlign: 'left' }}>
+        <a target={'_blank'} href={'https://smilemail.com'} rel="noreferrer">
           <img
             src={Images.SMILEMAIL}
-            style={{ objectFit: "contain", width: "7vw" }}
+            style={{ objectFit: 'contain', width: '7vw' }}
           ></img>
           <a
-            target={"_blank"}
+            target={'_blank'}
             style={{ paddingLeft: 20 }}
-            href={"https://apps.apple.com/us/app/smilemail-cards/id1480618428"}
+            href={'https://apps.apple.com/us/app/smilemail-cards/id1480618428'} rel="noreferrer"
           >
             <img
               style={{ height: 40, width: 120 }}
-              src={require("../../assets/app-store-badge.png")}
+              src={require('../../assets/app-store-badge.png')}
             ></img>
           </a>
           <a
-            target={"_blank"}
+            target={'_blank'}
             style={{ paddingLeft: 20 }}
-            href={"https://play.google.com/store/apps/details?id=com.smilemail"}
+            href={'https://play.google.com/store/apps/details?id=com.smilemail'} rel="noreferrer"
           >
             <img
               style={{ height: 40, width: 132 }}
-              src={require("../../assets/google-play-badge.png")}
+              src={require('../../assets/google-play-badge.png')}
             ></img>
           </a>
         </a>
 
-        <div style={{ textAlign: "center", fontSize: 20, flex: 1 }}>
+        <div style={{ textAlign: 'center', fontSize: 20, flex: 1 }}>
           Smilemail
         </div>
       </div>
@@ -74,25 +74,24 @@ export default function Smilemail() {
           <br />
           <i>*Jason is no longer working on this project*</i>
         </p>
-        <b>{"Programming language: "}</b>
+        <b>{'Programming language: '}</b>
         <text>Javascript</text>
         <div></div>
-        <b>{"Programming environment: "}</b>
+        <b>{'Programming environment: '}</b>
         <text>React-Native</text>
       </div>
       <div
         style={{
-          display: "flex",
-          // justifyContent: 'center',
-          marginBottom: 10,
+          display: 'flex',
+          marginBottom: 10
         }}
       >
         <div
           style={{
             flex: 1,
-            border: "1px solid grey",
+            border: '1px solid grey',
             borderRightWidth: 0.5,
-            padding: 10,
+            padding: 10
           }}
         >
           <b>Skills gained</b>
@@ -109,9 +108,9 @@ export default function Smilemail() {
         <div
           style={{
             flex: 1,
-            border: "1px solid grey",
+            border: '1px solid grey',
             borderLeftWidth: 0.5,
-            padding: 10,
+            padding: 10
           }}
         >
           <b>Libraries</b>
@@ -132,7 +131,7 @@ export default function Smilemail() {
       <b>DEMO</b>
       <div>
         <DemoVideo
-          demos={[{ src: require("../../assets/SmilemailDemo.mp4") }]}
+          demos={[{ src: require('../../assets/SmilemailDemo.mp4') }]}
         />
       </div>
     </div>

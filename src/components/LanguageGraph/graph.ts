@@ -1,5 +1,5 @@
 
-import * as Types from "../../Types";
+import * as Types from "../../models/models";
 
 export interface LanguageData {
     maxData: number,
@@ -319,9 +319,9 @@ export default class Graph {
         if (context.getTransform().e + textWidth > context.canvas.width) {
             context.fillStyle = this.infoBoxColors.text;
             context.fillRect(
-                -textWidth - borderWidth, 
-                -context.font.split("px")[0] + heightOffset - borderWidth ,
-                textWidth + (2 * borderWidth), 
+                -textWidth - borderWidth,
+                -context.font.split("px")[0] + heightOffset - borderWidth,
+                textWidth + (2 * borderWidth),
                 Number(context.font.split("px")[0]) + (2 * borderWidth)
             )
             context.fillStyle = this.infoBoxColors.background;
@@ -332,9 +332,9 @@ export default class Graph {
         else {
             context.fillStyle = this.infoBoxColors.text;
             context.fillRect(
-                -borderWidth, 
-                -context.font.split("px")[0] + heightOffset - borderWidth ,
-                textWidth + (2 * borderWidth), 
+                -borderWidth,
+                -context.font.split("px")[0] + heightOffset - borderWidth,
+                textWidth + (2 * borderWidth),
                 Number(context.font.split("px")[0]) + (2 * borderWidth)
             )
             context.fillStyle = this.infoBoxColors.background;

@@ -1,4 +1,4 @@
-/*jshint esversion: 6 */
+/* jshint esversion: 6 */
 // @ts-ignore
 /**
  *  Simple thing to make a list of points in a Canvas draggable
@@ -26,7 +26,7 @@
   * @param {function} [changeNumber=undefined] - function to call if the number of points changes
   }}
   */
-export function draggablePoints(
+export function draggablePoints (
   canvas,
   pointList,
   redraw,
@@ -34,23 +34,23 @@ export function draggablePoints(
   changeNumber = undefined
 ) {
   // keep state within the closure of the function
-  let theCanvas = canvas;
-  let thePoints = pointList;
-  let theRedraw = redraw;
+  const theCanvas = canvas
+  const thePoints = pointList
+  const theRedraw = redraw
   let dragging = -1;
 
   if (!circleRadius) {
     circleRadius = 10;
   }
-  let circRadiusSq = circleRadius * circleRadius;
+  const circRadiusSq = circleRadius * circleRadius
 
-  canvas.addEventListener("mousedown", mouseDown);
-  canvas.addEventListener("mousemove", drag);
-  canvas.addEventListener("mouseup", endDrag);
-  canvas.addEventListener("mouseleave", endDrag);
+  canvas.addEventListener('mousedown', mouseDown);
+  canvas.addEventListener('mousemove', drag);
+  canvas.addEventListener('mouseup', endDrag);
+  canvas.addEventListener('mouseleave', endDrag);
 
   // box up the redraw
-  function doRedraw() {
+  function doRedraw () {
     if (theRedraw) {
       // rather than drawing immediately, queue up a redraw
       // note that this runs the redraw once (just not now)
@@ -59,12 +59,12 @@ export function draggablePoints(
   }
 
   // get the mouse position relative to a canvas
-  function mousePosition(evt) {
+  function mousePosition (evt) {
     // remember - the clientX,clientY is not the actual mouse position
     // in the canvas coorindate system!
     let x = evt.clientX;
     let y = evt.clientY;
-    var canvasbox = theCanvas.getBoundingClientRect();
+    const canvasbox = theCanvas.getBoundingClientRect()
     x -= canvasbox.left;
     y -= canvasbox.top;
     return [x, y];
@@ -74,16 +74,16 @@ export function draggablePoints(
   // note that this returns the index of the point - it does not set selection
   // or cause a redraw - you probably don't want to use this
   // as a handler
-  function pickPoint(evt) {
-    let [x, y] = mousePosition(evt);
+  function pickPoint (evt) {
+    const [x, y] = mousePosition(evt)
 
     // nothing is selected, and minimum distance
     let sel = -1;
     let minD = circRadiusSq;
     thePoints.forEach((pt, i) => {
-      let dx = pt[0] - x;
-      let dy = pt[1] - y;
-      let d = dx * dx + dy * dy;
+      const dx = pt[0] - x
+      const dy = pt[1] - y
+      const d = dx * dx + dy * dy
       if (d < minD) {
         minD = d;
         sel = i;
@@ -100,24 +100,24 @@ export function draggablePoints(
    *
    * @param {MouseEvent} evt
    */
-  function mouseDown(evt) {
+  function mouseDown (evt) {
     if (evt.shiftKey) {
       // we need to decide where to put the point
       // guess 1 = after the selected point
-      let select = pickPoint(evt);
+      const select = pickPoint(evt)
 
       if (select >= 0) {
-        let p1 = select;
-        let p2 = (select + 1) % thePoints.length;
-        let newPt = [
+        const p1 = select
+        const p2 = (select + 1) % thePoints.length
+        const newPt = [
           (thePoints[p1][0] + thePoints[p2][0]) / 2,
           (thePoints[p1][1] + thePoints[p2][1]) / 2
-        ];
+        ]
         thePoints.splice(p1 + 1, 0, newPt);
       } else {
         // easy part is where,
         // the harder part is what position
-        let xy = mousePosition(evt);
+        const xy = mousePosition(evt)
         thePoints.push(xy);
         if (changeNumber) changeNumber();
         doRedraw();
@@ -125,7 +125,7 @@ export function draggablePoints(
     } else if (evt.ctrlKey || evt.metaKey) {
       // do not delete the only point
       if (thePoints.length > 1) {
-        let select = pickPoint(evt);
+        const select = pickPoint(evt)
         if (select >= 0) {
           thePoints.splice(select, 1);
           if (changeNumber) changeNumber();
@@ -133,7 +133,7 @@ export function draggablePoints(
         }
       }
     } else {
-      let select = pickPoint(evt);
+      const select = pickPoint(evt)
 
       if (select >= 0) {
         dragging = select;
@@ -141,13 +141,13 @@ export function draggablePoints(
       }
     }
   }
-  function endDrag(evt) {
+  function endDrag (evt) {
     dragging = -1;
     doRedraw();
   }
-  function drag(evt) {
+  function drag (evt) {
     if (dragging >= 0) {
-      let xy = mousePosition(evt);
+      const xy = mousePosition(evt)
       thePoints[dragging] = xy;
       doRedraw();
     }

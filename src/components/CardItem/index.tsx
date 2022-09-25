@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Routes } from "../../Types";
+import { Routes } from "../../models/models";
 
 export default class CardItem extends Component<
   {

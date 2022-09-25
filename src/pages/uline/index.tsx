@@ -1,43 +1,43 @@
-import React from "react";
-import { Images } from "../../utils";
-import "./styles.css";
+import { ReactElement } from 'react';
+import { Images } from '../../utils';
+import './styles.css';
 
-export default function Uline() {
+export default function Uline(): ReactElement {
   return (
-    <div style={{ textAlign: "left" }}>
-      <a target={"_blank"} href="https://uline.com">
+    <div style={{ textAlign: 'left' }}>
+      <a target={'_blank'} href="https://uline.com" rel="noreferrer">
         <img
           src={Images.ULINE}
-          style={{ objectFit: "contain", width: "100px" }}
+          style={{ objectFit: 'contain', width: '100px' }}
         ></img>
       </a>
-      <div style={{ textAlign: "center", fontSize: 20 }}>Uline</div>
+      <div style={{ textAlign: 'center', fontSize: 20 }}>Uline</div>
       <hr></hr>
       <div>
         <p>
           At Uline I had two main projects I was working on.
-          <lo>
+          <ol>
             <li>Server Install Script</li>
             <li>Database Manager</li>
-          </lo>
-          <b>{"Top skills gained from the internship: "}</b>
+          </ol>
+          <b>{'Top skills gained from the internship: '}</b>
           <text>ASP.NET, python, windows scripting, SQL</text>
           <div style={{ height: 10 }}></div>
-          <b>{"Other skills gained from the internship: "}</b>
+          <b>{'Other skills gained from the internship: '}</b>
           <text>
             Setting up a web server with RDC (Remote Desktop Connection) and IIS
             (Internet Information Service)
           </text>
         </p>
         <div className="card-columns cols-2">
-          <div className="card" id="card" style={{ boxShadow: "none" }}>
-            <div className="card-header" style={{ color: "#000000" }}>
+          <div className="card" id="card" style={{ boxShadow: 'none' }}>
+            <div className="card-header" style={{ color: '#000000' }}>
               Server Install Script
               <div className="card-header-actions">
                 <a className="card-header-action"></a>
               </div>
             </div>
-            <div className="card-body" style={{ color: "#000000" }}>
+            <div className="card-body" style={{ color: '#000000' }}>
               <p>
                 I was put in charge of installing ESXI, a virtual server
                 operating system, onto hp proliant servers. Part of this process
@@ -58,14 +58,14 @@ export default function Uline() {
               </p>
             </div>
           </div>
-          <div className="card" id="card" style={{ boxShadow: "none" }}>
-            <div className="card-header" style={{ color: "#000000" }}>
+          <div className="card" id="card" style={{ boxShadow: 'none' }}>
+            <div className="card-header" style={{ color: '#000000' }}>
               Database Manager
               <div className="card-header-actions">
                 <a className="card-header-action"></a>
               </div>
             </div>
-            <div className="card-body" style={{ color: "#000000" }}>
+            <div className="card-body" style={{ color: '#000000' }}>
               <p>
                 Uline has multiple SQL servers with many databases with many
                 tables. My task was to manage all of this data into one UI so

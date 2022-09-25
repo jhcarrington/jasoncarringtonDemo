@@ -1,93 +1,93 @@
-import React from "react";
-import DemoVideo from "../../components/DemoVideo";
-import { Images } from "../../utils";
+import { ReactElement } from 'react';
+import DemoVideo from '../../components/DemoVideo';
+import { Images } from '../../utils';
 
-export default function Mosaic() {
+export default function Mosaic(): ReactElement {
   return (
-    <div style={{ textAlign: "left" }}>
-      <div style={{ textAlign: "left" }}>
-        <a target={"_blank"}>
+    <div style={{ textAlign: 'left' }}>
+      <div style={{ textAlign: 'left' }}>
+        <a target={'_blank'}>
           <img
             src={Images.MOSAIC}
-            style={{ objectFit: "contain", width: "7vw" }}
+            style={{ objectFit: 'contain', width: '7vw' }}
           ></img>
           <a
-            target={"_blank"}
+            target={'_blank'}
             style={{ paddingLeft: 20 }}
             href={
-              "https://apps.apple.com/us/app/mosaic-marketplace/id1489117637?ls=1"
-            }
+              'https://apps.apple.com/us/app/mosaic-marketplace/id1489117637?ls=1'
+            } rel="noreferrer"
           >
             <img
               style={{ height: 40, width: 120 }}
-              src={require("../../assets/app-store-badge.png")}
+              src={require('../../assets/app-store-badge.png')}
             ></img>
           </a>
           <a
-            target={"_blank"}
+            target={'_blank'}
             style={{ paddingLeft: 20 }}
-            href={"https://play.google.com/store/apps/details?id=com.mirch"}
+            href={'https://play.google.com/store/apps/details?id=com.mirch'} rel="noreferrer"
           >
             <img
               style={{ height: 40, width: 132 }}
-              src={require("../../assets/google-play-badge.png")}
+              src={require('../../assets/google-play-badge.png')}
             ></img>
           </a>
         </a>
 
-        <div style={{ textAlign: "center", fontSize: 20, flex: 1 }}>Mosaic</div>
+        <div style={{ textAlign: 'center', fontSize: 20, flex: 1 }}>Mosaic</div>
       </div>
       <hr></hr>
       <div>
         <i>Developed by Jason Carrington and Robinson Cook.</i>
         <p>An art ecommerce platform built over a social media platform.</p>
         <p>
-          <b>{"Programming language: "}</b>
+          <b>{'Programming language: '}</b>
           <text>Javascript + TypeScript</text>
           <div></div>
-          <b>{"Programming environment: "}</b>
+          <b>{'Programming environment: '}</b>
           <text>React Native</text>
         </p>
         <b>DEMOS</b>
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: 'center' }}>
           <DemoVideo
             demos={[
               {
-                title: "Modify Theme",
-                src: require("../../assets/ChangeTheme.mp4"),
+                title: 'Modify Theme',
+                src: require('../../assets/ChangeTheme.mp4')
               },
               {
-                title: "View Collections",
-                src: require("../../assets/Collections.mp4"),
+                title: 'View Collections',
+                src: require('../../assets/Collections.mp4')
               },
               {
-                title: "Login",
-                src: require("../../assets/Login.mp4"),
+                title: 'Login',
+                src: require('../../assets/Login.mp4')
               },
               {
-                title: "Post interaction",
-                src: require("../../assets/PostActions.mp4"),
+                title: 'Post interaction',
+                src: require('../../assets/PostActions.mp4')
               },
               {
-                title: "Search",
-                src: require("../../assets/Search.mp4"),
-              },
+                title: 'Search',
+                src: require('../../assets/Search.mp4')
+              }
             ]}
           />
         </div>
         <div
           style={{
-            display: "flex",
+            display: 'flex',
             // justifyContent: 'center',
-            marginBottom: 10,
+            marginBottom: 10
           }}
         >
           <div
             style={{
               flex: 1,
-              border: "1px solid grey",
+              border: '1px solid grey',
               borderRightWidth: 0.5,
-              padding: 10,
+              padding: 10
             }}
           >
             <b>Skills gained</b>
@@ -98,7 +98,7 @@ export default function Mosaic() {
               <li>User accounts</li>
               <li>Push Notifications</li>
               <li>
-                Color Picker{" "}
+                Color Picker{' '}
                 <dd>
                   <li>Component developed by Jason.</li>
                   <li>
@@ -114,9 +114,9 @@ export default function Mosaic() {
           <div
             style={{
               flex: 1,
-              border: "1px solid grey",
+              border: '1px solid grey',
               borderLeftWidth: 0.5,
-              padding: 10,
+              padding: 10
             }}
           >
             <b>Libraries</b>

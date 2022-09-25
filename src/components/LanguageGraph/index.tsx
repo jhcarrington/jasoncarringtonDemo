@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getLanguageStats } from '../../routes'
 import { LanguageData, GraphDimensions } from './graph';
 import Graph from './graph';
-import * as Types from '../../Types';
+import * as Types from '../../models/models';
 import { Slider } from '@material-ui/core';
 export default class LanguageGraph extends Component<{}, {
     languageStats: LanguageData
@@ -98,10 +98,10 @@ export default class LanguageGraph extends Component<{}, {
                         width: '100%',
                     }} />
                 </div>
-                <div style={{display: 'flex', flexDirection: 'column', width: '50vw', textAlign: 'center'}}>
+                <div style={{ display: 'flex', flexDirection: 'column', width: '50vw', textAlign: 'center' }}>
                     Bar Width
-                <Slider
-                defaultValue={0.5}
+                    <Slider
+                        defaultValue={0.5}
                         value={this.graph?.barMaxHeight}
                         onChange={(error, value) => this.graph?.setBarWidthPercent(Number(value))}
                         step={0.001}

@@ -1,22 +1,22 @@
-import React from "react";
-import DemoVideo from "../../components/DemoVideo";
-import { Images } from "../../utils";
-import "./styles.css";
+import { ReactElement } from 'react';
+import DemoVideo from '../../components/DemoVideo';
+import { Images } from '../../utils';
+import './styles.css';
 
-export default function Datamatch() {
+export default function Datamatch(): ReactElement {
   return (
-    <div style={{ textAlign: "left" }}>
-      <a target={"_blank"} href={"https://datamatch.me"}>
+    <div style={{ textAlign: 'left' }}>
+      <a target={'_blank'} href={'https://datamatch.me'} rel="noreferrer">
         <img
           src={Images.DATAMATCH}
-          style={{ objectFit: "contain", width: "5vw" }}
+          style={{ objectFit: 'contain', width: '5vw' }}
         ></img>
       </a>
-      <div style={{ textAlign: "center", fontSize: 20 }}>Datamatch</div>
+      <div style={{ textAlign: 'center', fontSize: 20 }}>Datamatch</div>
       <hr></hr>
       <div>
         <p>
-          <a href={"https://github.com/jhcarrington/DatamatchFinal"}>
+          <a href={'https://github.com/jhcarrington/DatamatchFinal'}>
             Go To Github
           </a>
         </p>
@@ -42,34 +42,34 @@ export default function Datamatch() {
           found volunteer programmers to work on the app and gain experience,
           and the app was born.
         </p>
-        <b>{"Programming language: "}</b>
+        <b>{'Programming language: '}</b>
         Swift
         <div></div>
-        <b>{"Programming environment: "}</b>
+        <b>{'Programming environment: '}</b>
         Xcode
 
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: 10,
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: 10
           }}
         >
           <div
             style={{
-              border: "1px solid grey",
-              padding: 10,
+              border: '1px solid grey',
+              padding: 10
             }}
           >
             <b>Skills gained</b>
             <p>
               <li>
-                Managing an xcode project{" "}
+                Managing an xcode project{' '}
                 <dd>
                   <li>Using Storyboard for design</li>
                   <li>Connecting storyboard to swift code</li>
                   <li>Requesting necessary permissions</li>
-                </dd>{" "}
+                </dd>{' '}
               </li>
 
               <li>Connecting with a back-end</li>
@@ -85,8 +85,8 @@ export default function Datamatch() {
           <DemoVideo
             demos={[
               {
-                src: require("../../assets/DatamatchDemo.mp4"),
-              },
+                src: require('../../assets/DatamatchDemo.mp4')
+              }
             ]}
           />
         </div>

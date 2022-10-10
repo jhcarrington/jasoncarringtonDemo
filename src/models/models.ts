@@ -27,5 +27,6 @@ export enum Routes {
     BIRDWELL = '/birdwell',
     ABOUT = '/about',
     TASC_MPX_DEV = '/tasc-mpx-dev',
-    GRAPHICS = '/graphics-town'
+    GRAPHICS = '/graphics-town',
+    CAPTAIN_SERVICE = '/captain-service'
 }

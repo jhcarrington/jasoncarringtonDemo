@@ -14,6 +14,7 @@ import PageFooterSquiggle from "./components/PageFooterSquiggle";
 import JasonPicture from "./components/JasonPicture";
 import GraphicsTown from "./pages/GraphicsTown";
 import SideBar from "./components/SideBar";
+import CaptainService from './pages/captainService';
 import { Routes } from "./models/models";
 
 export default function App() {
@@ -21,14 +22,17 @@ export default function App() {
     <BrowserRouter>
       <JasonPicture />
       <span style={{ flexDirection: "row", display: "flex" }}>
-        <SideBar></SideBar>
         <div style={{ flex: 10 }}>
           <header className="App-header">
-            <div style={{ flexDirection: "row" }}>
+            <div style={{ flex: 1 }}>
+              <SideBar></SideBar>
+            </div>
+            <div style={{ flex: 10, textAlign: 'center' }}>
               <Link to={"/"} style={{ textDecoration: "none" }}>
                 <label className="App-Title-Label">Jason Carrington</label>
               </Link>
             </div>
+            <div style={{ flex: 1 }} />
           </header>
 
           <div className="App">
@@ -42,7 +46,8 @@ export default function App() {
                 <Route path={Routes.ABOUT} element={About()} />
                 <Route path={Routes.BIRDWELL} element={Birdwell()} />
                 <Route path={Routes.TASC_MPX_DEV} element={Tasc()} />
-                <Route path={Routes.GRAPHICS} element={GraphicsTown()} />
+                <Route path={Routes.GRAPHICS} element={<GraphicsTown></GraphicsTown>} />
+                <Route path={Routes.CAPTAIN_SERVICE} element={CaptainService()} />
                 <Route path="*" element={NotFound()} />
               </BrowserRoutes>
 

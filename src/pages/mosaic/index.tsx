@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import DemoVideo from '../../components/DemoVideo';
-import { Images } from '../../utils';
+import { getMediaUrl, MosaicMediaUrls } from './mosaic.service';
 
 export default function Mosaic(): ReactElement {
   return (
@@ -8,8 +8,8 @@ export default function Mosaic(): ReactElement {
       <div style={{ textAlign: 'left' }}>
         <a target={'_blank'}>
           <img
-            src={Images.MOSAIC}
-            style={{ objectFit: 'contain', width: '7vw' }}
+            src={getMediaUrl(MosaicMediaUrls.MosaicIcon)}
+            style={{ objectFit: 'contain', width: '3rem' }}
           ></img>
           <a
             target={'_blank'}
@@ -19,7 +19,7 @@ export default function Mosaic(): ReactElement {
             } rel="noreferrer"
           >
             <img
-              style={{ height: 40, width: 120 }}
+              style={{ height: '1.5rem', width: '4.5rem' }}
               src={require('../../assets/app-store-badge.png')}
             ></img>
           </a>
@@ -29,7 +29,7 @@ export default function Mosaic(): ReactElement {
             href={'https://play.google.com/store/apps/details?id=com.mirch'} rel="noreferrer"
           >
             <img
-              style={{ height: 40, width: 132 }}
+              style={{ height: '1.5rem', width: '4.95rem' }}
               src={require('../../assets/google-play-badge.png')}
             ></img>
           </a>
@@ -43,10 +43,10 @@ export default function Mosaic(): ReactElement {
         <p>An art ecommerce platform built over a social media platform.</p>
         <p>
           <b>{'Programming language: '}</b>
-          <text>Javascript + TypeScript</text>
+          Javascript + TypeScript
           <div></div>
           <b>{'Programming environment: '}</b>
-          <text>React Native</text>
+          React Native
         </p>
         <b>DEMOS</b>
         <div style={{ textAlign: 'center' }}>
@@ -54,23 +54,23 @@ export default function Mosaic(): ReactElement {
             demos={[
               {
                 title: 'Modify Theme',
-                src: require('../../assets/ChangeTheme.mp4')
+                src: getMediaUrl(MosaicMediaUrls.ChangeTheme),
               },
               {
                 title: 'View Collections',
-                src: require('../../assets/Collections.mp4')
+                src: getMediaUrl(MosaicMediaUrls.Collections),
               },
               {
                 title: 'Login',
-                src: require('../../assets/Login.mp4')
+                src: getMediaUrl(MosaicMediaUrls.Login),
               },
               {
                 title: 'Post interaction',
-                src: require('../../assets/PostActions.mp4')
+                src: getMediaUrl(MosaicMediaUrls.PostActions),
               },
               {
                 title: 'Search',
-                src: require('../../assets/Search.mp4')
+                src: getMediaUrl(MosaicMediaUrls.Search),
               }
             ]}
           />
@@ -78,7 +78,6 @@ export default function Mosaic(): ReactElement {
         <div
           style={{
             display: 'flex',
-            // justifyContent: 'center',
             marginBottom: 10
           }}
         >

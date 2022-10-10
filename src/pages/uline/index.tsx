@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Images } from '../../utils';
+import { getMediaUrl, UlineMediaUrls } from './uline.service';
 import './styles.css';
 
 export default function Uline(): ReactElement {
@@ -7,28 +7,26 @@ export default function Uline(): ReactElement {
     <div style={{ textAlign: 'left' }}>
       <a target={'_blank'} href="https://uline.com" rel="noreferrer">
         <img
-          src={Images.ULINE}
-          style={{ objectFit: 'contain', width: '100px' }}
+          src={getMediaUrl(UlineMediaUrls.UlineLogo)}
+          style={{ objectFit: 'contain', width: '5rem' }}
         ></img>
       </a>
       <div style={{ textAlign: 'center', fontSize: 20 }}>Uline</div>
       <hr></hr>
       <div>
-        <p>
+        <div>
           At Uline I had two main projects I was working on.
           <ol>
             <li>Server Install Script</li>
             <li>Database Manager</li>
           </ol>
           <b>{'Top skills gained from the internship: '}</b>
-          <text>ASP.NET, python, windows scripting, SQL</text>
+          ASP.NET, python, windows scripting, SQL
           <div style={{ height: 10 }}></div>
           <b>{'Other skills gained from the internship: '}</b>
-          <text>
-            Setting up a web server with RDC (Remote Desktop Connection) and IIS
-            (Internet Information Service)
-          </text>
-        </p>
+          Setting up a web server with RDC (Remote Desktop Connection) and IIS
+          (Internet Information Service)
+        </div>
         <div className="card-columns cols-2">
           <div className="card" id="card" style={{ boxShadow: 'none' }}>
             <div className="card-header" style={{ color: '#000000' }}>
@@ -76,32 +74,34 @@ export default function Uline(): ReactElement {
                 textbook and began learning. I then had to learn how to make a
                 we app, which was going to be ASP.NET. Once I learned all the
                 required skills I began making the UI.
-                <ol>
-                  Each selection has a search feature
-                  <li>
-                    The UI dynamically generates drop down lists for all
-                    available servers.
-                  </li>
-                  <li>
-                    One or more servers can be selected and then opened. Which
-                    will open the databases of the selected servers.
-                  </li>
-                  <li>
-                    One or more databases can be selected, which opens the
-                    tables of the selected databases
-                  </li>
-                  <li>
-                    One or more tables can be selected, which opens the table
-                    headers.
-                  </li>
-                  <li>
-                    Each selected header has options such as filters, is
-                    included, order by. These options are converted into SQL
-                    commands which will gather and JOIN the correct objects.
-                  </li>
-                  <li>Download the report</li>
-                </ol>
+                <br />
+                Each selection has a search feature
               </p>
+
+              <ol>
+                <li>
+                  The UI dynamically generates drop down lists for all
+                  available servers.
+                </li>
+                <li>
+                  One or more servers can be selected and then opened. Which
+                  will open the databases of the selected servers.
+                </li>
+                <li>
+                  One or more databases can be selected, which opens the
+                  tables of the selected databases
+                </li>
+                <li>
+                  One or more tables can be selected, which opens the table
+                  headers.
+                </li>
+                <li>
+                  Each selected header has options such as filters, is
+                  included, order by. These options are converted into SQL
+                  commands which will gather and JOIN the correct objects.
+                </li>
+                <li>Download the report</li>
+              </ol>
             </div>
           </div>
         </div>

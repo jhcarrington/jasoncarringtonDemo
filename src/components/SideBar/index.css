@@ -1,9 +1,24 @@
-.side-bar {
-  background-color: teal;
-  flex: 1;
+.burgerMenu {
+  background-color: #008080dd;
 }
-.side-bar:hover {
-  flex: 2;
+
+.burgerButton {
+  background-color: #00808090;
+  position: relative;
+  height: 3rem;
+  width: 3rem;
+  margin: 0.5rem;
+}
+
+.burgerButtonContainer {
+  background-color: black;
+  position: relative;
+  height: 4rem;
+  width: 4rem;
+}
+
+.burgerMenuItem {
+  padding-left: 0.5rem;
 }
 
 .submenu {
@@ -14,5 +29,6 @@
 }
 
 .menu {
+  padding-top: 0.5rem;
   text-decoration: underline;
 }

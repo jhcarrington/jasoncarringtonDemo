@@ -6,7 +6,8 @@ import LanguageGraph from '../../components/LanguageGraph';
 import { getGPAstats } from '../../routes';
 import Banner from '../../components/Banner';
 import './styles.css';
-import { Images, JasonLogger } from '../../utils';
+import { AboutMediaUrls, getMediaUrl } from './about.service';
+import { getMediaUrl as sharedGetMediaUrl, JasonLogger, MediaUrls } from '../../utils';
 
 const logger = new JasonLogger('pages.about');
 
@@ -26,15 +27,8 @@ export default function About(): ReactElement {
   function createGpaStatsView() {
     if (gpaStats && gpaStats.length > 0) {
       return <div>
-        <style>
-          {`:root {
-                --element-cumulative-width: ${(gpaStats[0].score / gpaStats[0].outof) * 100 + '%'
-            };
-                --element-major-width: ${(gpaStats[1].score / gpaStats[1].outof) * 100 + '%'
-            };
-            }`}
-        </style>
         <GPASlider
+          gpaStat={gpaStats[0]}
           animatedStyle={SliderAnimations.CUMULATIVE}
           text={
             gpaStats[0].title + ': ' + gpaStats[0].score
@@ -43,6 +37,7 @@ export default function About(): ReactElement {
         ></GPASlider>
         <div style={{ height: 10 }}></div>
         <GPASlider
+          gpaStat={gpaStats[1]}
           animatedStyle={SliderAnimations.MAJOR}
           text={
             gpaStats[1].title + ': ' + gpaStats[1].score
@@ -59,7 +54,7 @@ export default function About(): ReactElement {
     <div style={{ textAlign: 'left' }}>
       <div style={{ textAlign: 'center' }}>
         <img
-          src={Images.JASON}
+          src={sharedGetMediaUrl(MediaUrls.JasonPicture)}
           style={{ objectFit: 'contain', width: '20vw', borderRadius: 5 }}
         ></img>
       </div>
@@ -71,11 +66,11 @@ export default function About(): ReactElement {
       >
         <Banner
           className={'info'}
-          asset={require('../../assets/wisconsinLogo.jpg')}
+          asset={getMediaUrl(AboutMediaUrls.WisconsinLogo)}
         />
         <Banner
           className={'info'}
-          asset={require('../../assets/Node.js_logo.svg')}
+          asset={require('../../assets/nodejsLogo.svg')}
         />
       </div>
       <div>
@@ -105,17 +100,15 @@ export default function About(): ReactElement {
         </p>
         <p>
           He got involved with Humorology during his first and second years in
-          college. Humorology is a theatatrical act in which greek life forms
+          college. Humorology is a theatrical act in which greek life forms
           casts whose purpose is to raise money. The fall semester of school is
           where each cast learns the first 10 minutes of their shows, which
           includes: dancing, singing, dancing and singing, and acting. Based on
           how much each cast raises and the overall impression of the shows on
           the judges, the judges pick casts to continue to second semester.
-          Humorology was a new experience for Jason as the only performing
-          experience he had was an occassional Jazz concert, where he would
-          perform improvisational exerpts on the saxophone. The casts he was
-          involved with advanced both years which means both casts worked on
-          perfecting their show for a final performance.
+          Humorology. The casts he was involved with advanced both years
+          which means both casts worked on perfecting their show for a
+          final performance.
         </p>
         <p>
           Humorology raised about $234,000 in his first year, 2017-2018, and
@@ -123,10 +116,10 @@ export default function About(): ReactElement {
         </p>
         <LanguageGraph />
         <p style={{ textAlign: 'center' }}>
-          <text style={{ fontSize: 15 }}>
-            <i>*Graph built by Jason using canvas, dynamically*</i>
+          <text style={{ fontSize: '0.8rem' }}>
+            <i>*Graph built by Jason using a canvas*</i>
             <br />
-            <text style={{ fontSize: 13 }}>
+            <text style={{ fontSize: '0.5rem' }}>
               Data is fed by Google Cloud Platform from MongoDB with no labels
               or data stored within the code
             </text>

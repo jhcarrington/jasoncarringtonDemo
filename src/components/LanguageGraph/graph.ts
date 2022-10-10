@@ -19,6 +19,15 @@ interface BarProps {
     borderWidth: number
 }
 
+interface RelativeAxisOffset {
+    left: number,
+    top: number,
+    bottom: number,
+    right: number,
+    labelOffset: number,
+    yAxisLabelOffset: number,
+    xAxisLabelOffset: number,
+}
 
 let infoBoxLoc: {
     x: number,
@@ -32,16 +41,11 @@ export default class Graph {
     context?: CanvasRenderingContext2D;
     data: LanguageData;
     graphDimensions: GraphDimensions;
+    relativeAxisOffset: RelativeAxisOffset;
     barMaxHeight: number;
     // Number 0 - 1
     barWidthPercent: number = 0.5;
 
-    axisOffset = {
-        left: 80,
-        top: 80,
-        bottom: 60,
-        right: 0
-    }
     graphColors = {
         popupBackground: '#88f8f8',
         graphLightLine: "#dddddd",
@@ -56,10 +60,10 @@ export default class Graph {
     constructor(canvas: HTMLCanvasElement, data: LanguageData, graphDimensions: GraphDimensions) {
         this.canvas = canvas;
         this.data = data;
-        this.graphDimensions = graphDimensions;
-        this.barMaxHeight = (graphDimensions.height - this.axisOffset.bottom) - this.axisOffset.top
-        const context = this.canvas.getContext('2d');
+        this.setGraphDimensions(graphDimensions);
 
+        this.barMaxHeight = (graphDimensions.height - this.relativeAxisOffset.bottom) - this.relativeAxisOffset.top
+        const context = this.canvas.getContext('2d');
 
         if (context) {
             this.context = context;
@@ -74,8 +78,21 @@ export default class Graph {
     }
     public setGraphDimensions(graphDimensions: GraphDimensions) {
         this.graphDimensions = graphDimensions;
+        this.relativeAxisOffset = (() => {
+            const offsets = {
+                left: graphDimensions.width / 15,
+                top: graphDimensions.width / 20,
+                bottom: graphDimensions.height / 15,
+                right: 0,
+            };
+            return {
+                ...offsets,
+                xAxisLabelOffset: offsets.bottom / 2,
+                yAxisLabelOffset: offsets.left / 2,
+                labelOffset: offsets.left / 3
+            }
+        })()
     }
-    // public setCanvas
 
     public drawGraph() {
         if (!this.context) return;
@@ -87,21 +104,30 @@ export default class Graph {
         this.context.lineWidth = 1
         this.context.font = this.graphDimensions.height / 30 + "px Times New Roman";
         this.context.textAlign = "left";
-        this.context.fillText(this.data.data[0].dataLabel, 0, 40);
+        this.context.translate(this.relativeAxisOffset.labelOffset, 0);
+        this.context.fillText(this.data.data[0].dataLabel, 0, this.graphDimensions.height / 30);
+        this.context.translate(-this.relativeAxisOffset.labelOffset, 0);
 
         // Draw graph title
         this.context.font = this.graphDimensions.height / 20 + "px Times New Roman";
         this.context.textAlign = "center"
-        this.context.fillText("Programming Language Usage", this.canvas.width / 2, this.axisOffset.top - (this.axisOffset.top / 4));
+        this.context.fillText(
+            "Programming Language Usage",
+            this.canvas.width / 2,
+            this.relativeAxisOffset.top - (this.relativeAxisOffset.top / 4)
+        );
 
         // Move the context position to the bottom left corner where the graph origin will be
-        this.context.translate(this.axisOffset.left, this.graphDimensions.height - this.axisOffset.bottom);
-        this.barMaxHeight = (this.graphDimensions.height - this.axisOffset.bottom) - this.axisOffset.top
+        this.context.translate(
+            this.relativeAxisOffset.left,
+            this.graphDimensions.height - this.relativeAxisOffset.bottom
+        );
+        this.barMaxHeight = (this.graphDimensions.height - this.relativeAxisOffset.bottom) - this.relativeAxisOffset.top
         this.drawXAxis();
         this.drawYAxis();
 
         // Move back to where we started
-        this.context.translate(-this.axisOffset.left, -(this.graphDimensions.height - this.axisOffset.bottom));
+        this.context.translate(-this.relativeAxisOffset.left, -(this.graphDimensions.height - this.relativeAxisOffset.bottom));
         if (infoBoxLoc && displayValue) {
             this.context.translate(infoBoxLoc.x, infoBoxLoc.y);
             this.drawInfoBox(displayValue.time[displayValue.time.length - 1]);
@@ -123,22 +149,21 @@ export default class Graph {
         let interval = width / (this.data.data.length + 1);
         context.strokeStyle = this.graphColors.graphLightLine; // The lighter lines are lines and use stroke
         context.fillStyle = this.graphColors.graphDarkLine; // The darker lines are rectangles and use fill
-        context.lineWidth = 2
+        context.lineWidth = this.graphDimensions.height / 300;
 
         // Iterate through the items drawing each bar
         for (var i = 0; i < this.data.data.length; i++) {
             // Draw line with tick
             context.moveTo(0, 0);
             context.lineTo(interval, 0);
-            context.lineTo(interval, -10);
+            context.lineTo(interval, -this.graphDimensions.height / 50);
             context.moveTo(interval, 0);
 
-            // TODO: Make this more extendable
             context.font = (interval / 5) + "px Times New Roman";
 
             context.textAlign = "center";
             // Draw the title halfway between the interval
-            context.fillText(this.data.data[i].name, interval / 2, 50);
+            context.fillText(this.data.data[i].name, interval / 2, this.relativeAxisOffset.xAxisLabelOffset);
             const barProps: BarProps = {
                 width: interval,
                 percentW: this.barWidthPercent,
@@ -171,13 +196,14 @@ export default class Graph {
 
         // Draw the lines that pass through the top of each bar
         context.fillStyle = this.graphColors.graphDarkLine;
-        context.lineWidth = 2
+        context.lineWidth = this.graphDimensions.height / 1000;
         // Draw the colored lines connecting to the top of the bars
         for (var i = 0; i < data.data.length; i++) {
             // Add opacity to the colors
             context.strokeStyle = data.data[i].color + "33";
             // Interval * time
-            let calculateRelativeHeight = interval * data.data[i].time[data.data[i].time.length - 1].time;
+            const time = data.data[i].time;
+            let calculateRelativeHeight = interval * time[time.length - 1].time;
             context.beginPath();
             context.moveTo(0, -calculateRelativeHeight);
             context.lineTo(context.canvas.width - context.getTransform().e, -calculateRelativeHeight);
@@ -189,12 +215,12 @@ export default class Graph {
         for (var i = 0; i < data.maxData + 1; i++) {
             // Draw the number and emphasize the line
             if (i % (Math.floor(data.maxData / this.yAxisNumberSplitBy)) == 0) {
-                context.fillText("" + i, -(this.axisOffset.left / 2), 0);
+                context.fillText(`${i}`, -this.relativeAxisOffset.yAxisLabelOffset, 0);
                 context.strokeStyle = this.graphColors.graphDarkLine;
                 context.beginPath();
                 context.moveTo(0, 0);
                 context.lineTo(0, 0);
-                context.lineTo(this.axisOffset.left / 3, 0);
+                context.lineTo(this.relativeAxisOffset.left / 5, 0);
                 context.closePath();
                 context.stroke();
             }
@@ -204,7 +230,7 @@ export default class Graph {
                 context.beginPath();
                 context.moveTo(0, 0);
                 context.lineTo(0, 0);
-                context.lineTo(10, 0);
+                context.lineTo(this.relativeAxisOffset.left / 10, 0);
                 context.closePath();
                 context.stroke();
             }

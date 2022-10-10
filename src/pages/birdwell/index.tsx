@@ -1,13 +1,17 @@
 import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
+import { BirdwellMediaUrls, getMediaUrl } from './birdwell.service';
 
 export default function Birdwell(): ReactElement {
     return (
         <div style={{ textAlign: 'left' }}>
             <div style={{ textAlign: 'left' }}>
-                <a href={'https://birdwellsolutions.com/'}><img src={require('../../assets/birdwellIcon.png')} style={{ objectFit: 'contain', width: '6vw' }}>
-
-                </img> </a>
+                <a href={'https://birdwellsolutions.com/'}>
+                    <img
+                        src={getMediaUrl(BirdwellMediaUrls.BirdwellLogo)}
+                        style={{ objectFit: 'contain', width: '3rem' }}
+                    >
+                    </img> </a>
 
                 <div style={{ textAlign: 'center', fontSize: 20, flex: 1 }}>
                     Birdwell Solutions
@@ -70,7 +74,7 @@ export default function Birdwell(): ReactElement {
                     Jason also uses logs from Google Cloud Platform to evaluate errors
                 </p>
             </div>
-        </div>
+        </div >
 
     );
 }

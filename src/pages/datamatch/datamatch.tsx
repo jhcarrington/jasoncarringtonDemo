@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import DemoVideo from '../../components/DemoVideo';
-import { Images } from '../../utils';
+import { getMediaUrl, DatamatchMediaUrls } from './datamatch.service';
 import './styles.css';
 
 export default function Datamatch(): ReactElement {
@@ -8,8 +8,8 @@ export default function Datamatch(): ReactElement {
     <div style={{ textAlign: 'left' }}>
       <a target={'_blank'} href={'https://datamatch.me'} rel="noreferrer">
         <img
-          src={Images.DATAMATCH}
-          style={{ objectFit: 'contain', width: '5vw' }}
+          src={getMediaUrl(DatamatchMediaUrls.DatamatchLogo)}
+          style={{ objectFit: 'contain', width: '3rem' }}
         ></img>
       </a>
       <div style={{ textAlign: 'center', fontSize: 20 }}>Datamatch</div>
@@ -85,7 +85,7 @@ export default function Datamatch(): ReactElement {
           <DemoVideo
             demos={[
               {
-                src: require('../../assets/DatamatchDemo.mp4')
+                src: getMediaUrl(DatamatchMediaUrls.DatamatchDemo)
               }
             ]}
           />

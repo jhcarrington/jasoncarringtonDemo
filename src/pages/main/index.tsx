@@ -7,19 +7,22 @@ export default function Main(): ReactElement {
     return (
         <div>
             <hr className='hrProjects' />
-            <div className="card-columns cols-2">
+            <div className="card-columns">
                 <CardItem
                     title={'TASC'}
                     screen={Routes.TASC_MPX_DEV}
-                    body={<div>Full stack, Software Engineering internship
-                        <ol style={{ textAlign: 'left' }}>
+                    body={<div>
+                        <i style={{ textAlign: 'center' }}>
+                            * Full stack, Application Developer II *
+                        </i>
+                        <div style={{ textAlign: 'left' }}>
                             <li>
-                                Front End: Angular
+                                Front End: Angular and Flutter
                             </li>
                             <li>
-                                Back End: AWS Serverless
+                                Back End: AWS Serverless and Firebase
                             </li>
-                        </ol>
+                        </div>
                     </div>} />
                 <CardItem
                     title={'Uline'}
@@ -42,6 +45,15 @@ export default function Main(): ReactElement {
                         Successfully communicated user information between front and back end.
                         Produced an easy to use user interface.</div>
                 } />
+
+                <CardItem
+                    title={'Captain Service'}
+                    screen={Routes.CAPTAIN_SERVICE}
+                    body={
+                        <div>
+                            Built an uber for mechanics, electricians and plumbers.
+                            Worked with a backend developer.
+                        </div>} />
                 <CardItem
                     title={'Mosaic'}
                     screen={Routes.MOSAIC}
@@ -51,13 +63,7 @@ export default function Main(): ReactElement {
                         </div>} />
 
                 <div className="card" id="card">
-                    <div className="card-header">Data Structures
-                        <div className="card-header-actions">
-                            <a className="card-header-action">
-
-                            </a>
-                        </div>
-                    </div>
+                    <div className="card-header">Data Structures (undergrad projects)</div>
                     <div className="card-body">
                         <ol style={{ textAlign: 'left' }}>
                             <li>
@@ -82,17 +88,13 @@ export default function Main(): ReactElement {
                         </div>
                     </div>
                     <div className="card-body">
-                        <ol style={{ textAlign: 'left' }}>
-                            <li>
-                                <a target={'_blank'} href={'https://github.com/jhcarrington/jasoncarringtonDemo'} rel="noreferrer">Source Code</a>
-                            </li>
-                        </ol>
+                        <a target={'_blank'} href={'https://github.com/jhcarrington/jasoncarringtonDemo'} rel="noreferrer">Source Code</a>
                     </div>
 
                 </div>
             </div>
             <hr className="hrMyself" />
-            <div className="card-columns cols-2" >
+            <div className="card-columns" >
                 <CardItem
                     title={'About'}
                     screen={Routes.ABOUT}
@@ -118,14 +120,14 @@ export default function Main(): ReactElement {
                     body={
                         <div style={{ textAlign: 'center' }}>
                             <i style={{ textAlign: 'center' }}>
-                                ** Head of Engineering **
+                                * Head of Engineering *
                             </i>
                             <div style={{ textAlign: 'left' }}>
                                 <li>
-                                    Lead a team of 10 developers
+                                    Led a team of 10 developers
                                 </li>
                                 <li>
-                                    Manage training
+                                    Managed training
                                 </li>
                                 <li>
                                     Full stack node.js engineer

@@ -1,3 +1,3 @@
 export * from './logger';
 export * from './parseContent';
-export * from './images';
+export * from './shared.service';

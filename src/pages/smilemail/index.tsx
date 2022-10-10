@@ -1,23 +1,23 @@
-import { ReactElement } from 'react';
 import DemoVideo from '../../components/DemoVideo';
-import { Images } from '../../utils';
+import { getMediaUrl, SmilemailMediaUrls } from './smilemail.service';
 import './styles.css';
-export default function Smilemail(): ReactElement {
+
+export default function Smilemail() {
   return (
     <div style={{ textAlign: 'left' }}>
       <div style={{ textAlign: 'left' }}>
         <a target={'_blank'} href={'https://smilemail.com'} rel="noreferrer">
           <img
-            src={Images.SMILEMAIL}
-            style={{ objectFit: 'contain', width: '7vw' }}
+            src={getMediaUrl(SmilemailMediaUrls.SmilemailLogo)}
+            style={{ objectFit: 'contain', width: '3rem' }}
           ></img>
           <a
             target={'_blank'}
             style={{ paddingLeft: 20 }}
-            href={'https://apps.apple.com/us/app/smilemail-cards/id1480618428'} rel="noreferrer"
+            href={'https://apps.apple.com/us/app/smilemail-cards/id1480618428'}
           >
             <img
-              style={{ height: 40, width: 120 }}
+              style={{ height: '1.5rem', width: '4.5rem' }}
               src={require('../../assets/app-store-badge.png')}
             ></img>
           </a>
@@ -27,7 +27,7 @@ export default function Smilemail(): ReactElement {
             href={'https://play.google.com/store/apps/details?id=com.smilemail'} rel="noreferrer"
           >
             <img
-              style={{ height: 40, width: 132 }}
+              style={{ height: '1.5rem', width: '4.95rem' }}
               src={require('../../assets/google-play-badge.png')}
             ></img>
           </a>
@@ -75,10 +75,10 @@ export default function Smilemail(): ReactElement {
           <i>*Jason is no longer working on this project*</i>
         </p>
         <b>{'Programming language: '}</b>
-        <text>Javascript</text>
+        Javascript
         <div></div>
         <b>{'Programming environment: '}</b>
-        <text>React-Native</text>
+        React-Native
       </div>
       <div
         style={{
@@ -131,7 +131,7 @@ export default function Smilemail(): ReactElement {
       <b>DEMO</b>
       <div>
         <DemoVideo
-          demos={[{ src: require('../../assets/SmilemailDemo.mp4') }]}
+          demos={[{ src: getMediaUrl(SmilemailMediaUrls.SmilemailDemo) }]}
         />
       </div>
     </div>

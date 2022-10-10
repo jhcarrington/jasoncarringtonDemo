@@ -84,13 +84,15 @@ export default class LanguageGraph extends Component<{}, {
             <div style={{
                 display: "flex",
                 justifyContent: 'center',
+                alignItems: 'center',
                 height: 'auto',
                 flexDirection: 'column'
             }}>
                 <div style={{
                     border: '3px solid grey',
                     height: '40vw',
-                    width: '80%',
+                    width: '90%',
+                    alignContent: 'center',
                     textAlign: 'center'
                 }} ref={"canvasWrapper"}>
                     <canvas ref={(ref) => (this.canvas = (ref || undefined))} style={{

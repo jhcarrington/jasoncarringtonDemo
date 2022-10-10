@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Images } from "../../utils";
+import { getMediaUrl, MediaUrls } from "../../utils";
 
 interface Viewport {
     bottom: number,
@@ -33,7 +33,7 @@ export default function JasonPicture() {
     useEffect(() => {
         resetViewport();
         targetElement.current.addEventListener('mousedown', mouseStartListener);
-        window.addEventListener('touchstart', touchStartListener);
+        targetElement.current.addEventListener('touchstart', touchStartListener, { passive: false });
         window.addEventListener('scroll', () => {
             if (targetElement) {
                 targetElement.current.style.top = `${window.scrollY + 10}px`;
@@ -78,8 +78,8 @@ export default function JasonPicture() {
         event.preventDefault();
 
         drag({
-            x: event.touches[0].screenX,
-            y: event.touches[0].screenY,
+            x: event.touches[0].clientX,
+            y: event.touches[0].clientY,
         });
     }
 
@@ -111,7 +111,7 @@ export default function JasonPicture() {
         if (!((nextPosition.y - imageRadius < viewport.top)
             || (nextPosition.y + imageRadius > viewport.bottom)
         )) {
-            targetElement.current.style.top = `${nextPosition.y - imageRadius}px`;
+            targetElement.current.style.top = `${window.scrollY + nextPosition.y - imageRadius}px`;
         }
     }
 
@@ -129,7 +129,7 @@ export default function JasonPicture() {
         <img
             ref={ref => targetElement.current = ref}
             id="jasonImage"
-            src={Images.JASON}
+            src={getMediaUrl(MediaUrls.JasonPicture)}
             style={{
                 right: 10,
                 top: 10,

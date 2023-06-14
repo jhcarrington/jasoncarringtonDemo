@@ -3,6 +3,6 @@ export enum MediaUrls {
     JasonPicture = 'jasonPicture.JPG',
 }
 
-export function getMediaUrl(media: MediaUrls) {
+export function getMediaUrl(media: MediaUrls): string {
     return `${baseUrl}${media}`;
 }

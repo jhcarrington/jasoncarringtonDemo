@@ -24,24 +24,20 @@ export default function About(): ReactElement {
     }
   }, [gpaStats]);
 
-  function createGpaStatsView() {
+  function createGpaStatsView(): JSX.Element | undefined {
     if (gpaStats && gpaStats.length > 0) {
       return <div>
         <GPASlider
           gpaStat={gpaStats[0]}
           animatedStyle={SliderAnimations.CUMULATIVE}
-          text={
-            gpaStats[0].title + ': ' + gpaStats[0].score
-          }
+          text={`${gpaStats[0].title}: ${gpaStats[0].score}`}
           height={30}
         ></GPASlider>
         <div style={{ height: 10 }}></div>
         <GPASlider
           gpaStat={gpaStats[1]}
           animatedStyle={SliderAnimations.MAJOR}
-          text={
-            gpaStats[1].title + ': ' + gpaStats[1].score
-          }
+          text={`${gpaStats[1].title}: ${gpaStats[1].score}`}
           height={30}
         ></GPASlider>
       </div>;
@@ -87,7 +83,7 @@ export default function About(): ReactElement {
           hosted on Google Cloud platform using an app engine.
           <br />
           <i>
-            Easter egg, try dragging Jason's picture in the top right corner
+            Easter egg, try dragging Jason&apos;s picture in the top right corner
             (touchscreen available)
           </i>
         </p>

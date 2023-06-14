@@ -30,13 +30,13 @@ export default function Datamatch(): ReactElement {
           allowing students across 10 different schools to fill out a profile
           and answer the survey questions. On February 14th these students are
           paired with a person depending on if they are looking for a
-          friendship, partnership, or both. Datamatch's algorithm, built at
+          friendship, partnership, or both. Datamatch&apos;s algorithm, built at
           Harvard, runs and picks pairs of people who answered the survey
           questions similarly.
         </p>
 
         <p>
-          Datamatch's website and API was developed by a team at Harvard who
+          Datamatch&apos;s website and API was developed by a team at Harvard who
           founded Datamatch. With the help of Ben Pekala, the president,
           Datamatch was brought to the University of Wisconsin Madison. He then
           found volunteer programmers to work on the app and gain experience,

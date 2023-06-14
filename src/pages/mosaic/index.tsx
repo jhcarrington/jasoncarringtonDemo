@@ -54,23 +54,23 @@ export default function Mosaic(): ReactElement {
             demos={[
               {
                 title: 'Modify Theme',
-                src: getMediaUrl(MosaicMediaUrls.ChangeTheme),
+                src: getMediaUrl(MosaicMediaUrls.ChangeTheme)
               },
               {
                 title: 'View Collections',
-                src: getMediaUrl(MosaicMediaUrls.Collections),
+                src: getMediaUrl(MosaicMediaUrls.Collections)
               },
               {
                 title: 'Login',
-                src: getMediaUrl(MosaicMediaUrls.Login),
+                src: getMediaUrl(MosaicMediaUrls.Login)
               },
               {
                 title: 'Post interaction',
-                src: getMediaUrl(MosaicMediaUrls.PostActions),
+                src: getMediaUrl(MosaicMediaUrls.PostActions)
               },
               {
                 title: 'Search',
-                src: getMediaUrl(MosaicMediaUrls.Search),
+                src: getMediaUrl(MosaicMediaUrls.Search)
               }
             ]}
           />

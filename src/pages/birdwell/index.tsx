@@ -20,7 +20,7 @@ export default function Birdwell(): ReactElement {
             <hr></hr>
             <div>
                 <p>
-                    Birdwell Solutions LLC provides a way for development teams to be created based on Birdwell's standards.
+                    Birdwell Solutions LLC provides a way for development teams to be created based on Birdwell&apos;s standards.
                     This allows contracts or any other type of technological investment to have a fluid
                     development process that a client or investor does not have to get in involved with.
                 </p>
@@ -57,7 +57,7 @@ export default function Birdwell(): ReactElement {
                     This is an express node.js backend. It is setup to be used as a service to multiple other services.
                     It connects to a <a href={'https://www.mongodb.com/'}>MongoDB</a> database and is deployed on a
                     Google Cloud Platform app engine.
-                    In fact, its what's powering the backend of the app <Link to={'/mosaic'}>Mosaic</Link>.
+                    In fact, its what&apos;s powering the backend of the app <Link to={'/mosaic'}>Mosaic</Link>.
                     Jason and others modify this repository regularly.
                 </p>
                 <p>

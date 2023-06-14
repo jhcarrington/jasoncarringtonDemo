@@ -1,26 +1,27 @@
 import { GpaStat } from '../../models/models';
-
-import styles from './styles.module.css'
+import styles from './styles.module.css';
 
 interface SliderProps {
-    style?: React.CSSProperties;
-    height: number;
-    animatedStyle: SliderAnimations;
-    text: string;
-    gpaStat: GpaStat;
+    style?: React.CSSProperties,
+    height: number,
+    animatedStyle: SliderAnimations,
+    text: string,
+    gpaStat: GpaStat,
 }
 export enum SliderAnimations {
-    CUMULATIVE = "animateSliderCumulative",
-    MAJOR = "animateSliderMajor"
+    CUMULATIVE = 'animateSliderCumulative',
+    MAJOR = 'animateSliderMajor'
 }
 
-export default function Slider(props: SliderProps) {
-    const gpaWidth = (props.gpaStat.score / props.gpaStat.outof) * 100 + '%';
+export default function Slider(props: SliderProps): JSX.Element {
+    const gpaWidth = `${(props.gpaStat.score / props.gpaStat.outof) * 100} + %`;
     let style: React.CSSProperties;
     if (props.animatedStyle === SliderAnimations.CUMULATIVE) {
-        style = { "--element-cumulative-width": gpaWidth } as React.CSSProperties;
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+        style = { '--element-cumulative-width': gpaWidth } as React.CSSProperties;
     } else {
-        style = { "--element-major-width": gpaWidth } as React.CSSProperties;
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+        style = { '--element-major-width': gpaWidth } as React.CSSProperties;
     }
 
     return (
@@ -40,11 +41,11 @@ export default function Slider(props: SliderProps) {
                 </span>
                 <span style={{
                     backgroundColor: '#ff0000',
-                    height: props.height, width: 10
+                    height: props.height,
+                    width: 10
                 }}></span>
             </div>
 
         </div >
     );
-
 }

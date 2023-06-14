@@ -19,7 +19,7 @@ export default function CaptainService(): ReactElement {
       <div>
         <i>Developed by Jason Carrington and Birdwell Solutions.</i>
         <p>An uber like application for service workers like mechanics, electricians and plumbers.
-          Who can serve customer tickets using Captain Service's technician finder algorithm.
+          Who can serve customer tickets using Captain Service&apos;s technician finder algorithm.
         </p>
         <p>
           The last 2 demo videos show the ticket process.
@@ -61,48 +61,48 @@ export default function CaptainService(): ReactElement {
             demos={[
               {
                 title: 'Provider signs up and sets up stripe express account',
-                src: getMediaUrl(CaptainServiceMediaUrls.ProviderSignupAndStripeAccount),
+                src: getMediaUrl(CaptainServiceMediaUrls.ProviderSignupAndStripeAccount)
               },
               {
                 title: 'Provider configures their account',
-                src: getMediaUrl(CaptainServiceMediaUrls.ProviderSetupAccount),
+                src: getMediaUrl(CaptainServiceMediaUrls.ProviderSetupAccount)
               },
               {
                 title: 'Provider gets the technician signup link',
-                src: getMediaUrl(CaptainServiceMediaUrls.ProviderCopyTechnicianSignupLink),
+                src: getMediaUrl(CaptainServiceMediaUrls.ProviderCopyTechnicianSignupLink)
               },
               {
                 title: 'Technician signs up with link and sets up account',
-                src: getMediaUrl(CaptainServiceMediaUrls.DriverSignupAndAccountSetup),
+                src: getMediaUrl(CaptainServiceMediaUrls.DriverSignupAndAccountSetup)
               },
               {
                 title: 'Technician sets industries',
-                src: getMediaUrl(CaptainServiceMediaUrls.DriverSetsIndustryFromProviderList),
+                src: getMediaUrl(CaptainServiceMediaUrls.DriverSetsIndustryFromProviderList)
               },
               {
                 title: 'Provider approves driver and sets operating coordinates',
-                src: getMediaUrl(CaptainServiceMediaUrls.ProviderApprovesDriver),
+                src: getMediaUrl(CaptainServiceMediaUrls.ProviderApprovesDriver)
               },
               {
                 title: 'Technician is approved and sees their operating coords',
-                src: getMediaUrl(CaptainServiceMediaUrls.DriverIsApprovedAndHasRadiusAndLocationSet),
+                src: getMediaUrl(CaptainServiceMediaUrls.DriverIsApprovedAndHasRadiusAndLocationSet)
               },
               {
                 title: 'Provider gets the customer signup link',
-                src: getMediaUrl(CaptainServiceMediaUrls.ProviderCopyCustomerLink),
+                src: getMediaUrl(CaptainServiceMediaUrls.ProviderCopyCustomerLink)
               },
               {
                 title: 'Customer signs up with provider link and views their application id',
-                src: getMediaUrl(CaptainServiceMediaUrls.CustomerSignupWithProviderLink),
+                src: getMediaUrl(CaptainServiceMediaUrls.CustomerSignupWithProviderLink)
               },
               {
                 title: 'Customer creates a ticket without having a card',
-                src: getMediaUrl(CaptainServiceMediaUrls.CustomerCreateTicket_NoCard_CurrentLocation_DriverSeesAddress),
+                src: getMediaUrl(CaptainServiceMediaUrls.CustomerCreateTicket_NoCard_CurrentLocation_DriverSeesAddress)
               },
               {
                 title: 'Customer creates a ticket with a set address and goes through the completion of a ticket',
-                src: getMediaUrl(CaptainServiceMediaUrls.Customer_SetAddress_FullPayment),
-              },
+                src: getMediaUrl(CaptainServiceMediaUrls.Customer_SetAddress_FullPayment)
+              }
             ]}
           />
         </div>

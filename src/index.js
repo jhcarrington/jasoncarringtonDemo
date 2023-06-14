@@ -1,3 +1,7 @@
+/* eslint-disable quotes */
+/* eslint-disable semi */
+/* eslint-disable @typescript-eslint/quotes */
+
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";

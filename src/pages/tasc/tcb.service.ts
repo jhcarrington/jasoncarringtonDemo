@@ -4,6 +4,6 @@ export enum TCBMediaUrls {
     TascLogo = 'TascLogo.png',
 }
 
-export function getMediaUrl(media: TCBMediaUrls) {
+export function getMediaUrl(media: TCBMediaUrls): string {
     return `${baseUrl}${media}`;
 }

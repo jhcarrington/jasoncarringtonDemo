@@ -7,7 +7,7 @@ export default function Tasc(): ReactElement {
       <a
         style={{
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: 'row'
         }}
         target={'_blank'}
         href={'https://www.tasconline.com/'}
@@ -59,7 +59,7 @@ export default function Tasc(): ReactElement {
           he was assigned a task with a hard set deadline from NetSuite (third party site) which required our
           system to update to new SSO standards within 1 month. We were using inbound SSO, and needed
           to use Open ID Connect (OIDC) SSO. After spending a couple weeks investigating
-          and attempting to implement with AWS Cognito's built in auth triggers, he brought
+          and attempting to implement with AWS Cognito&apos;s built in auth triggers, he brought
           his findings to the architect. The architect realized we would need to build out
           a custom OAuth 2.0 authentication flow.
           <br />Jason saw this as a challenge and wanted to be the one to solve it. So, he

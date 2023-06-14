@@ -4,6 +4,6 @@ export enum SmilemailMediaUrls {
     SmilemailDemo = 'SmilemailDemo.mp4',
 }
 
-export function getMediaUrl(media: SmilemailMediaUrls) {
+export function getMediaUrl(media: SmilemailMediaUrls): string {
     return `${baseUrl}${media}`;
 }

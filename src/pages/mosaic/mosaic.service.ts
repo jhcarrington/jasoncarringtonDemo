@@ -9,6 +9,6 @@ export enum MosaicMediaUrls {
     MosaicIcon = 'MosaicIcon.png',
 }
 
-export function getMediaUrl(media: MosaicMediaUrls) {
+export function getMediaUrl(media: MosaicMediaUrls): string {
     return `${baseUrl}${media}`;
 }

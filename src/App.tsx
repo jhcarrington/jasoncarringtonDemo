@@ -1,44 +1,44 @@
-import "./App.css";
+import './App.css';
 
-import { Route, Link, Routes as BrowserRoutes, BrowserRouter } from "react-router-dom";
-import About from "./pages/about/about";
-import Mosaic from "./pages/mosaic";
-import Main from "./pages/main";
-import Uline from "./pages/uline";
-import Smilemail from "./pages/smilemail";
-import Datamatch from "./pages/datamatch/datamatch";
-import Birdwell from "./pages/birdwell";
-import Tasc from "./pages/tasc";
-import NotFound from "./pages/NotFound";
-import PageFooterSquiggle from "./components/PageFooterSquiggle";
-import JasonPicture from "./components/JasonPicture";
-import GraphicsTown from "./pages/GraphicsTown";
-import SideBar from "./components/SideBar";
+import { Route, Link, Routes as BrowserRoutes, BrowserRouter } from 'react-router-dom';
+import About from './pages/about/about';
+import Mosaic from './pages/mosaic';
+import Main from './pages/main';
+import Uline from './pages/uline';
+import Smilemail from './pages/smilemail';
+import Datamatch from './pages/datamatch/datamatch';
+import Birdwell from './pages/birdwell';
+import Tasc from './pages/tasc';
+import NotFound from './pages/NotFound';
+import PageFooterSquiggle from './components/PageFooterSquiggle';
+import JasonPicture from './components/JasonPicture';
+import GraphicsTown from './pages/GraphicsTown';
+import SideBar from './components/SideBar';
 import CaptainService from './pages/captainService';
-import { Routes } from "./models/models";
+import { Routes } from './models/models';
 
-export default function App() {
+export default function App(): JSX.Element {
   return (
     <BrowserRouter>
       <JasonPicture />
-      <span style={{ flexDirection: "row", display: "flex" }}>
+      <span style={{ flexDirection: 'row', display: 'flex' }}>
         <div style={{ flex: 10 }}>
-          <header className="App-header">
+          <header className='App-header'>
             <div style={{ flex: 1 }}>
               <SideBar></SideBar>
             </div>
             <div style={{ flex: 10, textAlign: 'center' }}>
-              <Link to={"/"} style={{ textDecoration: "none" }}>
-                <label className="App-Title-Label">Jason Carrington</label>
+              <Link to={'/'} style={{ textDecoration: 'none' }}>
+                <label className='App-Title-Label'>Jason Carrington</label>
               </Link>
             </div>
             <div style={{ flex: 1 }} />
           </header>
 
-          <div className="App">
-            <body className="App-Body">
+          <div className='App'>
+            <body className='App-Body'>
               <BrowserRoutes>
-                <Route path="/" element={Main()} />
+                <Route path='/' element={Main()} />
                 <Route path={Routes.MOSAIC} element={Mosaic()} />
                 <Route path={Routes.ULINE} element={Uline()} />
                 <Route path={Routes.SMILEMAIL} element={Smilemail()} />
@@ -48,52 +48,55 @@ export default function App() {
                 <Route path={Routes.TASC_MPX_DEV} element={Tasc()} />
                 <Route path={Routes.GRAPHICS} element={<GraphicsTown></GraphicsTown>} />
                 <Route path={Routes.CAPTAIN_SERVICE} element={CaptainService()} />
-                <Route path="*" element={NotFound()} />
+                <Route path='*' element={NotFound()} />
               </BrowserRoutes>
 
-              <footer className="App-footer">
+              <footer className='App-footer'>
                 <PageFooterSquiggle />
                 <a
-                  target={"_blank"}
-                  href="https://facebook.com/jason.carrington.3511"
+                  rel="noreferrer"
+                  target={'_blank'}
+                  href='https://facebook.com/jason.carrington.3511'
                 >
                   <img
-                    src={require("./assets/facebook.svg")}
+                    src={require('./assets/facebook.svg')}
                     style={{
-                      objectFit: "contain",
+                      objectFit: 'contain',
                       width: 20,
-                      padding: 10,
+                      padding: 10
                     }}
                   />
                   <a
-                    target={"_blank"}
-                    href="https://www.linkedin.com/in/jason-carrington-a35a44149/"
+                    rel="noreferrer"
+                    target={'_blank'}
+                    href='https://www.linkedin.com/in/jason-carrington-a35a44149/'
                   >
                     <img
-                      src={require("./assets/LinkedinIcon.svg")}
+                      src={require('./assets/LinkedinIcon.svg')}
                       style={{
-                        objectFit: "contain",
+                        objectFit: 'contain',
                         width: 20,
-                        padding: 10,
+                        padding: 10
                       }}
                     />
                     <a
-                      target={"_blank"}
-                      href="https://github.com/jhcarrington"
+                      rel="noreferrer"
+                      target={'_blank'}
+                      href='https://github.com/jhcarrington'
                     >
                       <img
-                        src={require("./assets/GithubIcon.svg")}
+                        src={require('./assets/GithubIcon.svg')}
                         style={{
-                          objectFit: "contain",
+                          objectFit: 'contain',
                           width: 20,
-                          padding: 10,
+                          padding: 10
                         }}
                       />
                     </a>
                   </a>
                 </a>
 
-                <text style={{ color: "#888888", fontSize: 15 }}>
+                <text style={{ color: '#888888', fontSize: 15 }}>
                   {`Jason Carrington \u00a9 ${new Date().getFullYear()}`}
                 </text>
               </footer>
@@ -103,5 +106,4 @@ export default function App() {
       </span>
     </BrowserRouter>
   );
-
 }

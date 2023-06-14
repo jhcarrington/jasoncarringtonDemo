@@ -15,6 +15,6 @@ export enum CaptainServiceMediaUrls {
     CaptainServiceIcon = 'CSIcon.png',
 }
 
-export function getMediaUrl(media: CaptainServiceMediaUrls) {
+export function getMediaUrl(media: CaptainServiceMediaUrls): string {
     return `${baseUrl}${media}`;
 }

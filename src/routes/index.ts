@@ -10,11 +10,8 @@ export async function getGPAstats(): Promise<Types.GpaStat[]> {
         if (response.status === 200) {
             return await response.json();
         } else {
-            throw { error: response.status };
+            throw new Error(`Unexpected Server Response: ${response.status}`);
         }
-    }).catch((error) => {
-        console.log(error);
-        throw { error: 'Unexpected response' };
     });
 }
 
@@ -29,10 +26,7 @@ export async function getLanguageStats(): Promise<Types.LanguageStat[]> {
         if (response.status === 200) {
             return await response.json();
         } else {
-            throw { error: response.status };
+            throw new Error(`Unexpected Server Response: ${response.status}`);
         }
-    }).catch((error) => {
-        console.log(error);
-        throw { error: 'Unexpected error' };
     });
 }

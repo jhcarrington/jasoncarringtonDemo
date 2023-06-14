@@ -3,6 +3,6 @@ export enum AboutMediaUrls {
     WisconsinLogo = 'wisconsinLogo.jpg',
 }
 
-export function getMediaUrl(media: AboutMediaUrls) {
+export function getMediaUrl(media: AboutMediaUrls): string {
     return `${baseUrl}${media}`;
 }

@@ -4,6 +4,6 @@ export enum DatamatchMediaUrls {
     DatamatchLogo = 'DatamatchLogo.png',
 }
 
-export function getMediaUrl(media: DatamatchMediaUrls) {
+export function getMediaUrl(media: DatamatchMediaUrls): string {
     return `${baseUrl}${media}`;
 }

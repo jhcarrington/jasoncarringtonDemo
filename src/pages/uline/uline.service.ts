@@ -3,6 +3,6 @@ export enum UlineMediaUrls {
     UlineLogo = 'uline.jpg',
 }
 
-export function getMediaUrl(media: UlineMediaUrls) {
+export function getMediaUrl(media: UlineMediaUrls): string {
     return `${baseUrl}${media}`;
 }

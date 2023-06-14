@@ -1,20 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export default class PageFooterSquiggle extends Component<{}, {}, {
 }> {
     canvas?: HTMLCanvasElement;
 
-    componentDidMount() {
+    componentDidMount(): void {
         const canvas = this.canvas;
-        const context = canvas?.getContext("2d");
-        if(canvas && context) {
+        const context = canvas?.getContext('2d');
+        if (canvas && context) {
             context.save();
-            context.fillStyle = "#dddddd"
-            context.strokeStyle = "#aaaaaa"
-            context.lineWidth = 1
-            //20 loops within the view
-            let intervals = canvas.width / 20;
-            for (var i = 0; i < 20; i++) {
+            context.fillStyle = '#dddddd';
+            context.strokeStyle = '#aaaaaa';
+            context.lineWidth = 1;
+            // 20 loops within the view
+            const intervals = canvas.width / 20;
+            for (let i = 0; i < 20; i++) {
                 context.arc(0, canvas.height / 2, (intervals / 4), 0, Math.PI, false);
                 context.moveTo((intervals / 4), canvas.height / 2);
                 context.arc((intervals / 2), canvas.height / 2, (intervals / 4), Math.PI, 0, false);
@@ -26,9 +26,10 @@ export default class PageFooterSquiggle extends Component<{}, {}, {
             context.restore();
         }
     }
-    render() {
-        return(
-            <canvas ref={(ref) => (this.canvas = (ref || undefined))} style={{ height: '100px', width: '100%' }}></canvas>
-        )
+
+    render(): JSX.Element {
+        return (
+            <canvas ref={(ref) => (this.canvas = (ref ?? undefined))} style={{ height: '100px', width: '100%' }}></canvas>
+        );
     }
 }

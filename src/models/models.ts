@@ -4,18 +4,18 @@ export interface LanguageStat {
     time: [TimeObject],
     dataLabel: string,
     knowledge: number,
-    Created_date: Date
+    Created_date: Date,
 }
 export interface TimeObject {
     time: number,
     Created_date: Date,
-    _id: string
+    _id: string,
 }
 
 export interface GpaStat {
     outof: number,
     title: string,
-    score: number
+    score: number,
 }
 
 export enum Routes {

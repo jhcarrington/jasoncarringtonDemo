@@ -39,7 +39,7 @@ export default function Uline(): ReactElement {
               <p>
                 I was put in charge of installing ESXI, a virtual server
                 operating system, onto hp proliant servers. Part of this process
-                is configuring the IP addresses so Uline's server and network
+                is configuring the IP addresses so Uline&apos;s server and network
                 team can easily solve outages.
               </p>
               <p>

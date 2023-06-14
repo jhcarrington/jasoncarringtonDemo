@@ -2,7 +2,7 @@ import DemoVideo from '../../components/DemoVideo';
 import { getMediaUrl, SmilemailMediaUrls } from './smilemail.service';
 import './styles.css';
 
-export default function Smilemail() {
+export default function Smilemail(): JSX.Element {
   return (
     <div style={{ textAlign: 'left' }}>
       <div style={{ textAlign: 'left' }}>
@@ -12,6 +12,7 @@ export default function Smilemail() {
             style={{ objectFit: 'contain', width: '3rem' }}
           ></img>
           <a
+            rel="noreferrer"
             target={'_blank'}
             style={{ paddingLeft: 20 }}
             href={'https://apps.apple.com/us/app/smilemail-cards/id1480618428'}
@@ -40,7 +41,7 @@ export default function Smilemail() {
       <hr></hr>
       <div>
         <p>
-          Smilemail is a React-Native cross plateform application. It's purpose
+          Smilemail is a React-Native cross plateform application. It&apos;s purpose
           is to provide a way for people to send voice messages inside of gift
           cards.
         </p>

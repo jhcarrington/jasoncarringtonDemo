@@ -2,16 +2,16 @@ import React from 'react';
 
 export default class Banner extends React.Component<{
     asset: any,
-    className: string
+    className: string,
 }, {}> {
-    render() {
+    render(): JSX.Element {
         return (
             <div className={this.props.className} style={{
                 borderRadius: 5,
                 borderColor: '#dddddd',
-                backgroundColor: "#ffffff",
+                backgroundColor: '#ffffff',
                 borderStyle: 'solid',
-                boxShadow: "0px 0px 5px 5px #dddddd",
+                boxShadow: '0px 0px 5px 5px #dddddd',
                 borderWidth: 0,
                 padding: 5,
                 width: '20vw',

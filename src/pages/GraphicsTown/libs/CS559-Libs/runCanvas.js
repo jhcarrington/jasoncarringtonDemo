@@ -10,7 +10,7 @@
  * expected to modify this file.
  */
 
-import { insertAfter } from './inputHelpers.js'
+import { insertAfter } from './inputHelpers.js';
 
 /**
  * the main thing is implemented as a class in case you want access to everything
@@ -22,7 +22,7 @@ export class RunCanvas {
    * @param {*} drawFunc
    * @param {*} noLoop
    */
-  constructor (canvasNameOrCanvas, drawFunc, noLoop = false) {
+  constructor(canvasNameOrCanvas, drawFunc, noLoop = false) {
     /* so often, we pass the wrong thing - so make it work either way */
     let canvas; //  = undefined
     let canvasName; //  = undefined
@@ -31,12 +31,12 @@ export class RunCanvas {
       canvasName = canvas.id;
     } else {
       canvasName = canvasNameOrCanvas;
-      canvas = /** @type {HTMLCanvasElement} */ (document.getElementById(
-        canvasName
-      ));
+      canvas = /** @type {HTMLCanvasElement} */ (
+        document.getElementById(canvasName)
+      );
     }
     if (!canvas) {
-      throw 'RunCanvas without a Canvas to attach to!'
+      throw 'RunCanvas without a Canvas to attach to!';
     }
     if (!canvasName) {
       canvasName = 'canvas-' + performance.now().toString();
@@ -50,29 +50,29 @@ export class RunCanvas {
     this.noloop = noLoop;
 
     // create the elements
-    this.br = document.createElement('br')
-    this.br.id = canvasName + '-br'
+    this.br = document.createElement('br');
+    this.br.id = canvasName + '-br';
 
-    this.range = document.createElement('input')
-    this.range.id = canvasName + '-slider'
-    this.range.setAttribute('type', 'range')
-    this.range.style.width = String(this.canvas.width - 50 - 20 - 10) + 'px'
+    this.range = document.createElement('input');
+    this.range.id = canvasName + '-slider';
+    this.range.setAttribute('type', 'range');
+    this.range.style.width = String(this.canvas.width - 50 - 20 - 10) + 'px';
     // give default values for range
     this.setupSlider(0, 1, 0.01);
 
-    this.text = document.createElement('input')
-    this.text.id = canvasName + '-text'
-    this.text.setAttribute('type', 'text')
-    this.text.style.width = '50px'
-    this.text.setAttribute('readonly', '1')
+    this.text = document.createElement('input');
+    this.text.id = canvasName + '-text';
+    this.text.setAttribute('type', 'text');
+    this.text.style.width = '50px';
+    this.text.setAttribute('readonly', '1');
 
-    this.runbutton = document.createElement('input')
-    this.runbutton.id = canvasName + '-run'
-    this.runbutton.setAttribute('type', 'checkbox')
-    this.runbutton.style.width = '20px'
+    this.runbutton = document.createElement('input');
+    this.runbutton.id = canvasName + '-run';
+    this.runbutton.setAttribute('type', 'checkbox');
+    this.runbutton.style.width = '20px';
 
-    this.br2 = document.createElement('br')
-    this.br2.id = canvasName + '-br2'
+    this.br2 = document.createElement('br');
+    this.br2.id = canvasName + '-br2';
 
     insertAfter(this.br, this.canvas);
     insertAfter(this.runbutton, this.br);
@@ -80,17 +80,17 @@ export class RunCanvas {
     insertAfter(this.range, this.text);
     insertAfter(this.br2, this.range);
 
-    const self = this
+    const self = this;
     this.runbutton.onchange = function () {
       if (self.noloop && Number(self.range.value) >= 1) {
         self.setValue(0);
       }
       self.tick();
-    }
+    };
     this.range.oninput = function () {
-      const val = Number(self.range.value)
+      const val = Number(self.range.value);
       self.setValue(val);
-    }
+    };
   }
 
   /**
@@ -99,14 +99,14 @@ export class RunCanvas {
    * @param {Number} max
    * @param {Number} step
    */
-  setupSlider (min, max, step) {
+  setupSlider(min, max, step) {
     this.range.setAttribute('min', String(min));
     this.range.setAttribute('max', String(max));
     this.range.setAttribute('step', String(step));
   }
 
-  setValue (value) {
-    const valString = String(value)
+  setValue(value) {
+    const valString = String(value);
     this.range.value = valString;
     this.text.value = valString;
     if (this.drawFunc) {
@@ -114,9 +114,9 @@ export class RunCanvas {
     }
   }
 
-  tick () {
-    const maxV = Number(this.range.max)
-    const stepV = Number(this.range.step)
+  tick() {
+    const maxV = Number(this.range.max);
+    const stepV = Number(this.range.step);
     let value = Number(this.range.value) + stepV;
     if (this.noloop) {
       if (value >= maxV) {
@@ -128,10 +128,10 @@ export class RunCanvas {
     }
     this.setValue(value);
     if (this.runbutton.checked) {
-      const self = this
+      const self = this;
       window.requestAnimationFrame(function () {
         self.tick();
-      })
+      });
     }
   }
 }
@@ -144,16 +144,16 @@ export class RunCanvas {
  * @param {function(HTMLCanvasElement, Number) : any} [drawFunc]
  */
 
-export function runCanvas (
+export function runCanvas(
   canvasName,
   drawFunc = undefined,
   initial = 0.5,
   noloop = false,
   min = 0,
   max = 1,
-  step = 0.02
+  step = 0.02,
 ) {
-  const rc = new RunCanvas(canvasName, drawFunc, noloop)
+  const rc = new RunCanvas(canvasName, drawFunc, noloop);
   rc.setupSlider(min, max, step);
   rc.setValue(initial);
 }

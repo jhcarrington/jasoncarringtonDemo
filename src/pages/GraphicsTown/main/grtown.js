@@ -15,23 +15,23 @@
  * file to instantiate those objects in the world.
  */
 
-import * as T from "three";
-import { GrWorld } from "../libs/CS559-Framework/GrWorld.js";
-import { WorldUI } from "../libs/CS559-Framework/WorldUI.js";
-import { HouseDesign1, HouseDesign2, HouseDesign3 } from "./buildings.js";
-import { helicopter } from "./helicopter.js";
-import { Train } from "./train.js";
-import { Car } from "./car.js";
-import { Tree } from "./tree.js";
-import { BrickWall } from "./brickWall.js";
-import { GrAdvancedSwing, GrCarousel } from "./parkObjects.js";
-import { GrObject } from "../libs/CS559-Framework/GrObject.js";
-import { GrDumpTruck } from "./constructionobjects.js";
-import * as InputHelpers from "../libs/CS559-Libs/inputHelpers";
-import mainRoadTexture from "../../../assets/Pictures/road/road texture pack-seamless (2).jpg";
-import roadSideTexture from "../../../assets/Pictures/road/road texture pack-seamless (4).jpg";
-import roadTurnTexture from "../../../assets/Pictures/road/road texture pack-seamless (8).jpg";
-import roadSplitTexture from "../../../assets/Pictures/road/road texture pack-seamless (7).jpg";
+import * as T from 'three';
+import { GrWorld } from '../libs/CS559-Framework/GrWorld.js';
+import { WorldUI } from '../libs/CS559-Framework/WorldUI.js';
+import { HouseDesign1, HouseDesign2, HouseDesign3 } from './buildings.js';
+import { helicopter } from './helicopter.js';
+import { Train } from './train.js';
+import { Car } from './car.js';
+import { Tree } from './tree.js';
+import { BrickWall } from './brickWall.js';
+import { GrAdvancedSwing, GrCarousel } from './parkObjects.js';
+import { GrObject } from '../libs/CS559-Framework/GrObject.js';
+import { GrDumpTruck } from './constructionobjects.js';
+import * as InputHelpers from '../libs/CS559-Libs/inputHelpers';
+import mainRoadTexture from '../../../assets/Pictures/road/road texture pack-seamless (2).jpg';
+import roadSideTexture from '../../../assets/Pictures/road/road texture pack-seamless (4).jpg';
+import roadTurnTexture from '../../../assets/Pictures/road/road texture pack-seamless (8).jpg';
+import roadSplitTexture from '../../../assets/Pictures/road/road texture pack-seamless (7).jpg';
 const mainRoad = new T.TextureLoader().load(mainRoadTexture);
 const roadSide = new T.TextureLoader().load(roadSideTexture);
 const roadTurn = new T.TextureLoader().load(roadTurnTexture);
@@ -61,7 +61,7 @@ const trainTrackPoints = [
  */
 export function grtown(renderer, canvasContainer) {
   const width = getComputedStyle(canvasContainer)
-    .getPropertyValue("width")
+    .getPropertyValue('width')
     .slice(0, -2);
   const ratio = 3 / 4;
   // make the world
@@ -70,18 +70,18 @@ export function grtown(renderer, canvasContainer) {
     width,
     height: width * ratio,
     ambient: 0.6,
-    lightColoring: "c",
+    lightColoring: 'c',
     groundplanesize: 80, // make the ground plane big enough for a world of stuff
   });
   const sphere = new T.SphereBufferGeometry(1);
   const mesh = new T.Mesh(sphere, new T.MeshStandardMaterial());
 
   // setup tree positions
-  for (var i = 0; i <= 10; i++) {
+  for (var i1 = 0; i1 <= 10; i1++) {
     const array = [];
     for (let j = 0; j <= 10; j++) {
       array.push(false);
-      freeTreePositions.push(new T.Vector2(-j, -i - 5));
+      freeTreePositions.push(new T.Vector2(-j, -i1 - 5));
     }
     treePositions.push(array);
   }
@@ -97,29 +97,29 @@ export function grtown(renderer, canvasContainer) {
   const cars = [];
 
   // add the houses
-  for (var i = 0; i < 10; i++) {
-    houses[i] = new HouseDesign3();
-    houses[i].objects[0].translateX(i < 5 ? -i * 3.5 : -(i - 5) * 3.5);
-    houses[i].objects[0].translateZ(i >= 5 ? 10 : 0);
-    houses[i].objects[0].rotation.set(0, ((i < 5 ? -1 : 1) * Math.PI) / 2, 0);
-    world.add(houses[i]);
+  for (var i2 = 0; i2 < 10; i2++) {
+    houses[i2] = new HouseDesign3();
+    houses[i2].objects[0].translateX(i2 < 5 ? -i2 * 3.5 : -(i2 - 5) * 3.5);
+    houses[i2].objects[0].translateZ(i2 >= 5 ? 10 : 0);
+    houses[i2].objects[0].rotation.set(0, ((i2 < 5 ? -1 : 1) * Math.PI) / 2, 0);
+    world.add(houses[i2]);
   }
   // add inital trees in a checkerboard fashion
   // tree grid: Z: {-5,-15}, X: {0,-10}
-  for (var i = 0; i < 10; i++) {
-    treePositions[i][i % 2 == 0 ? 0 : 2] = true;
+  for (var i3 = 0; i3 < 10; i3++) {
+    treePositions[i3][i3 % 2 == 0 ? 0 : 2] = true;
     const tree = new Tree((Math.floor(Math.random() * 2) + 1) / 2 + 2);
-    tree.objects[0].translateX(-i);
-    tree.objects[0].translateZ(i % 2 == 0 ? -5 : -7);
-    setPositionUsed(-i, i % 2 == 0 ? -5 : -7, tree);
+    tree.objects[0].translateX(-i3);
+    tree.objects[0].translateZ(i3 % 2 == 0 ? -5 : -7);
+    setPositionUsed(-i3, i3 % 2 == 0 ? -5 : -7, tree);
     world.add(tree);
   }
-  for (var i = 0; i < 10; i++) {
-    treePositions[i][i % 2 == 0 ? 2 : 6] = true;
+  for (var i4 = 0; i4 < 10; i4++) {
+    treePositions[i4][i4 % 2 == 0 ? 2 : 6] = true;
     const tree = new Tree((Math.floor(Math.random() * 2) + 1) / 2 + 2);
-    tree.objects[0].translateX(-i);
-    tree.objects[0].translateZ(i % 2 == 0 ? -9 : -11);
-    setPositionUsed(-i, i % 2 == 0 ? -9 : -11, tree);
+    tree.objects[0].translateX(-i4);
+    tree.objects[0].translateZ(i4 % 2 == 0 ? -9 : -11);
+    setPositionUsed(-i4, i4 % 2 == 0 ? -9 : -11, tree);
     world.add(tree);
   }
   const swing = new GrAdvancedSwing();
@@ -133,13 +133,13 @@ export function grtown(renderer, canvasContainer) {
   // build road
   buildRoad(world);
   // build cars
-  for (var i = 0; i < 2; i++) {
-    cars[i] = new Car(i == 0 ? undefined : "#00ff00", roadPoints);
-    cars[i].objects[0].translateX(i < 5 ? -i * 6 : -(i - 5) * 3.5);
-    cars[i].objects[0].translateZ(5);
-    cars[i].objects[0].rotation.set(0, i * Math.PI, 0);
-    cars[i].objects[0].scale.set(0.4, 0.4, 0.4);
-    world.add(cars[i]);
+  for (var i5 = 0; i5 < 2; i5++) {
+    cars[i5] = new Car(i5 == 0 ? undefined : '#00ff00', roadPoints);
+    cars[i5].objects[0].translateX(i5 < 5 ? -i5 * 6 : -(i5 - 5) * 3.5);
+    cars[i5].objects[0].translateZ(5);
+    cars[i5].objects[0].rotation.set(0, i5 * Math.PI, 0);
+    cars[i5].objects[0].scale.set(0.4, 0.4, 0.4);
+    world.add(cars[i5]);
   }
   const dumpTruck = new GrDumpTruck();
   const obj = new T.Object3D();
@@ -151,12 +151,12 @@ export function grtown(renderer, canvasContainer) {
   world.add(dumpTruck);
   // build walls
   const numWalls = 11;
-  for (var i = 0; i < numWalls; i++) {
+  for (var i6 = 0; i6 < numWalls; i6++) {
     const height = 1;
     const wall = new BrickWall(1, height, 0.5);
     wall.objects[0].translateZ(10);
     wall.objects[0].translateY(height / 2);
-    wall.objects[0].translateX(i + 2);
+    wall.objects[0].translateX(i6 + 2);
     world.add(wall);
   }
   // helper variables
@@ -167,20 +167,20 @@ export function grtown(renderer, canvasContainer) {
   heli1.objects[0].translateZ(5);
   heli1.objects[0].translateX(5);
   heli1.tick = (delta) => {
-    const rotor = heli1.objects[0].children.find((obj) => obj.name == "rotor");
+    const rotor = heli1.objects[0].children.find((obj) => obj.name == 'rotor');
 
     const tailRotor = heli1.objects[0].children
-      .find((obj) => obj.name == "tail")
-      .children.find((obj) => obj.name == "rotor");
+      .find((obj) => obj.name == 'tail')
+      .children.find((obj) => obj.name == 'rotor');
     rotor.rotation.set(
       performance.now() / 250,
       rotor.rotation.y,
-      rotor.rotation.z
+      rotor.rotation.z,
     );
     tailRotor.rotation.set(
       tailRotor.rotation.x,
       performance.now() / 250,
-      tailRotor.rotation.z
+      tailRotor.rotation.z,
     );
 
     if (heliGoingToPoint) {
@@ -193,7 +193,7 @@ export function grtown(renderer, canvasContainer) {
       heli1.objects[0].rotation.set(
         heli1.objects[0].rotation.x,
         Math.PI - rotation,
-        heli1.objects[0].rotation.z
+        heli1.objects[0].rotation.z,
       );
       const newPosition = {
         x: heli1.objects[0].position.x - positionChange.x / speed,
@@ -202,7 +202,7 @@ export function grtown(renderer, canvasContainer) {
       heli1.objects[0].position.set(
         newPosition.x,
         heli1.objects[0].position.y,
-        newPosition.y
+        newPosition.y,
       );
       // helicopter has stopped at a point
       if (
@@ -224,7 +224,7 @@ export function grtown(renderer, canvasContainer) {
           heliGoingToPoint = new T.Vector3(
             point.x,
             heli1.objects[0].position.y,
-            point.y
+            point.y,
           );
           heliTree.objects[0].translateY(-100000);
           heliHasTree = true;
@@ -240,14 +240,14 @@ export function grtown(renderer, canvasContainer) {
       heliGoingToPoint = new T.Vector3(
         point.vector.x,
         heli1.objects[0].position.y,
-        point.vector.y
+        point.vector.y,
       );
       heliTree = point.tree;
     }
   };
   world.add(heli1);
   const curve = buildTrainTrack(world);
-  const train = new Train("#658575", curve);
+  const train = new Train('#658575', curve);
   world.add(train);
   // only after all the objects exist can we build the UI
   // @ts-ignore       // we're sticking a new thing into the world
@@ -255,12 +255,12 @@ export function grtown(renderer, canvasContainer) {
   // now make it go!
 
   const cube = new T.CubeTextureLoader().load([
-    require("../../../assets/Pictures/Back.bmp"),
-    require("../../../assets/Pictures/Front.bmp"),
-    require("../../../assets/Pictures/Top.jpg"),
-    require("../../../assets/Pictures/Bottom.bmp"),
-    require("../../../assets/Pictures/Right.bmp"),
-    require("../../../assets/Pictures/Left.bmp"),
+    require('../../../assets/Pictures/Back.bmp'),
+    require('../../../assets/Pictures/Front.bmp'),
+    require('../../../assets/Pictures/Top.jpg'),
+    require('../../../assets/Pictures/Bottom.bmp'),
+    require('../../../assets/Pictures/Right.bmp'),
+    require('../../../assets/Pictures/Left.bmp'),
   ]);
   world.scene.background = cube;
   world.go();
@@ -366,38 +366,38 @@ function buildRoad(world) {
   const roadBlock = new T.CubeGeometry(3.5, 0.05, 3.5);
   const sideBlock = new T.CubeGeometry(3.5, 0.05, 2.5);
   let backRoadPoints = [];
-  for (var i = -1; i < 5; i++) {
+  for (var i1 = -1; i1 < 5; i1++) {
     const roadMesh = new T.Mesh(
       roadBlock,
-      new T.MeshStandardMaterial({ map: mainRoad })
+      new T.MeshStandardMaterial({ map: mainRoad }),
     );
     const sideMeshR = new T.Mesh(
       sideBlock,
-      new T.MeshStandardMaterial({ map: roadSide })
+      new T.MeshStandardMaterial({ map: roadSide }),
     );
     const sideMeshL = new T.Mesh(
       sideBlock,
-      new T.MeshStandardMaterial({ map: roadSide })
+      new T.MeshStandardMaterial({ map: roadSide }),
     );
-    roadMesh.translateX(-i * 3.5);
+    roadMesh.translateX(-i1 * 3.5);
     roadMesh.translateZ(5);
-    sideMeshR.translateX(-i * 3.5);
+    sideMeshR.translateX(-i1 * 3.5);
     sideMeshR.translateZ(2);
-    sideMeshL.translateX(-i * 3.5);
+    sideMeshL.translateX(-i1 * 3.5);
     sideMeshL.translateZ(8);
-    roadPoints.push(new T.Vector2(-i * 3.5, 4.75));
+    roadPoints.push(new T.Vector2(-i1 * 3.5, 4.75));
     if (!firstRoadPoint) {
-      firstRoadPoint = new T.Vector2(-i * 3.5, 4.75);
+      firstRoadPoint = new T.Vector2(-i1 * 3.5, 4.75);
     }
-    world.add(new GrObject("road", roadMesh));
+    world.add(new GrObject('road', roadMesh));
 
-    world.add(new GrObject("road", sideMeshR));
-    world.add(new GrObject("side", sideMeshL));
+    world.add(new GrObject('road', sideMeshR));
+    world.add(new GrObject('side', sideMeshL));
   }
   roadPoints.forEach((point, index) => {
     backRoadPoints[roadPoints.length - 1 - index] = new T.Vector2(
       point.x,
-      point.y + 0.5
+      point.y + 0.5,
     );
   });
   const loopByHouses = buildRoadLoop(roadBlock);
@@ -407,15 +407,15 @@ function buildRoad(world) {
 
   const roadMesh = new T.Mesh(
     roadBlock,
-    new T.MeshStandardMaterial({ map: roadTurn })
+    new T.MeshStandardMaterial({ map: roadTurn }),
   );
   const sideMeshR = new T.Mesh(
     sideBlock,
-    new T.MeshStandardMaterial({ map: roadSide })
+    new T.MeshStandardMaterial({ map: roadSide }),
   );
   const sideMeshL = new T.Mesh(
     sideBlock,
-    new T.MeshStandardMaterial({ map: roadSide })
+    new T.MeshStandardMaterial({ map: roadSide }),
   );
   roadMesh.translateX(2 * 3.5);
   roadMesh.translateZ(5);
@@ -426,11 +426,11 @@ function buildRoad(world) {
   sideMeshR.translateZ(2);
   sideMeshL.translateX(2 * 3.5);
   sideMeshL.translateZ(8);
-  world.add(new GrObject("road", roadMesh));
-  world.add(new GrObject("side", sideMeshL));
+  world.add(new GrObject('road', roadMesh));
+  world.add(new GrObject('side', sideMeshL));
 
   backRoadPoints = [];
-  world.add(new GrObject("loopByHouses", loopByHouses));
+  world.add(new GrObject('loopByHouses', loopByHouses));
   const groupRoad = new T.Group();
   const groupSideR = new T.Group();
   const groupSideL = new T.Group();
@@ -438,15 +438,15 @@ function buildRoad(world) {
   for (var i = -1; i < 5; i++) {
     const roadMesh = new T.Mesh(
       roadBlock,
-      new T.MeshStandardMaterial({ map: mainRoad })
+      new T.MeshStandardMaterial({ map: mainRoad }),
     );
     const sideMeshR = new T.Mesh(
       sideBlock,
-      new T.MeshStandardMaterial({ map: roadSide })
+      new T.MeshStandardMaterial({ map: roadSide }),
     );
     const sideMeshL = new T.Mesh(
       sideBlock,
-      new T.MeshStandardMaterial({ map: roadSide })
+      new T.MeshStandardMaterial({ map: roadSide }),
     );
     roadMesh.translateX(-i * 3.5);
     roadMesh.translateZ(5);
@@ -465,19 +465,19 @@ function buildRoad(world) {
   tempPoints.forEach((point, index) => {
     backRoadPoints[tempPoints.length - 1 - index] = new T.Vector2(
       point.x - 1,
-      point.y
+      point.y,
     );
   });
   const sideMeshLE1 = new T.Mesh(
     sideBlock,
-    new T.MeshStandardMaterial({ map: roadSide })
+    new T.MeshStandardMaterial({ map: roadSide }),
   );
   sideMeshLE1.translateX(-5 * 3.5);
   sideMeshLE1.translateZ(8);
   groupSideL.add(sideMeshLE1);
   const sideMeshLE2 = new T.Mesh(
     new T.CubeGeometry(3, 0.05, 2.5),
-    new T.MeshStandardMaterial({ map: roadSide })
+    new T.MeshStandardMaterial({ map: roadSide }),
   );
   sideMeshLE2.translateX(-5.8 * 3.5);
   sideMeshLE2.translateZ(8);
@@ -499,7 +499,7 @@ function buildRoad(world) {
   mainRoadGroup.translateY(0);
   mainRoadGroup.translateZ(2);
   mainRoadGroup.translateX(12.5);
-  world.add(new GrObject("road", mainRoadGroup));
+  world.add(new GrObject('road', mainRoadGroup));
 }
 
 /**
@@ -511,7 +511,7 @@ function buildRoadLoop(roadBlock) {
   const group = new T.Group();
   const roadMeshSplit = new T.Mesh(
     roadBlock,
-    new T.MeshStandardMaterial({ map: roadSplit })
+    new T.MeshStandardMaterial({ map: roadSplit }),
   );
   roadMeshSplit.translateX(-5 * 3.5);
   roadMeshSplit.translateZ(5);
@@ -522,7 +522,7 @@ function buildRoadLoop(roadBlock) {
   for (let i = 0; i < 4; i++) {
     const roadMesh1 = new T.Mesh(
       roadBlock,
-      new T.MeshStandardMaterial({ map: roadTurn })
+      new T.MeshStandardMaterial({ map: roadTurn }),
     );
     const xCor = -((5 + (i / 2 >= 1 ? 1 : 0)) * 3.5);
     const zCor = i / 2 >= 1 ? (i % 2 ? 8.5 : 1.5) : i % 2 ? 1.5 : 8.5;
@@ -551,7 +551,7 @@ function buildRoadLoop(roadBlock) {
 
   const roadMeshFinish = new T.Mesh(
     roadBlock,
-    new T.MeshStandardMaterial({ map: mainRoad })
+    new T.MeshStandardMaterial({ map: mainRoad }),
   );
   roadMeshFinish.translateX(-6 * 3.5);
   roadMeshFinish.translateZ(5);
@@ -569,7 +569,7 @@ function buildRoadLoop2(roadBlock) {
   const group = new T.Group();
   const roadMeshSplit = new T.Mesh(
     roadBlock,
-    new T.MeshStandardMaterial({ map: roadSplit })
+    new T.MeshStandardMaterial({ map: roadSplit }),
   );
   roadMeshSplit.translateX(2 * 3.5);
   roadMeshSplit.translateZ(5);
@@ -582,7 +582,7 @@ function buildRoadLoop2(roadBlock) {
     const zCor = i / 2 >= 1 ? (i % 2 ? 8.5 : 1.5) : i % 2 ? 1.5 : 8.5;
     const roadMesh1 = new T.Mesh(
       roadBlock,
-      new T.MeshStandardMaterial({ map: roadTurn })
+      new T.MeshStandardMaterial({ map: roadTurn }),
     );
     roadMesh1.translateX(xCor);
     roadMesh1.translateZ(zCor);
@@ -612,7 +612,7 @@ function buildRoadLoop2(roadBlock) {
   roadPoints.push(new T.Vector2(5.25, -5.5 * 3.5));
   const roadMeshFinish = new T.Mesh(
     roadBlock,
-    new T.MeshStandardMaterial({ map: mainRoad })
+    new T.MeshStandardMaterial({ map: mainRoad }),
   );
   roadMeshFinish.translateX(3 * 3.5);
   roadMeshFinish.translateZ(5);
@@ -637,7 +637,7 @@ function buildTrainTrack(world) {
   trainTrackPoints.forEach((/** @type {T.Vector3} */ point, index) => {
     const mesh = new T.Mesh(
       cube,
-      new T.MeshStandardMaterial({ color: "#ff0000" })
+      new T.MeshStandardMaterial({ color: '#ff0000' }),
     );
     mesh.translateX(point.x);
     mesh.translateY(point.y);
@@ -660,11 +660,11 @@ function buildTrainTrack(world) {
     tangentCurve = new T.Vector2(tangentCurve.y, -tangentCurve.x);
     const newPoint = new T.Vector2(
       initialPoint.x + tangentCurve.x * outerTrackOffset,
-      initialPoint.y + tangentCurve.y * outerTrackOffset
+      initialPoint.y + tangentCurve.y * outerTrackOffset,
     );
     const newPointPost = new T.Vector2(
       initialPoint.x + tangentCurve.x * (outerTrackOffset / 2),
-      initialPoint.y + tangentCurve.y * (outerTrackOffset / 2)
+      initialPoint.y + tangentCurve.y * (outerTrackOffset / 2),
     );
     middleTrackPoints.push(newPointPost);
     if (i % 2) {
@@ -674,7 +674,7 @@ function buildTrainTrack(world) {
       post.translateY(1 / 2);
       post.translateZ(newPointPost.y + (tangentCurve.y > 0 ? 0.5 : -0.3));
       post.rotateY(
-        Math.PI - calculateRotation({ x: tangentCurve.x, y: tangentCurve.y })
+        Math.PI - calculateRotation({ x: tangentCurve.x, y: tangentCurve.y }),
       );
 
       track.add(post);
@@ -695,20 +695,20 @@ function buildTrainTrack(world) {
 
   const trackMesh = new T.Line(
     bufferPoints,
-    new T.MeshStandardMaterial({ color: "#0000ff" })
+    new T.MeshStandardMaterial({ color: '#0000ff' }),
   );
   const trackMesh2 = new T.Line(
     bufferPoints2,
-    new T.MeshStandardMaterial({ color: "#0000ff" })
+    new T.MeshStandardMaterial({ color: '#0000ff' }),
   );
 
   trackMesh.rotateX(Math.PI / 2);
   trackMesh.translateZ(-3);
   trackMesh2.rotateX(Math.PI / 2);
   trackMesh2.translateZ(-3);
-  world.add(new GrObject("track1", trackMesh));
-  world.add(new GrObject("track2", trackMesh2));
-  world.add(new GrObject("track", track));
+  world.add(new GrObject('track1', trackMesh));
+  world.add(new GrObject('track2', trackMesh2));
+  world.add(new GrObject('track', track));
   return middleCurve;
 }
 
@@ -728,7 +728,7 @@ function buildPost(height) {
  * @returns {T.Group}
  */
 function buildPostSection(height) {
-  const postMaterial = new T.MeshStandardMaterial({ color: "#663300" });
+  const postMaterial = new T.MeshStandardMaterial({ color: '#663300' });
   const postSpindle = new T.CylinderBufferGeometry(0.1, 0.1, height);
   const group = new T.Group();
   const frontRightSpindle = new T.Mesh(postSpindle, postMaterial);
@@ -774,7 +774,7 @@ function buildPostSection(height) {
  * @returns {T.Group}
  */
 function buildPostCross(height) {
-  const postMaterial = new T.MeshStandardMaterial({ color: "#663300" });
+  const postMaterial = new T.MeshStandardMaterial({ color: '#663300' });
   const postSpindle = new T.CylinderBufferGeometry(0.1, 0.1);
   const group = new T.Group();
 

@@ -1,14 +1,15 @@
 import { ReactElement } from 'react';
-import DemoVideo from '../../components/DemoVideo';
-import { getMediaUrl, DatamatchMediaUrls } from './datamatch.service';
+import DemoVideo from '../../components/DemoVideo/DemoVideo';
 import './styles.css';
+import { getMediaUrl, MediaUrls } from '../../utils';
 
 export default function Datamatch(): ReactElement {
   return (
     <div style={{ textAlign: 'left' }}>
       <a target={'_blank'} href={'https://datamatch.me'} rel="noreferrer">
         <img
-          src={getMediaUrl(DatamatchMediaUrls.DatamatchLogo)}
+          src={getMediaUrl(MediaUrls.DatamatchLogo)}
+          alt="Datamatch Logo"
           style={{ objectFit: 'contain', width: '3rem' }}
         ></img>
       </a>
@@ -34,10 +35,9 @@ export default function Datamatch(): ReactElement {
           Harvard, runs and picks pairs of people who answered the survey
           questions similarly.
         </p>
-
         <p>
-          Datamatch&apos;s website and API was developed by a team at Harvard who
-          founded Datamatch. With the help of Ben Pekala, the president,
+          Datamatch&apos;s website and API was developed by a team at Harvard
+          who founded Datamatch. With the help of Ben Pekala, the president,
           Datamatch was brought to the University of Wisconsin Madison. He then
           found volunteer programmers to work on the app and gain experience,
           and the app was born.
@@ -47,18 +47,17 @@ export default function Datamatch(): ReactElement {
         <div></div>
         <b>{'Programming environment: '}</b>
         Xcode
-
         <div
           style={{
             display: 'flex',
             justifyContent: 'center',
-            marginBottom: 10
+            marginBottom: 10,
           }}
         >
           <div
             style={{
               border: '1px solid grey',
-              padding: 10
+              padding: 10,
             }}
           >
             <b>Skills gained</b>
@@ -85,8 +84,8 @@ export default function Datamatch(): ReactElement {
           <DemoVideo
             demos={[
               {
-                src: getMediaUrl(DatamatchMediaUrls.DatamatchDemo)
-              }
+                src: getMediaUrl(MediaUrls.DatamatchDemo),
+              },
             ]}
           />
         </div>

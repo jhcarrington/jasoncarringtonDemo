@@ -1,0 +1,44 @@
+.hrMyself {
+  border: none;
+  margin-top: 25px;
+  border-top: 3px double teal;
+  color: #000000;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+}
+
+.hrMyself:after {
+  background: #fff;
+  content: "MYSELF";
+  font-weight: bold;
+  padding: 0 4px;
+  position: relative;
+  top: -13px;
+}
+
+.hrProjects {
+  border: none;
+  margin-top: 25px;
+  border-top: 3px double teal;
+  color: #000000;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+}
+
+.hrProjects:after {
+  background: #fff;
+  content: "PROJECTS";
+  font-weight: bold;
+  padding: 0 4px;
+  position: relative;
+  top: -13px;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}

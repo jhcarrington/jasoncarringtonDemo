@@ -1,13 +1,14 @@
 import { ReactElement } from 'react';
-import { getMediaUrl, UlineMediaUrls } from './uline.service';
 import './styles.css';
+import { getMediaUrl, MediaUrls } from '../../utils';
 
 export default function Uline(): ReactElement {
   return (
     <div style={{ textAlign: 'left' }}>
       <a target={'_blank'} href="https://uline.com" rel="noreferrer">
         <img
-          src={getMediaUrl(UlineMediaUrls.UlineLogo)}
+          src={getMediaUrl(MediaUrls.UlineLogo)}
+          alt="Uline Logo"
           style={{ objectFit: 'contain', width: '5rem' }}
         ></img>
       </a>
@@ -31,16 +32,13 @@ export default function Uline(): ReactElement {
           <div className="card" id="card" style={{ boxShadow: 'none' }}>
             <div className="card-header" style={{ color: '#000000' }}>
               Server Install Script
-              <div className="card-header-actions">
-                <a className="card-header-action"></a>
-              </div>
             </div>
             <div className="card-body" style={{ color: '#000000' }}>
               <p>
                 I was put in charge of installing ESXI, a virtual server
                 operating system, onto hp proliant servers. Part of this process
-                is configuring the IP addresses so Uline&apos;s server and network
-                team can easily solve outages.
+                is configuring the IP addresses so Uline&apos;s server and
+                network team can easily solve outages.
               </p>
               <p>
                 This process itself takes about an hour per server. The server
@@ -59,9 +57,6 @@ export default function Uline(): ReactElement {
           <div className="card" id="card" style={{ boxShadow: 'none' }}>
             <div className="card-header" style={{ color: '#000000' }}>
               Database Manager
-              <div className="card-header-actions">
-                <a className="card-header-action"></a>
-              </div>
             </div>
             <div className="card-body" style={{ color: '#000000' }}>
               <p>
@@ -80,25 +75,25 @@ export default function Uline(): ReactElement {
 
               <ol>
                 <li>
-                  The UI dynamically generates drop down lists for all
-                  available servers.
+                  The UI dynamically generates drop down lists for all available
+                  servers.
                 </li>
                 <li>
                   One or more servers can be selected and then opened. Which
                   will open the databases of the selected servers.
                 </li>
                 <li>
-                  One or more databases can be selected, which opens the
-                  tables of the selected databases
+                  One or more databases can be selected, which opens the tables
+                  of the selected databases
                 </li>
                 <li>
                   One or more tables can be selected, which opens the table
                   headers.
                 </li>
                 <li>
-                  Each selected header has options such as filters, is
-                  included, order by. These options are converted into SQL
-                  commands which will gather and JOIN the correct objects.
+                  Each selected header has options such as filters, is included,
+                  order by. These options are converted into SQL commands which
+                  will gather and JOIN the correct objects.
                 </li>
                 <li>Download the report</li>
               </ol>

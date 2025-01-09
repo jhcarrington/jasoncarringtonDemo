@@ -1,38 +1,17 @@
-import DemoVideo from '../../components/DemoVideo';
-import { getMediaUrl, SmilemailMediaUrls } from './smilemail.service';
+import { ReactElement } from 'react';
+import DemoVideo from '../../components/DemoVideo/DemoVideo';
 import './styles.css';
+import { getMediaUrl, MediaUrls } from '../../utils';
 
-export default function Smilemail(): JSX.Element {
+export default function Smilemail(): ReactElement {
   return (
     <div style={{ textAlign: 'left' }}>
       <div style={{ textAlign: 'left' }}>
-        <a target={'_blank'} href={'https://smilemail.com'} rel="noreferrer">
-          <img
-            src={getMediaUrl(SmilemailMediaUrls.SmilemailLogo)}
-            style={{ objectFit: 'contain', width: '3rem' }}
-          ></img>
-          <a
-            rel="noreferrer"
-            target={'_blank'}
-            style={{ paddingLeft: 20 }}
-            href={'https://apps.apple.com/us/app/smilemail-cards/id1480618428'}
-          >
-            <img
-              style={{ height: '1.5rem', width: '4.5rem' }}
-              src={require('../../assets/app-store-badge.png')}
-            ></img>
-          </a>
-          <a
-            target={'_blank'}
-            style={{ paddingLeft: 20 }}
-            href={'https://play.google.com/store/apps/details?id=com.smilemail'} rel="noreferrer"
-          >
-            <img
-              style={{ height: '1.5rem', width: '4.95rem' }}
-              src={require('../../assets/google-play-badge.png')}
-            ></img>
-          </a>
-        </a>
+        <img
+          src={getMediaUrl(MediaUrls.SmilemailLogo)}
+          alt="Smilemail Logo"
+          style={{ objectFit: 'contain', width: '3rem' }}
+        ></img>
 
         <div style={{ textAlign: 'center', fontSize: 20, flex: 1 }}>
           Smilemail
@@ -41,9 +20,9 @@ export default function Smilemail(): JSX.Element {
       <hr></hr>
       <div>
         <p>
-          Smilemail is a React-Native cross plateform application. It&apos;s purpose
-          is to provide a way for people to send voice messages inside of gift
-          cards.
+          Smilemail is a React-Native cross plateform application. It&apos;s
+          purpose is to provide a way for people to send voice messages inside
+          of gift cards.
         </p>
         <ol>
           <li>Select an Occassion</li>
@@ -65,7 +44,6 @@ export default function Smilemail(): JSX.Element {
             will create the physical card and mail it to the receiver.
           </li>
         </ol>
-
         <p>
           The project was an innovative experience for Jason. He enjoyed
           applying his previous native IOS and android development experience
@@ -84,7 +62,7 @@ export default function Smilemail(): JSX.Element {
       <div
         style={{
           display: 'flex',
-          marginBottom: 10
+          marginBottom: 10,
         }}
       >
         <div
@@ -92,7 +70,7 @@ export default function Smilemail(): JSX.Element {
             flex: 1,
             border: '1px solid grey',
             borderRightWidth: 0.5,
-            padding: 10
+            padding: 10,
           }}
         >
           <b>Skills gained</b>
@@ -111,7 +89,7 @@ export default function Smilemail(): JSX.Element {
             flex: 1,
             border: '1px solid grey',
             borderLeftWidth: 0.5,
-            padding: 10
+            padding: 10,
           }}
         >
           <b>Libraries</b>
@@ -131,9 +109,7 @@ export default function Smilemail(): JSX.Element {
       </div>
       <b>DEMO</b>
       <div>
-        <DemoVideo
-          demos={[{ src: getMediaUrl(SmilemailMediaUrls.SmilemailDemo) }]}
-        />
+        <DemoVideo demos={[{ src: getMediaUrl(MediaUrls.SmilemailDemo) }]} />
       </div>
     </div>
   );

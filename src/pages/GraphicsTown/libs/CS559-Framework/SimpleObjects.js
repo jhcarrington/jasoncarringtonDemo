@@ -12,8 +12,8 @@
  */
 
 // we need to have the BaseClass definition
-import { GrObject } from './GrObject.js'
-import * as T from 'three'
+import { GrObject } from './GrObject.js';
+import * as T from 'three';
 
 let simpleObjectCounter = 0;
 
@@ -37,10 +37,10 @@ let simpleObjectCounter = 0;
  */
 export class GrCube extends GrObject {
   /**
-     * @param {CubeProperties} params
-     * @param {Array<string|Array>} [paramInfo] - parameters for the GrObject (for sliders)
-     */
-  constructor (params = {}, paramInfo = undefined) {
+   * @param {CubeProperties} params
+   * @param {Array<string|Array>} [paramInfo] - parameters for the GrObject (for sliders)
+   */
+  constructor(params = {}, paramInfo = undefined) {
     let material;
     if (params.material) {
       material = params.material;
@@ -49,10 +49,16 @@ export class GrCube extends GrObject {
     } else {
       material = new T.MeshStandardMaterial({ color: '#FF8888' });
     }
-    const hs = params.heightSegments || 1
-    const ws = params.widthSegments || 1
-    const geom = new T.BoxGeometry(params.size, params.size, params.size, ws, hs)
-    const mesh = new T.Mesh(geom, material)
+    const hs = params.heightSegments || 1;
+    const ws = params.widthSegments || 1;
+    const geom = new T.BoxGeometry(
+      params.size,
+      params.size,
+      params.size,
+      ws,
+      hs,
+    );
+    const mesh = new T.Mesh(geom, material);
     // note that we have to make the Object3D before we can call
     // super and we have to call super before we can use this
 
@@ -70,10 +76,10 @@ export class GrCube extends GrObject {
  */
 export class GrSphere extends GrObject {
   /**
-     * @param {CubeProperties} params
-     * @param {Array<string|Array>} [paramInfo] - parameters for the GrObject (for sliders)
-     */
-  constructor (params, paramInfo) {
+   * @param {CubeProperties} params
+   * @param {Array<string|Array>} [paramInfo] - parameters for the GrObject (for sliders)
+   */
+  constructor(params, paramInfo) {
     let material;
     if (params.material) {
       material = params.material;
@@ -85,10 +91,10 @@ export class GrSphere extends GrObject {
     const geom = new T.SphereBufferGeometry(
       params.size ? params.size / 2.0 : 1.0,
       params.widthSegments ? params.widthSegments : 8,
-      params.heightSegments ? params.heightSegments : 6
+      params.heightSegments ? params.heightSegments : 6,
     );
 
-    const mesh = new T.Mesh(geom, material)
+    const mesh = new T.Mesh(geom, material);
     // note that we have to make the Object3D before we can call
     // super and we have to call super before we can use this
 
@@ -106,49 +112,49 @@ export class GrSphere extends GrObject {
  */
 export class GrSquareSign extends GrObject {
   /**
-     *
-     * @param {Object} [params]
-     * @param {string | number} [params.color]
-     * @param {THREE.Texture} [params.map]
-     * @param {THREE.Material} [params.material]
-     * @param {number} [params.x]
-     * @param {number} [params.y]
-     * @param {number} [params.z]
-     * @param {number} [params.size]
-     * @param {Array<string|Array>} [paramInfo ]
-     */
-  constructor (params = {}, paramInfo = []) {
+   *
+   * @param {Object} [params]
+   * @param {string | number} [params.color]
+   * @param {THREE.Texture} [params.map]
+   * @param {THREE.Material} [params.material]
+   * @param {number} [params.x]
+   * @param {number} [params.y]
+   * @param {number} [params.z]
+   * @param {number} [params.size]
+   * @param {Array<string|Array>} [paramInfo ]
+   */
+  constructor(params = {}, paramInfo = []) {
     // make a square out of triangles
-    const geom = new T.Geometry()
-    const size = params.size || 0.5
+    const geom = new T.Geometry();
+    const size = params.size || 0.5;
     geom.vertices.push(new T.Vector3(-size, -size, 0));
-    const uv0 = new T.Vector2(0, 0)
+    const uv0 = new T.Vector2(0, 0);
     geom.vertices.push(new T.Vector3(size, -size, 0));
-    const uv1 = new T.Vector2(1, 0)
+    const uv1 = new T.Vector2(1, 0);
     geom.vertices.push(new T.Vector3(-size, size, 0));
-    const uv2 = new T.Vector2(0, 1)
+    const uv2 = new T.Vector2(0, 1);
     geom.vertices.push(new T.Vector3(size, size, 0));
-    const uv3 = new T.Vector2(1, 1)
+    const uv3 = new T.Vector2(1, 1);
     geom.faces.push(new T.Face3(0, 1, 2));
     geom.faces.push(new T.Face3(1, 3, 2));
     geom.computeFaceNormals();
     geom.faceVertexUvs = [
       [
         [uv0, uv1, uv2],
-        [uv1, uv3, uv2]
-      ]
-    ]
+        [uv1, uv3, uv2],
+      ],
+    ];
     let material;
     if (params.material) {
       material = params.material;
     } else {
-      const matprops = { side: T.DoubleSide }
+      const matprops = { side: T.DoubleSide };
       matprops.color = params.color ? params.color : 0xffffff;
       if (params.map) matprops.map = params.map;
       material = new T.MeshStandardMaterial(matprops);
       console.log(matprops);
     }
-    const mesh = new T.Mesh(geom, material)
+    const mesh = new T.Mesh(geom, material);
     super(`SquareSign-${simpleObjectCounter++}`, mesh, paramInfo);
     // put the object in its place
     mesh.position.x = params.x ? Number(params.x) : 0;
@@ -163,16 +169,16 @@ export class GrSquareSign extends GrObject {
  */
 export class GrTorusKnot extends GrObject {
   /**
-     * @param {Object} [params]
-     * @param {string | number} [params.color]
-     * @param {THREE.Material} [params.material]
-     * @param {number} [params.x]
-     * @param {number} [params.y]
-     * @param {number} [params.z]
-     * @param {number} [params.size]
-     * @param {Array<string|Array>} [paramInfo] - parameters for the GrObject (for sliders)
-     */
-  constructor (params = {}, paramInfo = []) {
+   * @param {Object} [params]
+   * @param {string | number} [params.color]
+   * @param {THREE.Material} [params.material]
+   * @param {number} [params.x]
+   * @param {number} [params.y]
+   * @param {number} [params.z]
+   * @param {number} [params.size]
+   * @param {Array<string|Array>} [paramInfo] - parameters for the GrObject (for sliders)
+   */
+  constructor(params = {}, paramInfo = []) {
     let material;
     if (params.material) {
       material = params.material;
@@ -181,8 +187,8 @@ export class GrTorusKnot extends GrObject {
     } else {
       material = new T.MeshStandardMaterial({ color: '#FF8888' });
     }
-    const geom = new T.TorusKnotBufferGeometry()
-    const mesh = new T.Mesh(geom, material)
+    const geom = new T.TorusKnotBufferGeometry();
+    const mesh = new T.Mesh(geom, material);
     // note that we have to make the Object3D before we can call
     // super and we have to call super before we can use this
 
@@ -194,7 +200,7 @@ export class GrTorusKnot extends GrObject {
     mesh.position.z = params.z ? Number(params.z) : 0;
 
     // set size by scaling
-    const size = params.size || 1.0
+    const size = params.size || 1.0;
     mesh.scale.set(size, size, size);
   }
 }
@@ -205,14 +211,14 @@ export class GrTorusKnot extends GrObject {
  */
 export class GrGroup extends GrObject {
   /**
-     * @param {Object} [params]
-     * @param {number} [params.x]
-     * @param {number} [params.y]
-     * @param {number} [params.z]
-     * @param {Array<string|Array>} [paramInfo] - parameters for the GrObject (for sliders)
-     */
-  constructor (params = {}, paramInfo = []) {
-    const group = new T.Group()
+   * @param {Object} [params]
+   * @param {number} [params.x]
+   * @param {number} [params.y]
+   * @param {number} [params.z]
+   * @param {Array<string|Array>} [paramInfo] - parameters for the GrObject (for sliders)
+   */
+  constructor(params = {}, paramInfo = []) {
+    const group = new T.Group();
 
     super(`Group-${simpleObjectCounter++}`, group, paramInfo);
 
@@ -223,22 +229,22 @@ export class GrGroup extends GrObject {
   }
 
   /**
-         * Add an Object3D to the group (not a GrObject!)
-         *
-         * @param {T.Object3D} obj
-         */
-  add (obj) {
+   * Add an Object3D to the group (not a GrObject!)
+   *
+   * @param {T.Object3D} obj
+   */
+  add(obj) {
     this.objects[0].add(obj);
   }
 }
 
 export class GrCylinder extends GrObject {
   /**
-     *
-     * @param {*} params
-     * @param {Array<string|Array>} [paramInfo]
-     */
-  constructor (params, paramInfo) {
+   *
+   * @param {*} params
+   * @param {Array<string|Array>} [paramInfo]
+   */
+  constructor(params, paramInfo) {
     let material;
     if (params.material) {
       material = params.material;
@@ -247,16 +253,19 @@ export class GrCylinder extends GrObject {
     } else {
       material = new T.MeshStandardMaterial({ color: '#FF8888' });
     }
-    const rad = params.radius ? params.radius : 1
-    const rtop = ('top' in params) ? params.top : rad
-    const rbottom = ('bottom' in params) ? params.bottom : rad
-    const height = params.height ? params.height : 1.0
-    const geom = new T.CylinderBufferGeometry(rtop, rbottom, height,
+    const rad = params.radius ? params.radius : 1;
+    const rtop = 'top' in params ? params.top : rad;
+    const rbottom = 'bottom' in params ? params.bottom : rad;
+    const height = params.height ? params.height : 1.0;
+    const geom = new T.CylinderBufferGeometry(
+      rtop,
+      rbottom,
+      height,
       params.widthSegments ? params.widthSegments : 8,
-      params.heightSegments ? params.heightSegments : 6
+      params.heightSegments ? params.heightSegments : 6,
     );
 
-    const mesh = new T.Mesh(geom, material)
+    const mesh = new T.Mesh(geom, material);
     // note that we have to make the Object3D before we can call
     // super and we have to call super before we can use this
 

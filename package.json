@@ -1,50 +1,38 @@
 {
-  "name": "jasoncarrington.me",
-  "version": "1.1.0",
+  "name": "jasoncarrington",
+  "version": "2.0.0",
   "private": true,
-  "homepage": "http://jasoncarrington.me",
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@loaders.gl/core": "^2.2.8",
-    "@loaders.gl/obj": "^2.2.8",
-    "@mui/material": "^5.13.5",
-    "@types/react-router-dom": "^5.3.3",
-    "babel-plugin-dynamic-import-node": "^2.3.0",
-    "canvasjs": "^1.8.3",
-    "copy-webpack-plugin": "^5.0.4",
-    "css-loader": "^3.2.0",
-    "file-loader": "^4.2.0",
-    "glsl-shader-loader": "^0.1.6",
-    "image-webpack-loader": "^6.0.0",
-    "raw-loader": "^4.0.1",
-    "react": "^18.2.0",
-    "react-burger-menu": "^3.0.9",
-    "react-dom": "^18.2.0",
-    "react-pdf": "^7.1.2",
-    "react-router": "^5.0.1",
-    "react-router-dom": "^6.4.1",
-    "react-scripts": "^5.0.1",
-    "style-loader": "^1.0.0",
-    "svg-url-loader": "^3.0.2",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.112",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "babel-plugin-relay": "^18.0.0",
+    "postcss": "^8.4.47",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "^3.4.13",
     "three": "^0.120.0",
-    "webpack-cli": "^3.3.9"
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "webpack --mode development --watch",
-    "start": "react-scripts start",
+    "start": "react-scripts start .env",
     "build": "react-scripts build",
-    "build-no-map": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "webpack": "webpack-dev-server --watch",
-    "createScreen": "node scripts/genScreen.js",
-    "android": "adb reverse tcp:3000 tcp:3000",
-    "lint": "eslint src",
-    "lint-fix": "eslint src/pages* --fix"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -59,20 +47,10 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/preset-env": "^7.19.1",
-    "@types/react": "^18.0.21",
-    "@types/react-burger-menu": "^2.8.3",
-    "@types/react-dom": "^18.0.6",
-    "@typescript-eslint/eslint-plugin": "^5.38.0",
-    "@typescript-eslint/parser": "^5.38.0",
-    "eslint-config-standard-with-typescript": "^23.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.3.0",
-    "eslint-plugin-promise": "^6.0.1",
-    "eslint-plugin-react": "^7.31.8",
-    "html-webpack-plugin": "^3.2.0",
-    "typescript": "^4.8.3"
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3"
   }
 }

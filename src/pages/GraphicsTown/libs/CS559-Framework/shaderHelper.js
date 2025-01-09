@@ -19,7 +19,7 @@
  * @module shaderHelper
  */
 
-import * as T from 'three'
+import * as T from 'three';
 
 // this takes an object that describes a shader material and adds the
 // shader code (if provided) to it.
@@ -48,8 +48,8 @@ const errorFragmentShader = `
  * @param {string} url
  * @param {THREE.ShaderMaterial} material
  */
-function loadFragmentShader (url, material) {
-  const loader = new T.FileLoader()
+function loadFragmentShader(url, material) {
+  const loader = new T.FileLoader();
   loader.load(
     url,
     /* onload = */
@@ -65,8 +65,8 @@ function loadFragmentShader (url, material) {
       console.log(`Error: ${err}`);
       material.fragmentShader = errorFragmentShader;
       material.needsUpdate = true;
-    }
-  )
+    },
+  );
 }
 
 /**
@@ -74,8 +74,8 @@ function loadFragmentShader (url, material) {
  * @param {string} url
  * @param {THREE.ShaderMaterial} material
  */
-function loadVertexShader (url, material) {
-  const loader = new T.FileLoader()
+function loadVertexShader(url, material) {
+  const loader = new T.FileLoader();
   loader.load(
     url,
     /* onload = */
@@ -91,8 +91,8 @@ function loadVertexShader (url, material) {
       console.log(`Error: ${err}`);
       material.fragmentShader = errorFragmentShader;
       material.needsUpdate = true;
-    }
-  )
+    },
+  );
 }
 
 /**
@@ -105,14 +105,14 @@ function loadVertexShader (url, material) {
  * @param {THREE.ShaderMaterialParameters} [properties]
  * @returns {THREE.ShaderMaterial}
  */
-export function shaderMaterial (
+export function shaderMaterial(
   vertexShaderURL,
   fragmentShaderURL,
-  properties = {}
+  properties = {},
 ) {
   if (!properties) properties = {};
 
-  const sm = new T.ShaderMaterial(properties)
+  const sm = new T.ShaderMaterial(properties);
   // create a default shader until the real ones load
   sm.vertexShader = defaultVertexShader;
   sm.fragmentShader = defaultFragmentShader;

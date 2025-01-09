@@ -17,13 +17,13 @@
  */
 
 // we need to have the BaseClass definition
-import { GrObject } from './GrObject.js'
+import { GrObject } from './GrObject.js';
 
 // a global variable to keep track of how many objects we create
 // this allows us to give unique names
 let numberOfGrounds = 0;
 
-import * as T from 'three'
+import * as T from 'three';
 
 /**
  * This is the simplest - just a solid grey box
@@ -31,18 +31,18 @@ import * as T from 'three'
  */
 export class SimpleGroundPlane extends GrObject {
   /**
-     * The size is in each direction (so X goes from -size to +size)
-     * Thickness is because the object is a box (like a table top)
-     *
-     * @param {Number} size=5
-     * @param {Number} thickness=0.2
-     * @param {string|Number} [color="white"]
-     */
-  constructor (size = 5, thickness = 0.2, color = 'white') {
+   * The size is in each direction (so X goes from -size to +size)
+   * Thickness is because the object is a box (like a table top)
+   *
+   * @param {Number} size=5
+   * @param {Number} thickness=0.2
+   * @param {string|Number} [color="white"]
+   */
+  constructor(size = 5, thickness = 0.2, color = 'white') {
     // we need to create the parts before we can call "super"
-    const geom = new T.BoxGeometry(size * 2, thickness, size * 2)
-    const material = new T.MeshStandardMaterial({ color, roughness: 0.9 })
-    const mesh = new T.Mesh(geom, material)
+    const geom = new T.BoxGeometry(size * 2, thickness, size * 2);
+    const material = new T.MeshStandardMaterial({ color, roughness: 0.9 });
+    const mesh = new T.Mesh(geom, material);
     numberOfGrounds += 1;
 
     // set up the base class
@@ -60,10 +60,10 @@ export class SimpleGroundPlane extends GrObject {
   }
 
   // animation doesn't do anything, but we have it anyway
-  tick (delta, timeOfDay) {
+  tick(delta, timeOfDay) {
     // just sits there
   }
 
   // parameter changing doesn't do anything, as there are no parameters
-  update (values) {}
+  update(values) {}
 }

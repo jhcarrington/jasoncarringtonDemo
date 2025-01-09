@@ -1,39 +1,16 @@
 import { ReactElement } from 'react';
-import DemoVideo from '../../components/DemoVideo';
-import { getMediaUrl, MosaicMediaUrls } from './mosaic.service';
+import DemoVideo from '../../components/DemoVideo/DemoVideo';
+import { getMediaUrl, MosaicUrls } from '../../utils';
 
 export default function Mosaic(): ReactElement {
   return (
     <div style={{ textAlign: 'left' }}>
       <div style={{ textAlign: 'left' }}>
-        <a target={'_blank'}>
-          <img
-            src={getMediaUrl(MosaicMediaUrls.MosaicIcon)}
-            style={{ objectFit: 'contain', width: '3rem' }}
-          ></img>
-          <a
-            target={'_blank'}
-            style={{ paddingLeft: 20 }}
-            href={
-              'https://apps.apple.com/us/app/mosaic-marketplace/id1489117637?ls=1'
-            } rel="noreferrer"
-          >
-            <img
-              style={{ height: '1.5rem', width: '4.5rem' }}
-              src={require('../../assets/app-store-badge.png')}
-            ></img>
-          </a>
-          <a
-            target={'_blank'}
-            style={{ paddingLeft: 20 }}
-            href={'https://play.google.com/store/apps/details?id=com.mirch'} rel="noreferrer"
-          >
-            <img
-              style={{ height: '1.5rem', width: '4.95rem' }}
-              src={require('../../assets/google-play-badge.png')}
-            ></img>
-          </a>
-        </a>
+        <img
+          alt={'Missing'}
+          src={getMediaUrl(MosaicUrls.MosaicIcon)}
+          style={{ objectFit: 'contain', width: '3rem' }}
+        ></img>
 
         <div style={{ textAlign: 'center', fontSize: 20, flex: 1 }}>Mosaic</div>
       </div>
@@ -54,31 +31,31 @@ export default function Mosaic(): ReactElement {
             demos={[
               {
                 title: 'Modify Theme',
-                src: getMediaUrl(MosaicMediaUrls.ChangeTheme)
+                src: getMediaUrl(MosaicUrls.ChangeTheme),
               },
               {
                 title: 'View Collections',
-                src: getMediaUrl(MosaicMediaUrls.Collections)
+                src: getMediaUrl(MosaicUrls.Collections),
               },
               {
                 title: 'Login',
-                src: getMediaUrl(MosaicMediaUrls.Login)
+                src: getMediaUrl(MosaicUrls.Login),
               },
               {
                 title: 'Post interaction',
-                src: getMediaUrl(MosaicMediaUrls.PostActions)
+                src: getMediaUrl(MosaicUrls.PostActions),
               },
               {
                 title: 'Search',
-                src: getMediaUrl(MosaicMediaUrls.Search)
-              }
+                src: getMediaUrl(MosaicUrls.Search),
+              },
             ]}
           />
         </div>
         <div
           style={{
             display: 'flex',
-            marginBottom: 10
+            marginBottom: 10,
           }}
         >
           <div
@@ -86,7 +63,7 @@ export default function Mosaic(): ReactElement {
               flex: 1,
               border: '1px solid grey',
               borderRightWidth: 0.5,
-              padding: 10
+              padding: 10,
             }}
           >
             <b>Skills gained</b>
@@ -115,7 +92,7 @@ export default function Mosaic(): ReactElement {
               flex: 1,
               border: '1px solid grey',
               borderLeftWidth: 0.5,
-              padding: 10
+              padding: 10,
             }}
           >
             <b>Libraries</b>

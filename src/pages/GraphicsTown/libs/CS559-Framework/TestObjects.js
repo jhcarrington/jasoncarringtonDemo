@@ -17,9 +17,9 @@ import * as T from 'three';
 
 // a global variable to keep track of how many objects we create
 // this allows us to give unique names
-let testobjsctr = 0
+let testobjsctr = 0;
 
-function degreesToRadians (deg) {
+function degreesToRadians(deg) {
   return (deg * Math.PI) / 180;
 }
 
@@ -31,22 +31,22 @@ function degreesToRadians (deg) {
  * It's also a simple example of a hierarchical object
  */
 export class HingeCube extends GrObject {
-  constructor () {
-    const group = new T.Group()
-    const box = new T.BoxGeometry(1, 0.5, 1)
+  constructor() {
+    const group = new T.Group();
+    const box = new T.BoxGeometry(1, 0.5, 1);
     const mesh1 = new T.Mesh(
       box,
-      new T.MeshStandardMaterial({ color: 0xa0a000 })
+      new T.MeshStandardMaterial({ color: 0xa0a000 }),
     );
     mesh1.position.y = 0.25;
     group.add(mesh1);
 
     const mesh2 = new T.Mesh(
       box,
-      new T.MeshStandardMaterial({ color: 0xffff00 })
+      new T.MeshStandardMaterial({ color: 0xffff00 }),
     );
     // set group with origin at pivot point
-    const g2 = new T.Group()
+    const g2 = new T.Group();
     g2.position.set(0, 0.5, -0.5);
     g2.add(mesh2);
     mesh2.position.y = 0.25;
@@ -57,7 +57,7 @@ export class HingeCube extends GrObject {
       ['x', -5, 5, 2],
       ['z', -5, 5, 2],
       ['theta', -180, 180, 0],
-      ['tilt', 0, 90, 0]
+      ['tilt', 0, 90, 0],
     ]);
 
     this.group = group;
@@ -66,7 +66,7 @@ export class HingeCube extends GrObject {
     this.g2 = g2;
   }
 
-  update (paramValues) {
+  update(paramValues) {
     this.group.position.x = paramValues[0];
     this.group.position.z = paramValues[1];
     this.group.rotation.y = degreesToRadians(paramValues[2]);
@@ -76,9 +76,9 @@ export class HingeCube extends GrObject {
 
 // for faking deferred loading
 // from https://flaviocopes.com/javascript-sleep/
-const sleep = milliseconds => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds));
-}
+const sleep = (milliseconds) => {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+};
 
 /**
  * test for an object that is created slowly (like loading an OBJ)
@@ -92,8 +92,8 @@ const sleep = milliseconds => {
  * here, we fake OBJ loading with sleep
  */
 export class DelayTest extends GrObject {
-  constructor () {
-    const group = new T.Group()
+  constructor() {
+    const group = new T.Group();
     super('Delay-Test', group);
     this.group = group;
     // use sleep, rather than OBJ loader
@@ -101,9 +101,9 @@ export class DelayTest extends GrObject {
       group.add(
         new T.Mesh(
           new T.TorusKnotGeometry(),
-          new T.MeshStandardMaterial({ color: 'red' })
-        )
-      )
+          new T.MeshStandardMaterial({ color: 'red' }),
+        ),
+      );
     });
   }
 }
@@ -112,14 +112,14 @@ export class DelayTest extends GrObject {
  * Better delayed object - put a proxy object in its place, and then remove it
  */
 export class BetterDelayTest extends GrObject {
-  constructor () {
-    const group = new T.Group()
+  constructor() {
+    const group = new T.Group();
     super('Delay-Test', group);
     this.group = group;
     // make a cube that will be there temporarily
     const tempCube = new T.Mesh(
       new T.BoxGeometry(),
-      new T.MeshStandardMaterial()
+      new T.MeshStandardMaterial(),
     );
     group.add(tempCube);
     // use sleep, rather than OBJ loader
@@ -128,9 +128,9 @@ export class BetterDelayTest extends GrObject {
       group.add(
         new T.Mesh(
           new T.TorusKnotGeometry(),
-          new T.MeshStandardMaterial({ color: 'purple' })
-        )
-      )
+          new T.MeshStandardMaterial({ color: 'purple' }),
+        ),
+      );
     });
   }
 }
@@ -139,13 +139,13 @@ export class BetterDelayTest extends GrObject {
  * test for changing an object's material after some delay
  */
 export class MaterialDelayTest extends GrObject {
-  constructor () {
-    const group = new T.Group()
+  constructor() {
+    const group = new T.Group();
     super('Delay-Test', group);
     this.material = new T.MeshStandardMaterial({ color: 'white' });
     this.geometry = new T.TorusGeometry();
     this.mesh = new T.Mesh(this.geometry, this.material);
-    const self = this
+    const self = this;
     group.add(this.mesh);
     group.position.x = -3;
     // use sleep, rather than OBJ loader
@@ -153,31 +153,31 @@ export class MaterialDelayTest extends GrObject {
       // note: we can't use "this" because this isn't lexically scoped
       self.material.setValues({ color: 'red' });
       self.material.needsUpdate = true;
-    })
+    });
   }
 }
 
 class CheckSign extends GrObject {
   /**
-     *
-     * @param {Object} props
-     * @param {number} [props.checks=4] - number of squares per side
-     * @param {string} [props.colortype="vertex"] - vertex,face,none
-     * @param {number} [props.x]
-     * @param {number} [props.y]
-     * @param {number} [props.z]
-     * @param {number} [props.scale=1]
-     * @param {THREE.Color | string | Number} [props.materialcolor]
-     */
-  constructor (props) {
-    const group = new T.Group()
+   *
+   * @param {Object} props
+   * @param {number} [props.checks=4] - number of squares per side
+   * @param {string} [props.colortype="vertex"] - vertex,face,none
+   * @param {number} [props.x]
+   * @param {number} [props.y]
+   * @param {number} [props.z]
+   * @param {number} [props.scale=1]
+   * @param {THREE.Color | string | Number} [props.materialcolor]
+   */
+  constructor(props) {
+    const group = new T.Group();
     super('CheckSign1', group);
 
-    const geometry = new T.Geometry()
+    const geometry = new T.Geometry();
 
-    const nchecks = props.checks | 4
-    const nverts = nchecks + 1
-    const scale = props.scale > 0.0001 ? props.scale : 1 // disallow 0
+    const nchecks = props.checks | 4;
+    const nverts = nchecks + 1;
+    const scale = props.scale > 0.0001 ? props.scale : 1; // disallow 0
 
     let colortype;
     switch (props.colortype && props.colortype[0]) {
@@ -191,7 +191,7 @@ class CheckSign extends GrObject {
         colortype = T.NoColors;
         break;
       default:
-        console.log('no or bad colortype - assuming vertex')
+        console.log('no or bad colortype - assuming vertex');
         colortype = T.VertexColors;
     }
 
@@ -205,15 +205,15 @@ class CheckSign extends GrObject {
         const f1 = new T.Face3(
           i * nverts + j,
           i * nverts + j + 1,
-          (i + 1) * nverts + j
+          (i + 1) * nverts + j,
         );
         const f2 = new T.Face3(
           i * nverts + j + 1,
           (i + 1) * nverts + j + 1,
-          (i + 1) * nverts + j
+          (i + 1) * nverts + j,
         );
 
-        f1.color = new T.Color('red')
+        f1.color = new T.Color('red');
         f2.vertexColors[0] = new T.Color(1, 0, 0);
         f2.vertexColors[1] = new T.Color(1, 1, 1);
         f2.vertexColors[2] = new T.Color(0, 0, 1);
@@ -224,14 +224,14 @@ class CheckSign extends GrObject {
     }
     geometry.computeFaceNormals();
 
-    const materialProps = { side: T.DoubleSide, vertexColors: colortype }
+    const materialProps = { side: T.DoubleSide, vertexColors: colortype };
     if (props.materialcolor) {
       materialProps.color = props.materialcolor;
     }
-    const material = new T.MeshStandardMaterial(materialProps)
+    const material = new T.MeshStandardMaterial(materialProps);
     console.log(materialProps);
 
-    const mesh = new T.Mesh(geometry, material)
+    const mesh = new T.Mesh(geometry, material);
     // center at 0,0
     mesh.scale.set(scale, scale, scale);
     // warning - scale does not affect translation!

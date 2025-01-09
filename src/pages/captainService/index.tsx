@@ -1,29 +1,30 @@
 import { ReactElement } from 'react';
-import DemoVideo from '../../components/DemoVideo';
-import { CaptainServiceMediaUrls, getMediaUrl } from './captainService.service';
+import DemoVideo from '../../components/DemoVideo/DemoVideo';
+import { CaptainServiceUrls, getMediaUrl } from '../../utils';
 
 export default function CaptainService(): ReactElement {
   return (
     <div style={{ textAlign: 'left' }}>
       <div style={{ textAlign: 'left' }}>
-        <a target={'_blank'}>
-          <img
-            src={getMediaUrl(CaptainServiceMediaUrls.CaptainServiceIcon)}
-            style={{ objectFit: 'contain', width: '2rem' }}
-          ></img>
-        </a>
+        <img
+          src={getMediaUrl(CaptainServiceUrls.CaptainServiceIcon)}
+          alt="Captain Service Icon"
+          style={{ objectFit: 'contain', width: '2rem' }}
+        ></img>
 
-        <div style={{ textAlign: 'center', fontSize: 20, flex: 1 }}>Captain Service</div>
+        <div style={{ textAlign: 'center', fontSize: 20, flex: 1 }}>
+          Captain Service
+        </div>
       </div>
       <hr></hr>
       <div>
         <i>Developed by Jason Carrington and Birdwell Solutions.</i>
-        <p>An uber like application for service workers like mechanics, electricians and plumbers.
-          Who can serve customer tickets using Captain Service&apos;s technician finder algorithm.
-        </p>
         <p>
-          The last 2 demo videos show the ticket process.
+          An uber like application for service workers like mechanics,
+          electricians and plumbers. Who can serve customer tickets using
+          Captain Service&apos;s technician finder algorithm.
         </p>
+        <p>The last 2 demo videos show the ticket process.</p>
         <p>
           <b>{'Programming language: '}</b>
           Javascript + TypeScript
@@ -36,13 +37,13 @@ export default function CaptainService(): ReactElement {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            marginBottom: 10
+            marginBottom: 10,
           }}
         >
           <div
             style={{
               border: '1px solid grey',
-              padding: 10
+              padding: 10,
             }}
           >
             <b>Skills gained</b>
@@ -61,48 +62,67 @@ export default function CaptainService(): ReactElement {
             demos={[
               {
                 title: 'Provider signs up and sets up stripe express account',
-                src: getMediaUrl(CaptainServiceMediaUrls.ProviderSignupAndStripeAccount)
+                src: getMediaUrl(
+                  CaptainServiceUrls.ProviderSignupAndStripeAccount,
+                ),
               },
               {
                 title: 'Provider configures their account',
-                src: getMediaUrl(CaptainServiceMediaUrls.ProviderSetupAccount)
+                src: getMediaUrl(CaptainServiceUrls.ProviderSetupAccount),
               },
               {
                 title: 'Provider gets the technician signup link',
-                src: getMediaUrl(CaptainServiceMediaUrls.ProviderCopyTechnicianSignupLink)
+                src: getMediaUrl(
+                  CaptainServiceUrls.ProviderCopyTechnicianSignupLink,
+                ),
               },
               {
                 title: 'Technician signs up with link and sets up account',
-                src: getMediaUrl(CaptainServiceMediaUrls.DriverSignupAndAccountSetup)
+                src: getMediaUrl(
+                  CaptainServiceUrls.DriverSignupAndAccountSetup,
+                ),
               },
               {
                 title: 'Technician sets industries',
-                src: getMediaUrl(CaptainServiceMediaUrls.DriverSetsIndustryFromProviderList)
+                src: getMediaUrl(
+                  CaptainServiceUrls.DriverSetsIndustryFromProviderList,
+                ),
               },
               {
-                title: 'Provider approves driver and sets operating coordinates',
-                src: getMediaUrl(CaptainServiceMediaUrls.ProviderApprovesDriver)
+                title:
+                  'Provider approves driver and sets operating coordinates',
+                src: getMediaUrl(CaptainServiceUrls.ProviderApprovesDriver),
               },
               {
                 title: 'Technician is approved and sees their operating coords',
-                src: getMediaUrl(CaptainServiceMediaUrls.DriverIsApprovedAndHasRadiusAndLocationSet)
+                src: getMediaUrl(
+                  CaptainServiceUrls.DriverIsApprovedAndHasRadiusAndLocationSet,
+                ),
               },
               {
                 title: 'Provider gets the customer signup link',
-                src: getMediaUrl(CaptainServiceMediaUrls.ProviderCopyCustomerLink)
+                src: getMediaUrl(CaptainServiceUrls.ProviderCopyCustomerLink),
               },
               {
-                title: 'Customer signs up with provider link and views their application id',
-                src: getMediaUrl(CaptainServiceMediaUrls.CustomerSignupWithProviderLink)
+                title:
+                  'Customer signs up with provider link and views their application id',
+                src: getMediaUrl(
+                  CaptainServiceUrls.CustomerSignupWithProviderLink,
+                ),
               },
               {
                 title: 'Customer creates a ticket without having a card',
-                src: getMediaUrl(CaptainServiceMediaUrls.CustomerCreateTicket_NoCard_CurrentLocation_DriverSeesAddress)
+                src: getMediaUrl(
+                  CaptainServiceUrls.CustomerCreateTicket_NoCard_CurrentLocation_DriverSeesAddress,
+                ),
               },
               {
-                title: 'Customer creates a ticket with a set address and goes through the completion of a ticket',
-                src: getMediaUrl(CaptainServiceMediaUrls.Customer_SetAddress_FullPayment)
-              }
+                title:
+                  'Customer creates a ticket with a set address and goes through the completion of a ticket',
+                src: getMediaUrl(
+                  CaptainServiceUrls.Customer_SetAddress_FullPayment,
+                ),
+              },
             ]}
           />
         </div>

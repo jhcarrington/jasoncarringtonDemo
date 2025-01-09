@@ -10,12 +10,12 @@
  * */
 
 // we need to have the BaseClass definition
-import { GrObject } from "./GrObject.js";
+import { GrObject } from './GrObject.js';
 // we need to import the module to get its typedefs for the type checker
-import * as InputHelpers from "../CS559-Libs/inputHelpers.js";
-import { GrWorld } from "./GrWorld.js";
-import * as T from "three";
-import { panel } from "./AutoUI.js";
+import * as InputHelpers from '../CS559-Libs/inputHelpers.js';
+import { GrWorld } from './GrWorld.js';
+import * as T from 'three';
+import { panel } from './AutoUI.js';
 
 export class WorldUI {
   /**
@@ -45,14 +45,14 @@ export class WorldUI {
     }
 
     this.div = InputHelpers.makeBoxDiv({ width }, where);
-    InputHelpers.makeHead("World Controls", this.div, { tight: true });
+    InputHelpers.makeHead('World Controls', this.div, { tight: true });
     const _world = this.world;
 
     // run control
-    this.runbutton = InputHelpers.makeCheckbox("Run", this.div);
+    this.runbutton = InputHelpers.makeCheckbox('Run', this.div);
     world.runbutton = this.runbutton;
     world.runbutton.checked = true;
-    this.runslider = new InputHelpers.LabelSlider("speed", {
+    this.runslider = new InputHelpers.LabelSlider('speed', {
       width: 250,
       min: 0.1,
       max: 3,
@@ -66,9 +66,9 @@ export class WorldUI {
     this.selectionChkList = InputHelpers.makeFlexDiv(this.div);
     /** @type HTMLInputElement */
     this.chkSolo = InputHelpers.makeCheckbox(
-      "chkSolo",
+      'chkSolo',
       this.selectionChkList,
-      "View Solo Object"
+      'View Solo Object',
     );
     this.chkSolo.onclick = function () {
       // avoid this as it is ambiguous when reading the code and lacks type info
@@ -81,15 +81,15 @@ export class WorldUI {
       }
     };
     this.selectViewMode = InputHelpers.makeSelect(
-      ["Orbit Camera", "Fly Camera", "Follow Object", "Drive Object"],
-      this.div
+      ['Orbit Camera', 'Fly Camera', 'Follow Object', 'Drive Object'],
+      this.div,
     );
     this.selectViewMode.onchange = function () {
       // if we're driving or following make sure we have something to ride/follow
       // note that we need to do this before setting the mode
       if (
-        self.selectViewMode.value == "Drive Object" ||
-        self.selectViewMode.value == "Follow Object"
+        self.selectViewMode.value == 'Drive Object' ||
+        self.selectViewMode.value == 'Follow Object'
       ) {
         _world.setActiveObject(self.selectRideable.value);
       }
@@ -101,34 +101,34 @@ export class WorldUI {
     InputHelpers.makeBreak(this.div);
 
     // create object selector for rideable
-    InputHelpers.makeSpan("Drive:", this.div);
+    InputHelpers.makeSpan('Drive:', this.div);
     const rideable = world.objects.filter((obj) => obj.rideable);
     this.selectRideable = InputHelpers.makeSelect(
       rideable.map((ob) => ob.name),
-      this.div
+      this.div,
     );
     this.selectRideable.onchange = function () {
       // avoid this as it is ambiguous when reading the code and lacks type info
       _world.setActiveObject(self.selectRideable.value);
-      _world.setViewMode("Drive Object");
-      self.selectViewMode.value = "Drive Object";
+      _world.setViewMode('Drive Object');
+      self.selectViewMode.value = 'Drive Object';
     };
 
     // create a selector for isolate
     InputHelpers.makeBreak(this.div);
-    InputHelpers.makeSpan("LookAt:", this.div);
+    InputHelpers.makeSpan('LookAt:', this.div);
     this.selectLook = InputHelpers.makeSelect(
       world.objects.map((ob) => ob.name),
-      this.div
+      this.div,
     );
     this.selectLook.onchange = function () {
       // if we were driving, stop!
       if (
-        world.view_mode == "Drive Object" ||
-        world.view_mode == "Follow Object"
+        world.view_mode == 'Drive Object' ||
+        world.view_mode == 'Follow Object'
       ) {
-        _world.setViewMode("Orbit Camera");
-        self.selectViewMode.value = "Orbit Camera";
+        _world.setViewMode('Orbit Camera');
+        self.selectViewMode.value = 'Orbit Camera';
       }
 
       const name = self.selectLook.value;
@@ -141,7 +141,7 @@ export class WorldUI {
       world.orbit_controls.target = new T.Vector3(
         camparams[3],
         camparams[4],
-        camparams[5]
+        camparams[5],
       );
     };
   }
